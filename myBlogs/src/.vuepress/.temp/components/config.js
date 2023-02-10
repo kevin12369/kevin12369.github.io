@@ -1,0 +1,28 @@
+import { defineClientConfig } from "@vuepress/client";
+import { hasGlobalComponent } from "E:/202209BACKUP/Desktop/kevin/VuePress/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.173_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/shared.js";
+import { h } from "vue";
+
+import { useStyleTag } from "E:/202209BACKUP/Desktop/kevin/VuePress/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.173_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/vueuse.js";
+import Badge from "E:/202209BACKUP/Desktop/kevin/VuePress/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.173_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/components/Badge.js";
+import FontIcon from "E:/202209BACKUP/Desktop/kevin/VuePress/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.173_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/components/FontIcon.js";
+import BackToTop from "E:/202209BACKUP/Desktop/kevin/VuePress/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.173_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/components/BackToTop.js";
+
+
+import "E:/202209BACKUP/Desktop/kevin/VuePress/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.173_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/styles/sr-only.scss";
+
+export default defineClientConfig({
+  enhance: ({ app }) => {
+    if(!hasGlobalComponent("Badge")) app.component("Badge", Badge);
+    if(!hasGlobalComponent("FontIcon")) app.component("FontIcon", FontIcon);
+    
+  },
+  setup: () => {
+      useStyleTag(`\
+      @import url("//at.alicdn.com/t/c/font_2410206_5vb9zlyghj.css");
+      `);
+  },
+  rootComponents: [
+    () => h(BackToTop, { threshold: 300 }),
+    
+  ],
+});
