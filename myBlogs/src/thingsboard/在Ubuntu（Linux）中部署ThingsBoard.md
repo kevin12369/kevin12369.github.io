@@ -1,13 +1,13 @@
 ---
 icon: edit
-date: 2020-01-01
+date: 2020-04-11
 category:
   - ThingsBoard
 tag:
   - ThingsBoard
 ---
 
-# Apple 1
+# 在Ubuntu（Linux）中部署ThingsBoard
 
 ## Heading 2
 

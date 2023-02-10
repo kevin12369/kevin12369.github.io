@@ -1,15 +1,13 @@
 ---
 icon: edit
-date: 2022-01-01
+date: 2020-04-21
 category:
-  - Programing
+  - ThingsBoard
 tag:
-  - red
-  - big
-  - round
+  - ThingsBoard
 ---
 
-# Apple 1
+# 在Windows10中部署ThingsBoard
 
 ## Heading 2
 
