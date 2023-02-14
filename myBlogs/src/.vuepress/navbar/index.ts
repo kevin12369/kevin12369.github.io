@@ -18,6 +18,15 @@ export const zhNavbar = navbar([
         prefix: "/programming/",
         children: [
             {
+                text: "2023年面试资料",
+                icon: "edit",
+                prefix: "vue/",
+                children: [
+                    { text: "Vue面试资料", icon: "computer", link: "2023年vue面试资料" },
+                ],
+
+            },
+            {
                 text: "编程技术",
                 icon: "edit",
                 prefix: "technology/",

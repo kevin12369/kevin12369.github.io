@@ -19,10 +19,15 @@ export const zhSidebar = sidebar({
       ],
     },
     {
-      text: "文章",
+      text: "面试资料",
       icon: "note",
-      prefix: "posts/",
-      children: "structure",
+      prefix: "programming/vue/",
+      children: [
+        {
+          text:"2023年vue面试资料",
+          link: "2023年vue面试资料",
+        },
+      ],
     },
     "intro",
     "slides",
