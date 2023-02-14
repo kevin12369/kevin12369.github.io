@@ -1,14 +1,14 @@
 import { defineClientConfig } from "@vuepress/client";
-import { hasGlobalComponent } from "E:/newTest/myBlogs/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.173_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/shared.js";
+import { hasGlobalComponent } from "E:/newTest/myBlogs/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.174_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/shared.js";
 import { h } from "vue";
 
-import { useStyleTag } from "E:/newTest/myBlogs/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.173_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/vueuse.js";
-import Badge from "E:/newTest/myBlogs/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.173_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/components/Badge.js";
-import FontIcon from "E:/newTest/myBlogs/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.173_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/components/FontIcon.js";
-import BackToTop from "E:/newTest/myBlogs/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.173_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/components/BackToTop.js";
+import { useStyleTag } from "E:/newTest/myBlogs/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.174_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/vueuse.js";
+import Badge from "E:/newTest/myBlogs/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.174_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/components/Badge.js";
+import FontIcon from "E:/newTest/myBlogs/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.174_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/components/FontIcon.js";
+import BackToTop from "E:/newTest/myBlogs/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.174_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/components/BackToTop.js";
 
 
-import "E:/newTest/myBlogs/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.173_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/styles/sr-only.scss";
+import "E:/newTest/myBlogs/myBlogs/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.174_e7jwb2ulu5orbkux7obq5onfau/node_modules/vuepress-plugin-components/lib/client/styles/sr-only.scss";
 
 export default defineClientConfig({
   enhance: ({ app }) => {

@@ -15,6 +15,8 @@ export const pagesData = {
   "v-11149dbb": () => import(/* webpackChunkName: "v-11149dbb" */"E:/newTest/myBlogs/myBlogs/src/.vuepress/.temp/pages/programming/markdown.html.js").then(({ data }) => data),
   // path: /programming/page.html
   "v-c91ec6ca": () => import(/* webpackChunkName: "v-c91ec6ca" */"E:/newTest/myBlogs/myBlogs/src/.vuepress/.temp/pages/programming/page.html.js").then(({ data }) => data),
+  // path: /programming/
+  "v-7065ffef": () => import(/* webpackChunkName: "v-7065ffef" */"E:/newTest/myBlogs/myBlogs/src/.vuepress/.temp/pages/programming/index.html.js").then(({ data }) => data),
   // path: /thingsboard/%E4%BB%80%E4%B9%88%E6%98%AFThingsBoard.html
   "v-3ba2a5fc": () => import(/* webpackChunkName: "v-3ba2a5fc" */"E:/newTest/myBlogs/myBlogs/src/.vuepress/.temp/pages/thingsboard/什么是ThingsBoard.html.js").then(({ data }) => data),
   // path: /thingsboard/%E4%BB%80%E4%B9%88%E6%98%AF%E7%89%A9%E8%81%94%E7%BD%91.html
@@ -35,8 +37,6 @@ export const pagesData = {
   "v-3706649a": () => import(/* webpackChunkName: "v-3706649a" */"E:/newTest/myBlogs/myBlogs/src/.vuepress/.temp/pages/404.html.js").then(({ data }) => data),
   // path: /blogs/
   "v-76fdf177": () => import(/* webpackChunkName: "v-76fdf177" */"E:/newTest/myBlogs/myBlogs/src/.vuepress/.temp/pages/blogs/index.html.js").then(({ data }) => data),
-  // path: /programming/
-  "v-7065ffef": () => import(/* webpackChunkName: "v-7065ffef" */"E:/newTest/myBlogs/myBlogs/src/.vuepress/.temp/pages/programming/index.html.js").then(({ data }) => data),
   // path: /thingsboard/
   "v-413a8507": () => import(/* webpackChunkName: "v-413a8507" */"E:/newTest/myBlogs/myBlogs/src/.vuepress/.temp/pages/thingsboard/index.html.js").then(({ data }) => data),
   // path: /programming/technology/
