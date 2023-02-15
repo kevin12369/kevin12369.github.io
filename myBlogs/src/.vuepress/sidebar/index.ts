@@ -19,7 +19,7 @@ export const zhSidebar = sidebar({
       ],
     },
     {
-      text: "面试资料",
+      text: "前端面试资料",
       icon: "note",
       prefix: "programming/vue/",
       children: [

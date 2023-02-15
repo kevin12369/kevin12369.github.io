@@ -27,11 +27,11 @@ export const zhNavbar = navbar([
 
             },
             {
-                text: "编程技术",
+                text: "前端编程学习",
                 icon: "edit",
                 prefix: "technology/",
                 children: [
-                    { text: "编程技术", icon: "computer", link: "menu" },
+                    { text: "前端编程", icon: "computer", link: "menu" },
                 ],
 
             },
