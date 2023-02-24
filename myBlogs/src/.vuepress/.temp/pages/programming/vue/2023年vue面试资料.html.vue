@@ -402,7 +402,43 @@
 使用<code v-pre>v-slot</code>指令制定元素放在哪个插槽中，必须配合<code v-pre>&lt;template&gt;</code>元素，且一个<code v-pre>&lt;template&gt;</code>元素只能对应一个预留的插槽,即不能多个<code v-pre>&lt;template&gt;</code>元素都使用<code v-pre>v-slot</code>指令制定相同的插槽。<code v-pre>v-slot</code>的简写是<code v-pre>#</code>，例如<code v-pre>v-slot:header</code>可以简写为<code v-pre>#header</code>。</p>
 </li>
 <li>
-<p><code v-pre>作用域插槽</code>：</p>
+<p><code v-pre>作用域插槽</code>：子组件在<code v-pre>&lt;slot&gt;</code>标签上绑定<code v-pre>props</code>数据，以将子组件数据传给父组件使用。父组件获取插槽绑定<code v-pre>props</code>数据的方法：</p>
+<ol>
+<li>scope = &quot;接收的变量名&quot;:<code v-pre>&lt;template scope=&quot;接收的变量名&quot;&gt;</code></li>
+<li>slot-scope = &quot;接收的变量名&quot;:<code v-pre>&lt;template slot-scope=&quot;接收的变量名&quot;&gt;</code></li>
+<li>v-slot:插槽名 = &quot;接收的变量名&quot;:<code v-pre>&lt;template v-slot=&quot;接收的变量名&quot;&gt;</code></li>
+</ol>
+</li>
+</ul>
+<h2 id="vue-中的修饰符有哪些" tabindex="-1"><a class="header-anchor" href="#vue-中的修饰符有哪些" aria-hidden="true">#</a> Vue 中的修饰符有哪些？</h2>
+<ul>
+<li>
+<p>在<code v-pre>Vue</code>中，修饰符处理了许多<code v-pre>DOM</code>事件的细节，让我们不在还需要花大量的事件去处理这些烦恼的事情，而能有更多的经理专注于程序的逻辑处理。</p>
+</li>
+<li>
+<p><code v-pre>Vue</code> 中修饰符分为一下几种：</p>
+<ol>
+<li>
+<p>表单修饰符：</p>
+<ul>
+<li><code v-pre>lazy</code>填完信息，光标离开标签的时候才会将值赋予给<code v-pre>value</code>，也就是在<code v-pre>change</code>事件之后在进行信息同步。</li>
+<li><code v-pre>number</code>自动将用户输入值转化为数值类型，但如果这个值无法被<code v-pre>parseFloat</code>解析，则会返回原来的值。</li>
+<li><code v-pre>trim</code>自动过滤用户输入的首尾空格，而中间的空格不会被过滤掉。</li>
+</ul>
+</li>
+<li>
+<p>事件修饰符：</p>
+<ul>
+<li><code v-pre>stop</code>阻止了事件冒泡，相当于调用了event.stopPropagation方法。</li>
+<li><code v-pre>prevent</code>阻止了事件的默认行为，相当于调用了event.preventDefault方法。</li>
+<li><code v-pre>self</code>只当在event.target是当前元素自身时触发的事件现在此处处理，然后才交由内部元素进行处理。</li>
+<li><code v-pre>once</code>绑定了事件以后智能触发一次，第二次就不会触发。</li>
+<li><code v-pre>capture</code>使用事件捕捉模式，即元素自身触发的事件现在此处处理，然后才交由内部元素进行处理。</li>
+<li><code v-pre>passive</code>告诉浏览器你不想阻止事件的默认行为。</li>
+<li><code v-pre>native</code>让组件变成像html内置标签那样监听根元素的原生事件，否则组件上使用<code v-pre>v-on</code>只会监听自定义事件。</li>
+</ul>
+</li>
+</ol>
 </li>
 </ul>
 </li>
