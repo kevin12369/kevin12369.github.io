@@ -438,6 +438,22 @@
 <li><code v-pre>native</code>让组件变成像html内置标签那样监听根元素的原生事件，否则组件上使用<code v-pre>v-on</code>只会监听自定义事件。</li>
 </ul>
 </li>
+<li>
+<p>鼠标按键修饰符：</p>
+<ul>
+<li><code v-pre>left</code>左键点击。</li>
+<li><code v-pre>right</code>右键点击。</li>
+<li><code v-pre>middle</code>中键点击。</li>
+</ul>
+</li>
+<li>
+<p>键值修饰符：</p>
+<p>键盘键值修饰符，是用来修饰键盘事件（<code v-pre>onkeyup</code>，<code v-pre>onkeydown</code>）的，有如下<code v-pre>keyCode</code>存在很多，但<code v-pre>Vue</code>为我们提供了别名，分为以下两种：</p>
+<ul>
+<li>普通键（enter、tab、delete、space、esc、up...）。</li>
+<li>系统修饰键（ctrl、alt、meta、shift...）。</li>
+</ul>
+</li>
 </ol>
 </li>
 </ul>
