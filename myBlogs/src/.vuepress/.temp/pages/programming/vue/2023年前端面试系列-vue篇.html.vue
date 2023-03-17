@@ -1,65 +1,112 @@
-<template><div><h1 id="javascript-常见面试题总结" tabindex="-1"><a class="header-anchor" href="#javascript-常见面试题总结" aria-hidden="true">#</a> JavaScript 常见面试题总结</h1>
-<p><a href="https://juejin.cn/post/7176644710847479869" target="_blank" rel="noopener noreferrer">参考自掘金《2023前端面试系列-- JS 篇》<ExternalLinkIcon/></a></p>
-<h2 id="js的数据类型有哪些" tabindex="-1"><a class="header-anchor" href="#js的数据类型有哪些" aria-hidden="true">#</a> JS的数据类型有哪些？</h2>
+<template><div><h1 id="vue-常见面试题总结" tabindex="-1"><a class="header-anchor" href="#vue-常见面试题总结" aria-hidden="true">#</a> Vue 常见面试题总结</h1>
+<p><a href="https://juejin.cn/post/7191325434486161467" target="_blank" rel="noopener noreferrer">参考自掘金《2023 前端面试系列-- Vue 篇》<ExternalLinkIcon/></a></p>
+<h2 id="什么是-mvvm-模型" tabindex="-1"><a class="header-anchor" href="#什么是-mvvm-模型" aria-hidden="true">#</a> 什么是 MVVM 模型？</h2>
 <ul>
-<li>基本数据类型（值类型）：Number、String、Boolean、Null、Undefined、Symbol、BigInt。保存在栈内存中。</li>
-<li>复杂数据类型（引用类型）：Object、Function、Array、RegExp、Date基本包装类型及单体内置对象（Global、Math）等。</li>
+<li><code v-pre>MVVM</code>，是<code v-pre>Model-View-ViewModel</code>的简写，其本质是<code v-pre>MVC</code>模型的升级版。</li>
+<li>其中 <code v-pre>Model</code> 代表数据模型，<code v-pre>View</code> 代表看到的页面，<code v-pre>ViewModel</code> 是<code v-pre>View</code>和<code v-pre>Model</code>之间的桥梁，数据会绑定到<code v-pre>ViewModel</code>层并自动将数据渲染到页面中，视图变化的时候会通知<code v-pre>ViewModel</code>层更新数据。</li>
+<li>以前是通过操作 DOM 来更新视图，现在是数据驱动视图。</li>
 </ul>
-<p><strong>基本数据类型保存在栈里面，可以直接访问它的值；引用数据类型保存在堆里面，栈里面保存的时地址，通过栈里面的地址去访问堆里面的值。</strong></p>
-<h2 id="null和undefined的区别" tabindex="-1"><a class="header-anchor" href="#null和undefined的区别" aria-hidden="true">#</a> null和undefined的区别？</h2>
+<h2 id="vue-的生命周期" tabindex="-1"><a class="header-anchor" href="#vue-的生命周期" aria-hidden="true">#</a> Vue 的生命周期</h2>
 <ul>
-<li><code v-pre>null</code>表示一个对象被定义了，值为“空值”。用法：
-<ul>
-<li>作为函数的参数，表示该函数的参数不是对象。</li>
-<li>作为对象原型链的终点。</li>
+<li>Vue 的生命周期可以分为 8 个阶段：<code v-pre>创建前后</code>、<code v-pre>挂载前后</code>、<code v-pre>更新前后</code>、销毁前后，以及一些特殊场景的生命周期。</li>
+<li>Vue 3 中还新增了是 3 个用于调试和服务端渲染的场景。</li>
 </ul>
-</li>
-<li><code v-pre>undefined</code>表示不存在这个值。就是此处应该有一个值，但是还没有定义，当尝试读取时就会返回undefined。用法：
-<ul>
-<li>函数没有返回值时，默认返回undefined。</li>
-<li>变量已声明，没有赋值时，为undefined。</li>
-<li>对象中没有赋值的属性，该属性的值为undefined。</li>
-<li>调用函数时，应该提供的参数没有提供，该参数等于undefined。</li>
-</ul>
-</li>
-</ul>
-<p><strong>如何判断JS的数据类型？</strong></p>
-<ol>
-<li>typeof
-<ul>
-<li><code v-pre>typeof</code>可以区分除了<code v-pre>Null</code>类型以外的其他基本数据类型，以及从对象类型中识别出函数（function）。</li>
-<li>其返回值有：<code v-pre>number</code>、<code v-pre>string</code>、<code v-pre>boolean</code>、<code v-pre>undefined</code>、<code v-pre>symbol</code>、<code v-pre>bigint</code>、<code v-pre>function</code>、<code v-pre>object</code>。</li>
-<li>其中，<code v-pre>typeof null</code>返回<code v-pre>“object”</code></li>
-<li>如果要识别<code v-pre>null</code>，可直接使用<code v-pre>===</code>全等运算符来判断。</li>
-</ul>
-</li>
-</ol>
-<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code><span class="token keyword">typeof</span> <span class="token number">1</span> <span class="token comment">// 'number'</span>
-<span class="token keyword">typeof</span> <span class="token string">'1'</span> <span class="token comment">// 'string'</span>
-<span class="token keyword">typeof</span> <span class="token boolean">true</span> <span class="token comment">// 'boolean'</span>
-<span class="token keyword">typeof</span> <span class="token keyword">undefined</span> <span class="token comment">// 'undefined'</span>
-<span class="token keyword">typeof</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 'symbol'</span>
-<span class="token keyword">typeof</span> <span class="token keyword">null</span> <span class="token comment">// 'object'</span>
-<span class="token keyword">typeof</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">// 'object'</span>
-<span class="token keyword">typeof</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">// 'object'</span>
-<span class="token keyword">typeof</span> console <span class="token comment">// 'object'</span>
-<span class="token keyword">typeof</span> console<span class="token punctuation">.</span>log <span class="token comment">// 'function'</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="2">
-<li>instanceof
-<ul>
-<li><code v-pre>instanceof</code>一般时用来判断引用数据类型，但不能正确判断基本数据类型，根据在原型链中查找判断当前数据的原型对象是否存在返回布尔类型。</li>
-</ul>
-</li>
-</ol>
-<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code><span class="token number">1</span> <span class="token keyword">instanceof</span> <span class="token class-name">Number</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
-<span class="token boolean">true</span> <span class="token keyword">instanceof</span> <span class="token class-name">Boolean</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
-<span class="token string">'str'</span> <span class="token keyword">instanceof</span> <span class="token class-name">String</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
-<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token keyword">instanceof</span> <span class="token class-name">Array</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
-<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token keyword">instanceof</span> <span class="token class-name">Function</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
-<span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token keyword">instanceof</span> <span class="token class-name">Object</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
-<span class="token keyword">let</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-date instance <span class="token keyword">of</span> Date<span class="token punctuation">;</span> <span class="token comment">// true</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="父子组件的生命周期" tabindex="-1"><a class="header-anchor" href="#父子组件的生命周期" aria-hidden="true">#</a> <strong>父子组件的生命周期</strong>：</h4>
+<table>
+    <tr>
+        <th>Vue 2中的生命周期钩子</th>
+        <th>Vue 3选项式API的生命周期选项</th>
+        <th>Vue 3组合API的生命周期钩子</th>
+        <th>描述</th>
+    </tr>
+    <tr>
+        <td >`beforeCreate`</td>
+        <td>`beforeCreate`</td>
+        <td>`setup`</td>
+        <td>创建前，此时`data`和 `methods`的数据都还没有初始化</td>
+    </tr>
+    <tr>
+        <td >`created`</td>
+        <td>`created`</td>
+        <td>`setup`</td>
+        <td>创建后，`data`中有值，尚未挂载，可以进行一些`Ajax`请求</td>
+    </tr>
+    <tr>
+        <td >`beforeMount`</td>
+        <td>`beforeMount`</td>
+        <td>`onBeforeMount`</td>
+        <td>挂载前，会找到虚拟`DOM`，编译成`Render`</td>
+    </tr>
+    <tr>
+        <td >`mounted`</td>
+        <td>`mounted`</td>
+        <td>`onMounted`</td>
+        <td>挂载后，虚拟`DOM`已创建，可用于获取访问数据和`DOM`元素</td>
+    </tr>
+    <tr>
+        <td >`beforeUpdate`</td>
+        <td>`beforeUpdate`</td>
+        <td>`onBeforeUpdate`</td>
+        <td>更新前，可用于获取更新前的各种状态</td>
+    </tr>
+    <tr>
+        <td >`updated`</td>
+        <td>`updated`</td>
+        <td>`onUpdated`</td>
+        <td>更新后，所有的状态都已是最新的</td>
+    </tr>
+    <tr>
+        <td >`beforeDestroy`</td>
+        <td>`beforeUnmount`</td>
+        <td>`onBeforeUnmount`</td>
+        <td>销毁前，可用于一些定时器或者订阅的取消</td>
+    </tr>
+    <tr>
+        <td >`destroyed`</td>
+        <td>`unmounted`</td>
+        <td>`onUnmounted`</td>
+        <td>销毁后，可用于一些定时器或者订阅的取消</td>
+    </tr>
+    <tr>
+        <td >`activated`</td>
+        <td>`activated`</td>
+        <td>`onActivated`</td>
+        <td>`keep-alive`，缓存的组件激活时</td>
+    </tr>
+    <tr>
+        <td >`deactivated`</td>
+        <td>`deactivated`</td>
+        <td>`onDeactivated`</td>
+        <td>`keep-alive`，缓存的组件停用时</td>
+    </tr>
+    <tr>
+        <td >`errorCaptured`</td>
+        <td>`errorCaptured`</td>
+        <td>`onErrorCaptured`</td>
+        <td>捕获一个来自子孙组件的错误时调用</td>
+    </tr>
+    <tr>
+        <td >——</td>
+        <td>`renderTracked`</td>
+        <td>`onRenderTracked`</td>
+        <td>调试钩子，响应式依赖被收集时调用</td>
+    </tr>
+    <tr>
+        <td >——</td>
+        <td>`renderTriggered`</td>
+        <td>`onRenderTriggered`</td>
+        <td>调试钩子，响应式依赖被触发时调用</td>
+    </tr>
+    <tr>
+        <td >——</td>
+        <td>`serverPrefetch`</td>
+        <td>`onServerPrefetch`</td>
+        <td>组件实例在服务器上被渲染前调用</td>
+    </tr>
+</table>
+<p><strong>关于 Vue 3 中的生命周期建议阅读官方文档！！！</strong></p>
+<p><a href="https://cn.vuejs.org/api/composition-api-lifecycle.html" target="_blank" rel="noopener noreferrer">组合式 API：生命周期钩子--官方文档<ExternalLinkIcon/></a></p>
+<p><a href="https://cn.vuejs.org/api/options-lifecycle.html" target="_blank" rel="noopener noreferrer">选项式 API：生命周期选项--官方文档<ExternalLinkIcon/></a></p>
+<h4 id="父子组件的生命周期" tabindex="-1"><a class="header-anchor" href="#父子组件的生命周期" aria-hidden="true">#</a> <strong>父子组件的生命周期</strong>：</h4>
 <ul>
 <li>加载渲染阶段：父 beforeCreate -&gt; 父 created -&gt; 父 beforeMount -&gt; 子 beforeCreate -&gt; 子 created -&gt; 子 beforeMount -&gt; 子 mounted -&gt; 父 mounted</li>
 <li>更新阶段：父 beforeUpdate -&gt; 子 beforeUpdate -&gt; 子 updated -&gt; 父 updated</li>

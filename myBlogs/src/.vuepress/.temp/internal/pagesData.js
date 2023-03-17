@@ -33,8 +33,8 @@ export const pagesData = {
   "v-4c8267f4": () => import(/* webpackChunkName: "v-4c8267f4" */"E:/newTest/myBlogs/myBlogs/src/.vuepress/.temp/pages/programming/technology/menu.html.js").then(({ data }) => data),
   // path: /programming/vue/2023%E5%B9%B4%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E7%B3%BB%E5%88%97-JS%E7%AF%87.html
   "v-69ca7ca6": () => import(/* webpackChunkName: "v-69ca7ca6" */"E:/newTest/myBlogs/myBlogs/src/.vuepress/.temp/pages/programming/vue/2023年前端面试系列-JS篇.html.js").then(({ data }) => data),
-  // path: /programming/vue/2023%E5%B9%B4%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E7%B3%BB%E5%88%97-vue%E9%9D%A2%E8%AF%95%E8%B5%84%E6%96%99.html
-  "v-3775bf87": () => import(/* webpackChunkName: "v-3775bf87" */"E:/newTest/myBlogs/myBlogs/src/.vuepress/.temp/pages/programming/vue/2023年前端面试系列-vue面试资料.html.js").then(({ data }) => data),
+  // path: /programming/vue/2023%E5%B9%B4%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E7%B3%BB%E5%88%97-vue%E7%AF%87.html
+  "v-5566609c": () => import(/* webpackChunkName: "v-5566609c" */"E:/newTest/myBlogs/myBlogs/src/.vuepress/.temp/pages/programming/vue/2023年前端面试系列-vue篇.html.js").then(({ data }) => data),
   // path: /404.html
   "v-3706649a": () => import(/* webpackChunkName: "v-3706649a" */"E:/newTest/myBlogs/myBlogs/src/.vuepress/.temp/pages/404.html.js").then(({ data }) => data),
   // path: /blogs/
