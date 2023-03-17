@@ -22,7 +22,8 @@ export const zhNavbar = navbar([
                 icon: "edit",
                 prefix: "vue/",
                 children: [
-                    { text: "Vue面试资料", icon: "computer", link: "2023年vue面试资料" },
+                    { text: "Vue面试资料", icon: "computer", link: "2023年前端面试系列-vue篇" },
+                    { text: "JS面试资料", icon: "computer", link: "2023年前端面试系列-JS篇" },
                 ],
 
             },

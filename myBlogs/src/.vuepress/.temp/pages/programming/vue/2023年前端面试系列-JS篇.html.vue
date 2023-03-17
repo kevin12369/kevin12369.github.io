@@ -1,5 +1,5 @@
-<template><div><h1 id="vue-常见面试题总结" tabindex="-1"><a class="header-anchor" href="#vue-常见面试题总结" aria-hidden="true">#</a> Vue 常见面试题总结</h1>
-<p><a href="https://juejin.cn/post/7191325434486161467" target="_blank" rel="noopener noreferrer">参考自掘金《2023 前端面试系列-- Vue 篇》<ExternalLinkIcon/></a></p>
+<template><div><h1 id="javascript-常见面试题总结" tabindex="-1"><a class="header-anchor" href="#javascript-常见面试题总结" aria-hidden="true">#</a> JavaScript 常见面试题总结</h1>
+<p><a href="https://juejin.cn/post/7176644710847479869" target="_blank" rel="noopener noreferrer">参考自掘金《2023前端面试系列-- JS 篇》<ExternalLinkIcon/></a></p>
 <h2 id="什么是-mvvm-模型" tabindex="-1"><a class="header-anchor" href="#什么是-mvvm-模型" aria-hidden="true">#</a> 什么是 MVVM 模型？</h2>
 <ul>
 <li><code v-pre>MVVM</code>，是<code v-pre>Model-View-ViewModel</code>的简写，其本质是<code v-pre>MVC</code>模型的升级版。</li>
