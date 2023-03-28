@@ -5,6 +5,7 @@ category:
   - Programing
 tag:
   - AST
+  - 抽象语法树
   - JavaScript
 ---
 
