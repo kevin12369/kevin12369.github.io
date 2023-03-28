@@ -261,3 +261,90 @@ const visitor = {
   },
 }``
 ```
+
+#### Code Generation(生成代码)
+
+最后就是代码生成阶段了，`其实就是将生成的新AST树再转回代码的过程`。大部分的代码生成器主要过程是，不断的访问 Transformation 生成的 AST(抽象语法树)或者再结合 tokens，按照指定的规则，将“树”上的节点打印拼接最终还原为新的 code，自此编译器的执行过程就结束了。
+
+### 原理篇
+
+接下来按照上述步骤，开始手写编译器。
+
+#### 生成 Tokens
+
+第一步: 将代码解析为 tokens。这个过程需要 tokenzier(分词器)函数，整体思路就是通过遍历字符串的方式，对每个字符按照一定的规则进行 switch case，最终生成 tokens 数组。
+
+```js
+function tokenizer(input) {
+  let current = 0 //记录当前访问的位置
+  let tokens = [] // 最终生成的tokens
+  // 循环遍历input
+  while (current < input.length) {
+    let char = input[current]
+    // 如果字符是开括号，我们把一个新的token放到tokens数组里，类型是`paren`
+    if (char === '(') {
+      tokens.push({
+        type: 'paren',
+        value: '(',
+      })
+      current++
+      continue
+    }
+    // 闭括号做同样的操作
+    if (char === ')') {
+      tokens.push({
+        type: 'paren',
+        value: ')',
+      })
+      current++
+      continue
+    }
+    //空格检查，我们关心空格在分隔字符上是否存在，但是在token中他是无意义的
+    let WHITESPACE = /\s/
+    if (WHITESPACE.test(char)) {
+      current++
+      continue
+    }
+    //接下来检测数字，这里解释下 如果发现是数字我们如 add 22 33 这样
+    //我们是不希望被解析为2、2、3、3这样的，我们要遇到数字后继续向后匹配直到匹配失败
+    //这样我们就能截取到连续的数字了
+    let NUMBERS = /[0-9]/
+    if (NUMBERS.test(char)) {
+      let value = ''
+      while (NUMBERS.test(char)) {
+        value += char
+        char = input[++current]
+      }
+      tokens.push({ type: 'number', value })
+      continue
+    }
+
+    // 接下来检测字符串,这里我们只检测双引号，和上述同理也是截取连续完整的字符串
+    if (char === '"') {
+      let value = ''
+      char = input[++current]
+      while (char !== '"') {
+        value += char
+        char = input[++current]
+      }
+      char = input[++current]
+      tokens.push({ type: 'string', value })
+      continue
+    }
+    // 最后一个检测的是name 如add这样，也是一串连续的字符，但是他是没有“”的
+    let LETTERS = /[a-z]/i
+    if (LETTERS.test(char)) {
+      let value = ''
+      while (LETTERS.test(char)) {
+        value += char
+        char = input[++current]
+      }
+      tokens.push({ type: 'name', value })
+      continue
+    }
+    // 容错处理，如果我们什么都没有匹配到，说明这个token不在我们的解析范围内
+    throw new TypeError('I dont know what this character is: ' + char)
+  }
+  return tokens
+}
+```
