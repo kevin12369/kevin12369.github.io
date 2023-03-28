@@ -31,86 +31,232 @@ tag:
 
 ## AST（抽象语法树） 到底是什么？
 
-### AST 是什么？
+抽象语法树（Abstract Syntax Tree，AST）是源代码语法结构的一种抽象表示，它以树状的形式表现编程语言的语法结构，树上的每个节点都表示源代码中的一种结构。在代码语法的检查、代码风格的检查、代码的格式化、代码的高亮、代码错误提示、代码自动补全等等场景均有广泛的应用。
 
-抽象语法树 (Abstract Syntax Tree)，简称 AST，它是源代码语法结构的一种抽象表示。它以树状的形式表现编程语言的语法结构，树上的每个节点都表示源代码中的一种结构。
+以前我们在做小学语文题时，经常会做到的一种题型就是在一句话中找出不恰当的部分，比如："你是猪，"
 
-### AST 有什么用？
+解题方法通常是：
 
-AST 运用广泛，比如：
+- 第一步：找出语句中的主语、谓语、宾语。
+- 第二步：找出语句中的形容词、动词、标点符号等进行分析。
 
-- 编辑器的错误提示、代码格式化、代码高亮、自动代码补全；
-- Elint、Prettier 对代码错误或者风格的检查；
-- webpack 通过 babel 转义 JavaScript 代码。
+如果将其程序化，我们按照上面的方法可以先将其进行拆分成这样：
 
-并且如果你想要了解 js 的编译执行的原理，就必须先了解 AST。
+```c
+[
+  { type: '主语', value: '你' },
+  { type: '谓语', value: '是' },
+  { type: '宾语', value: '猪' },
+  { type: '标点符号', value: '，' },
+]
+```
 
-### AST 如何生成？
+在这一步骤中可以很快的发现第一个错误：在句末使用的是一个逗号 ❌，实际应该使用句号。
 
-js 执行的第一步是读取 js 文件中的字符流，然后通过词法分析成 Token，之后再通过语法分析（Parser）生成 AST，最后生成机器码并执行。
+接着再对主语、谓语、宾语中的词语进行依次分析，将数据结构整理成这样：
 
-主要解析流程分为一下两个步骤：
+```js
+ {
+  type: "语句",
+  body: {
+    type: "肯定陈述句",
+    declarations: [
+      {
+        type: "声明",
+        person: {
+          type: "Identifier",
+          name: "你",
+        },
+        name: {
+          type: "animal",
+          value: "猪",
+        },
+      },
+    ],
+  },
+};
+```
 
-- 分词：将整个代码字符串分割成最小的语法单元组；
-- 语法分析：在分词的基础上建立分析语法单元之间的关系。
+在这个结构中我们发现：在一个肯定陈述句中，将一个人比作一个猪 🐷，显然不合适...❌，因此找出第二个错误。
 
-JS Parser 是 JS 语法解析器，他可以将 JS 源码转成 AST，常见的 Parser 有 esprima、traceur、acorn、shift 等。
+在上面这个简单的例子中，其实和 AST 的生成和应用就颇为相似，`AST是源代码的抽象语法结构的树状表现形式，简单点就是一个深度嵌套对象，这个对象能够描述我们书写代码的所有信息`。
 
-#### 词法分析
+为了帮大家加深理解，接下来我将手牵手带大家撸一个小型的编译器。
 
-词法分析，也被成为扫描（Scanner），简单来说就是调用 next()方法，一个个字母来读取字符，然后与定义好的 JavaScript 关键字符作比较，然后生成对应的 Token，Token 是不可分割的最小单元。
+## 手写编译器
 
-例如 var 这三个字符，它只能作为一个整体，语义上不能再分解了，所以它是一个 Token。
+该小节分为两个部分：设计篇和原理篇。
 
-词法分析器里，每一个关键字符是一个 Token，每一个标识符是一个 Token，每一个操作符是一个 Token，每一个标点符号都是一个 Token。除此之外还会过滤掉源程序中的注释和空白字符（换行符、空格符、制表符等）。最终，整个源程序都将被分割进一个 Token 列表（或者说是一个一维数组）。
+设计篇侧重整体设计，原理篇则是手撕代码，侧重编码实现，在阅读过程中建议将重心放在设计篇，学习思想最重要。
 
-#### 语法分析
+### 设计篇
 
-语法分析会将词法分析出来的 Token 转化成有语法含义的抽象语法树结构。同时验证语法，若语法错误，则抛出语法异常。
+#### 整体流程
 
-以下是 JavaScript 代码片段做的演示
+一个完整的编译器整体执行过程可以分为三个步骤：
 
-```javascript
-const fn = a => a;
+1. Parsing(解析过程)：这个过程要经词法分析、语法分析、构建 AST（抽象语法树）一系列操作；
 
-- program {
-  type: "program" // 程序
-  - body:[
-    - VariableDeclaration{
-      type: "VariableDeclaration" //  Var 声明
-      - declarations: [ // 声明变量
-        - VariableDeclarator {
-          type: "VariableDeclarator"
-          - id: Identifier {
-            type: "Identifier"
-            name: "fn"
-          }
-          - init: ArrowFunctionExpression {
-            type: "ArrowFunctionExpression"
-            id: null
-            expression: true // expression属性指向一个表达式节点对象
-            generator: false
-            async: false
-            - params: [
-              - Identifier = $node {
-                type: "Idengtifier"
-                name: "a"
-              }
-            ]
-            - body: Identifier {
-                type: "Idengtifier"
-                name: "a"
-              }
-          }
-        }
-      ]
-      kind: "const"
-    }
-  ]
-  sourceType: "module"
+2. Transformation（转化过程）：这个过程就是将上一步解析后的内容，按照编译器指定的规则进行处理，形成一个新的表现形式；
+
+3. Code Generation（代码生成）：将上一步处理好的内容转化为新的代码；
+
+如图所示，不喜欢看字的就看图：
+
+!['编译器原理'](./images/AST抽象语法树-编译器原理.png '编译器原理')
+
+接下来，我们先看一个小 Demo，将 lisp 的函数调用编译成类似 C 的函数，如果你不熟悉也没关系，看完下面的代码相信大家能够快速的理解：
+
+```md
+LISP 代码： (add 2 (subtract 4 2))
+C 代码： add(2, subtract(4, 2))
+代码 释义： 2 + （ 4 - 2 ）
+```
+
+#### Parsing（解析）
+
+解析过程分为 2 个步骤：`词法分析`、`语法分析`。
+
+**词法分析** 是使用`tokenizer(分词器)`或者`lexer(词法分析器)`，将源码拆分成`tokens`，tokens 是一个放置对象的数组，其中的每一个对象都可以看做是一个单元（数字，标签，标点，操作符...）的描述信息。
+
+结合最开始做的语文题目（_"你是猪，"_），我们照葫芦画瓢，对`(add 2 (subtract 4 2))` 进行词法分析后得到：
+
+```c
+[
+  { type: 'paren', value: '(' },
+  { type: 'name', value: 'add' },
+  { type: 'number', value: '2' },
+  { type: 'paren', value: '(' },
+  { type: 'name', value: 'subtract' },
+  { type: 'number', value: '4' },
+  { type: 'number', value: '2' },
+  { type: 'paren', value: ')' },
+  { type: 'paren', value: ')' },
+]
+```
+
+像这样对中文语句进行了主谓宾的拆解得到了`tokens`，但这并不能帮助我们判断该条语句是否合法，还需要进行**语法解析**。
+
+**语法解析**则是将`tokens`重新整理成语法相互关联的表达形式 ，这种表达形式一般被称为`中间层或者AST（抽象语法树）`。
+
+还是拿语文题目（"_你是猪，_"）来照葫芦画瓢，`(add 2 (subtract 4 2))` 进行语法解析后得到的 AST：
+
+```js
+{
+  type: 'Program',
+  body: [{
+    type: 'CallExpression',
+    name: 'add',
+    params:
+      [{
+        type: 'NumberLiteral',
+        value: '2',
+      },
+      {
+        type: 'CallExpression',
+        name: 'subtract',
+        params: [{
+          type: 'NumberLiteral',
+          value: '4',
+        }, {
+          type: 'NumberLiteral',
+          value: '2',
+        }]
+      }]
+  }]
 }
 ```
 
-从这个 AST 语法树中我们可以很清楚的看出一个代码它的具体含义，并且使用的是什么语法，方法等。
+#### Transfromer（转化）
 
-上面这段指的是：用类型 const 声明变量 fn 只想一个箭头函数表达式，它的参数是 a 函数体也是 a。
+这个过程主要是改写`AST（抽象语法树）`，`或者根据当前AST（抽象语法树）生成一个新的AST（抽象语法树）`，这个过程可以是相同语言，或者可以直接将 AST（抽象语法树）翻译为其他语言。
+
+注意看上述生成的 AST（抽象语法树），有一些特殊的对象，都具有自己的类型描述，他们就是这个“树”上的节点，如下所示:
+
+```js
+// 数字片段节点
+{
+   type: 'NumberLiteral',
+   value: '2',
+}
+
+// 调用语句节点
+ {
+   type: 'CallExpression',
+   name: 'subtract',
+   params: [{
+     type: 'NumberLiteral', // 数字片段节点
+     value: '4',
+   }, {
+     type: 'NumberLiteral', // 数字片段节点
+     value: '2',
+   }]
+ }
+```
+
+在案例中我们是想将 lisp 语言转化为 C 语言，因此需要构建一个新的 AST（抽象语法树），这个创建的过程就需要遍历这个“树”的节点并读取其内容，由此引出 **Traversal(遍历)** 和 **Visitors (访问器)**。
+
+**Traversal(遍历)**：顾名思义这个过程就是，遍历这个 AST（抽象语法树）的所有节点，这个过程使用 深度优先原则，大概执行顺序如下：
+
+```js
+const ast = {
+  type: 'Program', // 进入Program - 最顶层开始
+  body: [
+    {
+      // 进入 CallExpression (add)
+      type: 'CallExpression',
+      name: 'add',
+      params: [
+        {
+          // 进入 NumberLiteral (2)
+          type: 'NumberLiteral',
+          value: '2',
+        }, // 离开 NumberLiteral (2)
+        {
+          //进入 CallExpression (subtract)
+          type: 'CallExpression',
+          name: 'subtract',
+          params: [
+            {
+              //进入 NumberLiteral (4)
+              type: 'NumberLiteral',
+              value: '4',
+            }, //离开 NumberLiteral (4)
+            {
+              //进入 NumberLiteral (2)
+              type: 'NumberLiteral',
+              value: '2',
+            }, //离开 NumberLiteral (2)
+          ],
+        }, //离开 CallExpression (subtract)
+      ],
+    }, //离开 CallExpression (add)
+  ], //离开 Program
+}
+```
+
+**Visitors (访问器)**：访问器最基本的思想是创建一个“访问器”对象，这个对象可以处理不同类型的节点函数,如下所示:
+
+```js
+const visitor = {
+  NumberLiteral(node, parent) {}, // 处理数字类型节点
+  CallExpression(node, parent) {}, // 处理调用语句类型节点
+}
+```
+
+在遍历节点的时候，**当 enter (进入)到该节点，我们会调用访问器，然后会调用针对于这个节点的相关函数**，同时这个节点和其父节点作为参数传入。
+
+同时在**exit（离开）的时候我们也希望能够调用访问器**，当 enter 一个节点的时候，最外层节点就相当于一个分支，他是一个节点，这个分支的内部依然存在若干节点，就像上边遍历的那样。
+
+我们会按照`深度优先的原则`，依次遍历到这个分支的最内层，当达到最内层的时候，针对当前分支的访问就完成了，接着会依次 exit（退出）节点，这个过程是由内向外的。
+
+为了能够处理到 enter 和 exit，访问器最终会做成这个样子
+
+```js
+const visitor = {
+  NumberLiteral: {
+    enter(node, parent) {},
+    exit(node, parent) {},
+  },
+}``
+```
