@@ -7,7 +7,7 @@ tag:
   - ThingsBoard
 ---
 
-# 在Ubuntu（Linux）中部署ThingsBoard
+# 在 Ubuntu（Linux）中部署 ThingsBoard
 
 ## Heading 2
 

@@ -566,87 +566,87 @@
 </ul>
 </li>
 <li>
-<p>实践中，如果确实要更改父组件属性，响应<code v-pre>emit</code>一个时间让父组件变更。当对象或数组作为props被传入时，虽然子组件无法更改<code v-pre>props</code>绑定，但仍然 <strong>可以</strong> 更改对象或数组内部的值。这是因为JS的对象和数组是按引用传递，而对于Vue来说，禁止这样的改动虽然可能，但是有很大的性能损耗，比较得不偿失。</p>
+<p>实践中，如果确实要更改父组件属性，响应<code v-pre>emit</code>一个时间让父组件变更。当对象或数组作为 props 被传入时，虽然子组件无法更改<code v-pre>props</code>绑定，但仍然 <strong>可以</strong> 更改对象或数组内部的值。这是因为 JS 的对象和数组是按引用传递，而对于 Vue 来说，禁止这样的改动虽然可能，但是有很大的性能损耗，比较得不偿失。</p>
 </li>
 </ol>
-<h2 id="vue-router中的常用路由模式和原理" tabindex="-1"><a class="header-anchor" href="#vue-router中的常用路由模式和原理" aria-hidden="true">#</a> Vue Router中的常用路由模式和原理？</h2>
+<h2 id="vue-router-中的常用路由模式和原理" tabindex="-1"><a class="header-anchor" href="#vue-router-中的常用路由模式和原理" aria-hidden="true">#</a> Vue Router 中的常用路由模式和原理？</h2>
 <ol>
-<li>hash模式：</li>
+<li>hash 模式：</li>
 </ol>
 <ul>
-<li><code v-pre>location.hash</code>的值就是<code v-pre>ur</code>l中<code v-pre>#</code>后面的东西。它的特点在于：hash虽然出现url中，但不会被包含在HTTP请求中，对后端完全没有影响，因此改变hash不会重新加载页面。</li>
-<li>可以为hash的改变添加监听事件<code v-pre>window.addEventListener(&quot;hashchange&quot;,funRef,false)</code>，每一次改变<code v-pre>hash(window.location.hash)</code>，都会在浏览器的访问历史中增加一个记录，利用hash的以上特点，就可以实现<strong>前端路由更新视图但不重新请求页面</strong>的功能了。</li>
+<li><code v-pre>location.hash</code>的值就是<code v-pre>ur</code>l 中<code v-pre>#</code>后面的东西。它的特点在于：hash 虽然出现 url 中，但不会被包含在 HTTP 请求中，对后端完全没有影响，因此改变 hash 不会重新加载页面。</li>
+<li>可以为 hash 的改变添加监听事件<code v-pre>window.addEventListener(&quot;hashchange&quot;,funRef,false)</code>，每一次改变<code v-pre>hash(window.location.hash)</code>，都会在浏览器的访问历史中增加一个记录，利用 hash 的以上特点，就可以实现<strong>前端路由更新视图但不重新请求页面</strong>的功能了。</li>
 </ul>
 <ol start="2">
-<li>history模式：</li>
+<li>history 模式：</li>
 </ol>
 <ul>
 <li>利用 <strong>HTML5 History Interface</strong> 中新增的<code v-pre>pushState()</code>和<code v-pre>replaceState()</code>方法。</li>
 <li>这两个方法应用于浏览器的历史记录栈，当前已有的<code v-pre>back</code>、<code v-pre>forward</code>、<code v-pre>go</code>的基础上，他们呢提供了对历史记录进行修改的功能。</li>
-<li>这两个方法有个共同点：当调用他们修改浏览器历史记录栈后，虽然当前url改变了，但浏览器不会刷新页面，这就为单页面应用前端路由“更新视图但不重新请求页面”提供了基础。</li>
-<li>特点：虽然美观，但是刷新会出现404需要后端进行配置。</li>
+<li>这两个方法有个共同点：当调用他们修改浏览器历史记录栈后，虽然当前 url 改变了，但浏览器不会刷新页面，这就为单页面应用前端路由“更新视图但不重新请求页面”提供了基础。</li>
+<li>特点：虽然美观，但是刷新会出现 404 需要后端进行配置。</li>
 </ul>
 <h2 id="动态路由" tabindex="-1"><a class="header-anchor" href="#动态路由" aria-hidden="true">#</a> 动态路由？</h2>
 <ul>
-<li>很多时候，我们需要将给定匹配模式的路由映射到同一个组件，这种情况就需要定义动态路由。例如我们有一个User组件，对于所欲ID各不同的用户，都要使用这个组件来渲染。那么，我们可以在vue-router的路由路径中使用<code v-pre>动态路由参数(dynamic segment)</code>来达到这个效果：<code v-pre>{path: '/user/:id', compenent: User}</code>，其中<code v-pre>:id</code>就是动态路由参数。</li>
+<li>很多时候，我们需要将给定匹配模式的路由映射到同一个组件，这种情况就需要定义动态路由。例如我们有一个 User 组件，对于所欲 ID 各不同的用户，都要使用这个组件来渲染。那么，我们可以在 vue-router 的路由路径中使用<code v-pre>动态路由参数(dynamic segment)</code>来达到这个效果：<code v-pre>{path: '/user/:id', compenent: User}</code>，其中<code v-pre>:id</code>就是动态路由参数。</li>
 </ul>
-<h2 id="对vuex的理解" tabindex="-1"><a class="header-anchor" href="#对vuex的理解" aria-hidden="true">#</a> 对Vuex的理解？</h2>
+<h2 id="对-vuex-的理解" tabindex="-1"><a class="header-anchor" href="#对-vuex-的理解" aria-hidden="true">#</a> 对 Vuex 的理解？</h2>
 <ol>
 <li>概念：</li>
 </ol>
 <ul>
-<li>Vuex是Vue专用的状态管理库，它以全局方式集中管理应用的状态，并以相应的规则保证状态以一种预测的方式发生变化。</li>
+<li>Vuex 是 Vue 专用的状态管理库，它以全局方式集中管理应用的状态，并以相应的规则保证状态以一种预测的方式发生变化。</li>
 </ul>
 <ol start="2">
 <li>解决的问题：</li>
 </ol>
 <ul>
-<li>Vuex主要解决的问题是多组件之间状态共享。利用各种通信方式，虽然也能够实现状态共享，但是往往需要在多个组件保持状态的一致性，这种模式很容易出问题，也会使程序逻辑变得复杂。</li>
-<li>Vuex通过把组件的共享状态抽取出来，以全局单例模式管理，这样任何组件都能用一致的方式获取和修改状态，响应式的数据也能够保证简洁的单项流动，使代码变得更具结构化且已于维护。</li>
+<li>Vuex 主要解决的问题是多组件之间状态共享。利用各种通信方式，虽然也能够实现状态共享，但是往往需要在多个组件保持状态的一致性，这种模式很容易出问题，也会使程序逻辑变得复杂。</li>
+<li>Vuex 通过把组件的共享状态抽取出来，以全局单例模式管理，这样任何组件都能用一致的方式获取和修改状态，响应式的数据也能够保证简洁的单项流动，使代码变得更具结构化且已于维护。</li>
 </ul>
 <ol start="3">
 <li>什么时候用：</li>
 </ol>
 <ul>
-<li>Vuex并非是必须的，它能够管理状态，但同时也带来更多的概念和框架。如果我们不打算开发大型单页应用或应用里没有大量全局的状态需要维护，完全没有使用Vuex的必要，一个简单的store模式就够了。反之，Vuex将是自然而然的选择。</li>
+<li>Vuex 并非是必须的，它能够管理状态，但同时也带来更多的概念和框架。如果我们不打算开发大型单页应用或应用里没有大量全局的状态需要维护，完全没有使用 Vuex 的必要，一个简单的 store 模式就够了。反之，Vuex 将是自然而然的选择。</li>
 </ul>
 <ol start="4">
 <li>用法：</li>
 </ol>
 <ul>
-<li>Vuex将全局状态放入<code v-pre>state</code>对象中，它本身是一颗状态树，组件中使用<code v-pre>store</code>实例的<code v-pre>state</code>访问这些状态；</li>
+<li>Vuex 将全局状态放入<code v-pre>state</code>对象中，它本身是一颗状态树，组件中使用<code v-pre>store</code>实例的<code v-pre>state</code>访问这些状态；</li>
 <li>然后用配套的<code v-pre>mutation</code>方法修改这些状态，并且只能用<code v-pre>mutation</code>修改状态，在组件中调用<code v-pre>commit</code>方法提交<code v-pre>mutation</code>；</li>
-<li>如果应用中有异步操作或复杂逻辑组合，需要编写<code v-pre>action</code>，执行结束如果有状态修改仍需要提交mutation，组件中通过<code v-pre>dispatch</code>派发<code v-pre>action</code>。</li>
+<li>如果应用中有异步操作或复杂逻辑组合，需要编写<code v-pre>action</code>，执行结束如果有状态修改仍需要提交 mutation，组件中通过<code v-pre>dispatch</code>派发<code v-pre>action</code>。</li>
 <li>最后是模块化，通过<code v-pre>modules</code>选项组织拆分出去的各个子模块，在访问状态(<code v-pre>state</code>)时需要注意添加子模块的名称，如果子模块有设置<code v-pre>namespace</code>，那么<code v-pre>mutation</code>和派发<code v-pre>action</code>时还需要额外的命名空间前缀。</li>
 </ul>
-<h2 id="页面刷新后vuex状态丢失怎么解决" tabindex="-1"><a class="header-anchor" href="#页面刷新后vuex状态丢失怎么解决" aria-hidden="true">#</a> 页面刷新后Vuex状态丢失怎么解决？</h2>
+<h2 id="页面刷新后-vuex-状态丢失怎么解决" tabindex="-1"><a class="header-anchor" href="#页面刷新后-vuex-状态丢失怎么解决" aria-hidden="true">#</a> 页面刷新后 Vuex 状态丢失怎么解决？</h2>
 <ul>
-<li>Vuex只是在内存中保存状态，刷新后就会丢失，如果要持久化就需要保存起来。</li>
-<li>localStorage就很合适，提交mutation的时候同时存入localStorage，在store中把值取出来作为state的初始值即可。</li>
-<li>也可以使用第三方插件，推荐使用vue-persist插件，它是为Vuex持久化储存而生的一个插件，不需要你手动存取storage，而是直接将状态保存至cookie或者localStorage中。</li>
+<li>Vuex 只是在内存中保存状态，刷新后就会丢失，如果要持久化就需要保存起来。</li>
+<li>localStorage 就很合适，提交 mutation 的时候同时存入 localStorage，在 store 中把值取出来作为 state 的初始值即可。</li>
+<li>也可以使用第三方插件，推荐使用 vue-persist 插件，它是为 Vuex 持久化储存而生的一个插件，不需要你手动存取 storage，而是直接将状态保存至 cookie 或者 localStorage 中。</li>
 </ul>
 <h2 id="关于-vue-ssr-的理解" tabindex="-1"><a class="header-anchor" href="#关于-vue-ssr-的理解" aria-hidden="true">#</a> 关于 Vue SSR 的理解？</h2>
 <ul>
-<li><code v-pre>SSR</code>即<code v-pre>服务端渲染(Server Sidw Render)</code>，就是将Vue在客户端把标签渲染成html的工作放在服务端完成，然后再把html直接返回给客户端。
+<li><code v-pre>SSR</code>即<code v-pre>服务端渲染(Server Sidw Render)</code>，就是将 Vue 在客户端把标签渲染成 html 的工作放在服务端完成，然后再把 html 直接返回给客户端。
 <ul>
 <li>优点：
 <ul>
-<li>有着更好的SEO，并且首屏加载速度更快。</li>
+<li>有着更好的 SEO，并且首屏加载速度更快。</li>
 </ul>
 </li>
 <li>缺点：
 <ul>
-<li>开发条件会受限制，服务器端渲染只支持beforeCreate和created两个钩子，当我们需要一些外部扩展库时需要特殊处理，服务端渲染应用程序也需要处于Node.js的运行环境。服务器会有更大的负载需求。</li>
+<li>开发条件会受限制，服务器端渲染只支持 beforeCreate 和 created 两个钩子，当我们需要一些外部扩展库时需要特殊处理，服务端渲染应用程序也需要处于 Node.js 的运行环境。服务器会有更大的负载需求。</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="了解哪些vue的性能优化方法" tabindex="-1"><a class="header-anchor" href="#了解哪些vue的性能优化方法" aria-hidden="true">#</a> 了解哪些Vue的性能优化方法？</h2>
+<h2 id="了解哪些-vue-的性能优化方法" tabindex="-1"><a class="header-anchor" href="#了解哪些-vue-的性能优化方法" aria-hidden="true">#</a> 了解哪些 Vue 的性能优化方法？</h2>
 <ul>
 <li>路由懒加载。有效拆分应用大小，访问时才异步加载。</li>
 <li><code v-pre>keep-alive</code>缓存页面。避免重复创建组件实例，且能保留缓存组件状态。</li>
-<li><code v-pre>v-for</code>遍历避免同时使用<code v-pre>v-if</code>。实际上在Vue3中已经是一个错误用法了。</li>
+<li><code v-pre>v-for</code>遍历避免同时使用<code v-pre>v-if</code>。实际上在 Vue3 中已经是一个错误用法了。</li>
 <li>长列表性能优化，可采用虚拟列表。</li>
 <li><code v-pre>v-once</code>。不再变化的数据使用<code v-pre>v-once</code>。</li>
 <li>事件销毁。组件销毁后把全局变量和定时器销毁。</li>

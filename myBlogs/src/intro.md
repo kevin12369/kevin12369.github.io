@@ -4,4 +4,4 @@ icon: info
 
 # Intro Page
 
-Place your introduction and profile here.
+学海无涯苦作舟.

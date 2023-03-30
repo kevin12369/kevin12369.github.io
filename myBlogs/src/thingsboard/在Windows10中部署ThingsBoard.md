@@ -7,7 +7,7 @@ tag:
   - ThingsBoard
 ---
 
-# 在Windows10中部署ThingsBoard
+# 在 Windows10 中部署 ThingsBoard
 
 ## Heading 2
 
