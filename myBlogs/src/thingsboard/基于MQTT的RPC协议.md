@@ -9,9 +9,26 @@ tag:
 footer: ThingsBoard
 ---
 
-# 基于 MQTT 的 RPC 协议
+# ThingsBoard 基于 MQTT 的 RPC 协议
 
 ## 什么是 MQTT
+
+1. MQTT 是一个基于客户端-服务器的消息发布/订阅传输协议。
+2. MQTT 协议是轻量、简单、开放和易于实现的，这些特点使它适用范围非常广泛。
+3. 在很多情况下，包括受限的环境中，如：机器与机器（M2M）通信和物联网（IoT）。
+4. 其在，通过卫星链路通信传感器、偶尔拨号的医疗设备、智能家居、及一些小型化设备中已广泛使用。
+
+### 设计规范
+
+1. 精简，不添加可有可无的功能；
+2. 发布/订阅（Pub/Sub）模式，方便消息在传感器之间传递；
+3. 允许用户动态创建主题，零运维成本；
+4. 把传输量降到最低以提高传输效率；
+5. 把低带宽、高延迟、不稳定的网络等因素考虑在内；
+6. 支持连续的会话控制；
+7. 理解客户端计算能力可能很低；
+8. 提供服务质量管理；
+9. 假设数据不可知，不强求传输数据的类型与格式，保持灵活性。
 
 ## RPC 是什么？
 
@@ -31,6 +48,30 @@ RPC 的实现步骤：
 4. 当 A 接收到返回的结果后，A 上被挂起的进程才能继续执行。
 
 [RPC 模式原理](./images/RPC模式原理.png 'RPC模式原理')
+
+### ThingsBoard 中 MQTT 的角色
+
+- ThingsBoard 是 MQTT 服务器
+
+  - MQTT 服务器以称为"消息代理"（Broker），可以是一个应用程序或一台设备。
+
+- 数据遥测场景
+
+  - 发布主题（Topic）为`v1/devices/me/telemetry`
+  - 发布者（Publish）是已注册的设备
+  - 订阅者（Subscribe）是 ThingsBoard 服务
+
+- 指令下发场景
+
+  - RPC：
+    - 订阅主题（Topic）为`v1/devices/me/rpc/request/+`（主题通配符"+"）
+    - 回复主题（Topic）为`v1/devices/me/rpc/response/` + requestId
+    - 发布者（Publish）是 ThingsBoard 服务中提供的由 MQTT 封装的 RPC 请求 API
+    - 订阅者（Subscribe）是已注册的设备
+  - MQTT：
+    - 订阅主题（Topic）为`v1/devices/me/attributes`
+    - 发布者（Publish）是 ThingsBoard 服务中提供的是 MQTT 的共享属性（具有单向下发的特性）
+    - 订阅者（Subscribe）是已注册的设备
 
 ### ThingsBoard 中 RPC 的应用
 
@@ -62,7 +103,6 @@ RPC 的实现步骤：
 
 ```js
 const mqtt = require('mqtt')
-
 // Don't forget to update accessToken constant with your device access token
 const thingsboardHost = 'host'
 const accessToken = 'token'
@@ -81,7 +121,6 @@ const windDir = ['东风', '东南风', '东北风', '南风', '北风', '西风
 const minNowType = 0
 const maxNowType = 8
 const weatherNow = ['晴', '多云', '小雨', '中雨', '大雨', '暴雨', '阵雨', '大风']
-
 // Initialization of temperature and humidity data with random values
 // 数据模拟
 const data = {
@@ -92,18 +131,14 @@ const data = {
   WindScale: Math.floor(minWindScale + (maxWindScale - minWindScale) * Math.random()),
   precip: minPrecip + (maxPrecip - minPrecip) * Math.random(),
 }
-
 // 芯片管脚数量 pin0 到 pin9
 const pinArray = [false, false, false, false, false, false, false, false, false]
-
 // Initialization of mqtt client using Thingsboard host and device access token
 console.log('Connecting to: %s using access token: %s', thingsboardHost, accessToken)
 const client = mqtt.connect(`mqtt://${thingsboardHost}`, {
   username: accessToken,
 })
-
 let weatherArray = []
-
 client.on('connect', function () {
   console.log('客户端 连接成功!')
   //发送连接请求
@@ -114,19 +149,15 @@ client.on('connect', function () {
   client.subscribe('v1/devices/me/rpc/request/+')
   // 订阅属性主题
   client.subscribe('v1/devices/me/attributes')
-
   telemetry()
 })
-
 client.on('message', function (topic, message) {
   console.log('on message:')
   console.log(topic)
   console.log(message.toString())
   console.log('--------------------------------------')
-
   const data = JSON.parse(message)
   console.log('data', data)
-
   try {
     if (topic === 'v1/devices/me/attributes') {
       if (data.control) {
@@ -136,9 +167,7 @@ client.on('message', function (topic, message) {
       }
     }
   } catch (error) {}
-
   const requestId = topic.slice('v1/devices/me/rpc/request/'.length)
-
   switch (data.method) {
     case 'getGpioStatus':
       console.log('params', data.params)
@@ -156,7 +185,6 @@ client.on('message', function (topic, message) {
         ok: 'true',
         done: 'true',
       })
-
       break
 
     case 'setGpioStatus':
@@ -246,9 +274,7 @@ function genNextValue(prevValue, min, max) {
 process.on('SIGINT', function () {
   console.log()
   console.log('Disconnecting...')
-
   client.unsubscribe('v1/devices/me/rpc/request/+')
-
   client.end()
   console.log('Exited!')
   process.exit(2)
@@ -263,4 +289,8 @@ process.on('uncaughtException', function (e) {
 })
 ```
 
-#### ESP8266 开发板
+#### ESP8266 开发板 代码
+
+```c
+
+```
