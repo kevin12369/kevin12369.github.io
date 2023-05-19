@@ -56,50 +56,30 @@ footer: HTML&CSS 常见面试题总结
 
 ## HTML5 有哪些新特性、移除了哪些元素？
 
-HTML5 现在已经不是
+HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置存储、多任务等功能的增加。
 
-```js
-// 函数实现
-function isObjectValueEqual(a, b) {
-  // 判断两个对象是否指向同一内存，若是则返回true
-  if (a === b) return true
-  // 获取两个对象的键名数组
-  let aProps = Object.getOwnPropertyNames(a)
-  let bProps = Object.getOwnPropertyNames(b)
-  // 判断两个键名数组的长度是否一致，不一致则返回false
-  if (aProps.length !== bProps.length) return false
-  // 遍历对象的键值
-  for (let prop in a) {
-    // 判断 a 的键名，在 b 中是否存在，若不存在则返回false
-    if (b.hasOwnProperty(prop)) {
-      // 判断 a 的键值是否为对象，若是则需要递归
-      // 若不是，直接判断键值是否相等，若不等则返回false
-      if (typeof a[prop] === 'object') {
-        if (!isObjectValueEqual(a[prop], b[prop])) return false
-      } else if (a[prop] !== b[prop]) {
-        return false
-      }
-    } else {
-      return false
-    }
-  }
-  return true
-}
-```
+新增的：
 
-## 强制类型转换和隐式类型转换有哪些？
+- 绘图`canvas`
+- 用于媒介回放的`video`和`audio`元素
+- 本地离线存储`localStorage`、`sessionStorage`
+- 语义化更好的内容元素，如：`header`、`article`、`nav`、`section`、`footer`等
+- 表单控件`calender`、`date`、`time`、`email`、`url`、`search`等
+- 新的技术`webworker`、`websocket`
+- 新的文档属性`document.visibilityState`
 
-- 强制：
+移除的：
 
-  转换成字符串：toString(),String()
+- 纯表现的元素：`basefont`、`big`、`center`、`s`、`tt`、`u`
+- 对可用性产生负面影响的元素：`frame`、`frameset`、`noframes`
 
-  转换成数字：Number(),parseInt(),parseFloat()
+## 对浏览器内核的理解？
 
-  转换成布尔类型：Boolean()
+主要分为两个部分:渲染引擎和 JS 引擎
 
-- 隐式：
+- 渲染引擎：其职责就是渲染,即在浏览器窗口中显示所请求的内容。默认情况下，渲染引擎可以显示 HTML、XML 文档及图片，它也可以借助一些浏览器扩展插件显示其他类型数据，如：使用 PDF 阅读器插件可以显示 PDF 格式。
 
-  拼接字符串：let str = 1 + "";
+- JS 引擎：解析和执行 JavaScript 来实现网页的动态效果。
 
 ## JS 中的作用于和作用域链？
 
