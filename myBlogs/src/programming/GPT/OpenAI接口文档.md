@@ -344,3 +344,178 @@ Request body（入参详解）
 - `user` (string，选填)
 
   一个唯一的标识符，代表您的终端用户，可以帮助 OpenAI 监测和检测滥用。[了解更多信息](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids)。
+
+### 六、[Chat](https://platform.openai.com/docs/api-reference/chat)聊天
+
+给定一组描述对话的消息列表，模型将返回一个回复。
+
+1. [Create chat completion](https://platform.openai.com/docs/api-reference/chat/create)
+
+```http
+POST
+http://api.openai.com/v1/chat/completions
+```
+
+为给定的聊天对话创建模型响应。
+
+请求演示：
+
+```http
+curl https://api.openai.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{ 
+    "model": "gpt-3.5-turbo", 
+    "messages": [{
+      "role": "user",
+      "content": "Hello!"
+    }]
+    }'
+```
+
+响应：
+
+```json
+{
+  "id": "chatcmpl-123",
+  "object": "chat.completion",
+  "create": 1677652288,
+  "chioce": [{
+    "index": 0,
+    "message": {
+      "role": "assistant",
+      "content": "\n\nHello there, how may I assist you today?",
+    },
+    "finish_reason": "stop"
+  }],
+  "usage": {
+    "prompt_tokens": 9,
+    "completions": 12,
+    "total_tokens": 21
+  }
+}
+```
+
+Request body(入参详解)
+
+- model（string，必填）
+要使用的模型ID。有关哪些模型适用于Chat API的详细信息，![请查看模型端点兼容性表](https://platform.openai.com/docs/models/model-endpoint-compatibility)
+
+- messages （array，必填）
+迄今为止描述对话的消息列表
+
+- role （string，必填）
+此消息的作者角色。system 、user 或 assistant 之一
+
+- content （string，必填）
+消息的内容
+
+- name （string，选填）
+此消息的作者的姓名。可以包含 a-z、A-Z、0-9 和下划线，最大长度为 64 个字符
+
+- temperature （number，选填，Defaults to 1）
+使用哪个采样温度，在 0和2之间。
+较高的值，如0.8会使输出更随机，而较低的值，如0.2会使其更加集中和确定性。
+我们通常建议修改这个（temperature ）为 top_p 但两者不能同时存在，二选一。
+
+- top_p （number，选填，Defaults to 1）
+一种替代温度采样的方法叫做核心采样，模型会考虑到具有 top_p 概率质量的标记结果。因此，0.1 表示只有占前 10% 概率质量的标记被考虑。
+我们通常建议修改这个（top_p ）或者 temperature，但不要同时修改两者。
+
+- n （integer，选填，Defaults to 1）
+每个输入消息要生成多少聊天完成选项数
+
+- stream （boolean，选填，Defaults to false）
+如果设置了，将发送部分消息增量，就像在 ChatGPT 中一样。令牌将作为数据![服务器推送事件](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#event_stream_format)随着它们变得可用而被发送，流通过 data: [DONE] 消息终止。请参阅OpenAI Cookbook 以获取![示例代码](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_stream_completions.ipynb)。
+
+- stop （string or array，选填，Defaults to null）
+最多生成4个序列，API将停止生成更多的标记。
+
+- max_tokens （integer，选填，Defaults to inf）
+在聊天完成中生成的最大![tokens](https://platform.openai.com/tokenizer)数。
+输入令牌和生成的令牌的总长度受模型上下文长度的限制。
+
+- presence_penalty （number，选填，Defaults to 0）
+介于 -2.0 和 2.0 之间的数字。正值会根据它们是否出现在文本中迄今为止来惩罚新令牌，从而增加模型谈论新主题的可能性。
+![请参阅有关频率和状态惩罚的更多信息](https://platform.openai.com/docs/api-reference/parameter-details)
+
+- frequency_penalty （number，选填，Defaults to 0）
+介于-2.0和2.0之间的数字。正值会根据文本中新令牌的现有频率对其进行惩罚，从而降低模型重复相同行的可能性。
+![请参阅有关频率和存在惩罚的更多信息](https://platform.openai.com/docs/api-reference/parameter-details)
+
+- logit_bias （map，选填，Defaults to null）
+修改完成时指定标记出现的可能性。
+接受一个JSON对象，将标记（由分词器中的标记ID指定）映射到从 -100 到 100 的相关偏差值。在采样之前，模型生成的logits会加上这个偏差。确切的影响因模型而异，但是 -1 到 1 之间的值应该会减少或增加选择概率；像 -100 或 100 这样的值应该会导致相关标记被禁止或独占选择。
+
+- user （string，选填）
+一个唯一的标识符，代表您的终端用户，可以帮助OpenAI监测和检测滥用。![了解更多信息](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids)。
+
+### 七、[Edit](https://platform.openai.com/docs/api-reference/edits)编辑
+
+给定一个提示和一条指令，模型将返回提示的编辑版本。
+
+1. [Create edit](https://platform.openai.com/docs/api-reference/edits/create)
+
+```http
+POST
+https://api.openai.com/v1/edits
+```
+
+为提供的输入、指令和参数创建一个新的编辑。
+
+请求演示：
+
+```http
+curl https://api.openai.com/v1/edits \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "text-davinci-edit-001",
+    "input": "What day of the wek is it?",
+    "instruction": "Fix the spelling mistakes"
+  }'
+```
+
+响应：
+
+```json
+{
+  "object": "edit",
+  "created": 1589478378,
+  "choices": [
+    {
+      "text": "What day of the week is it?",
+      "index": 0,
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 25,
+    "completion_tokens": 32,
+    "total_tokens": 57
+  }
+}
+```
+
+Request body(入参详解)
+
+- model （string，必填）
+要使用的模型ID。您可以在此端点中使用 text-davinci-edit-001 或 code-davinci-edit-001 模型。
+
+- input （string，选填，Defaults to ''）
+用作编辑起点的输入文本。
+
+- instruction （string，必填）
+指导模型如何编辑提示的说明。
+
+- n （integer，选填，Defaults to 1）
+输入和指令需要生成多少次编辑。
+
+- temperature （number，选填，Defaults to 1）
+使用哪个采样温度，在 0和2之间。
+较高的值，如0.8会使输出更随机，而较低的值，如0.2会使其更加集中和确定性。
+我们通常建议修改这个（temperature ）为 top_p 但两者不能同时存在，二选一。
+
+- top_p （number，选填，Defaults to 1）
+一种替代温度采样的方法叫做核心采样，模型会考虑到具有 top_p 概率质量的标记结果。因此，0.1 表示只有占前 10% 概率质量的标记被考虑。
+我们通常建议修改这个（top_p ）或者 temperature，但不要同时修改两者。
+
