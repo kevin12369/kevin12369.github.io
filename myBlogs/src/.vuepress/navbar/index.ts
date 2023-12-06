@@ -40,7 +40,33 @@ export const zhNavbar = navbar([
     },
     {
         text: "游戏与设计",
-        icon: "launch",
-        link: "https://theme-hope.vuejs.vuepress/zh/",
+        icon: "launch", 
+        prefix: "/GamesStudio/",
+        children: [
+            {
+                text: "游戏制作教程",
+                icon: "edit",
+                prefix: "GameProductionTutorial/",
+                children: [
+                    { text: "Unity是什么", icon: "computer", link: "Unity是什么" },
+                    { text: "第一个游戏：《打地鼠》", icon: "computer", link: "打地鼠" },
+                ],
+
+            },
+            // {
+            //     text: "前端编程学习",
+            //     icon: "edit",
+            //     prefix: "technology/",
+            //     children: [
+            //         { text: "前端编程", icon: "computer", link: "menu" },
+            //     ],
+
+            // },
+        ],
     },
+    // {
+    //     text: "游戏与设计",
+    //     icon: "launch",
+    //     link: "https://theme-hope.vuejs.vuepress/zh/",
+    // },
 ]);
