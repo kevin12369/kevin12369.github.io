@@ -98,19 +98,7 @@ CORS的基本思想是，服务器在响应中提供一个标头（HTTP头），
 
 例如我们再掘金上删除一条沸点：
 
-```c
-[
-  { type: 'paren', value: '(' },
-  { type: 'name', value: 'add' },
-  { type: 'number', value: '2' },
-  { type: 'paren', value: '(' },
-  { type: 'name', value: 'subtract' },
-  { type: 'number', value: '4' },
-  { type: 'number', value: '2' },
-  { type: 'paren', value: ')' },
-  { type: 'paren', value: ')' },
-]
-```
+!['编译器原理'](./images/AST抽象语法树-编译器原理.png '编译器原理')
 
 像这样对中文语句进行了主谓宾的拆解得到了`tokens`，但这并不能帮助我们判断该条语句是否合法，还需要进行**语法解析**。
 
