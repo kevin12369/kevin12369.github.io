@@ -34,6 +34,7 @@ export const zhNavbar = navbar([
                 prefix: "technology/",
                 children: [
                     { text: "前端编程", icon: "computer", link: "menu" },
+                    { text: "post为什么会发送两次请求", icon: "computer", link: "post为什么会发送两次请求" },
                 ],
 
             },
