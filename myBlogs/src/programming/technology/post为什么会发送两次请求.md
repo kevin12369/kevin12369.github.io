@@ -98,66 +98,30 @@ CORS的基本思想是，服务器在响应中提供一个标头（HTTP头），
 
 例如我们再掘金上删除一条沸点：
 
-!['编译器原理'](./images/AST抽象语法树-编译器原理.png '编译器原理')
+!['预检请求'](./images/两次请求-1.png '预检请求')
 
-像这样对中文语句进行了主谓宾的拆解得到了`tokens`，但这并不能帮助我们判断该条语句是否合法，还需要进行**语法解析**。
+它首先会发起一个预检请求，预检请求的头信息包括两个特殊字段：
 
-**语法解析**则是将`tokens`重新整理成语法相互关联的表达形式 ，这种表达形式一般被称为`中间层或者AST（抽象语法树）`。
+- Access-Control-Request-Method：该字段是必须的，用来列出浏览器的CORS请求会用到哪些HTTP方法，上例是POST。
+- Access-Control-Request-Header：该字段是一个逗号分隔的字符串，指定浏览器CORS请求会额外发送的头信息字段，上例是`content-type`，`x-secsdk-csrf=-token`。
+- Access-Control-Allow-Origin：在上述例子中，表示`https：//juejin.cn`可以请求数据，也可以设置为`*`符号，表示统一任意跨源请求。
+- Access-Control-Max-Age：该字段可选，用来指定本次预检请求的有效期，单位为秒。上面的结果中，有效期是1天（86408秒），即允许缓存该条回应1天（86408秒），在此期间，不会发送另一条预检请求。
 
-还是拿语文题目（"_你是猪，_"）来照葫芦画瓢，`(add 2 (subtract 4 2))` 进行语法解析后得到的 AST：
+一旦服务器通过了`预检请求`，以后每次浏览器正常的CORS请求，就都跟简单请求一样，会有一个Origin头信息字段。服务器的回应，也会有一个Access-Control-Allow-Origin头信息字段。服务器的回应，也有一个Access-Control-Allow-Origin头信息字段。
 
-```js
-{
-  type: 'Program',
-  body: [{
-    type: 'CallExpression',
-    name: 'add',
-    params:
-      [{
-        type: 'NumberLiteral',
-        value: '2',
-      },
-      {
-        type: 'CallExpression',
-        name: 'subtract',
-        params: [{
-          type: 'NumberLiteral',
-          value: '4',
-        }, {
-          type: 'NumberLiteral',
-          value: '2',
-        }]
-      }]
-  }]
-}
-```
+!['预检请求'](./images/两次请求-2.png '预检请求')
 
-#### Transfromer（转化）
+上面头信息中，Access-Control-Allow-Origin字段是每次回应都必定包含的。
 
-这个过程主要是改写`AST（抽象语法树）`，`或者根据当前AST（抽象语法树）生成一个新的AST（抽象语法树）`，这个过程可以是相同语言，或者可以直接将 AST（抽象语法树）翻译为其他语言。
+### 附带身份凭证的请求与通配符
+
+在响应附带身份凭证的请求时：
+- 为了避免恶意网站滥用Access-Control-Allow-Origin头部字段来获取用户敏感信息，服务器在设置时不能将其值设为通配符`*`相反，应该将其设置为特定的域，例如：Access-Control-Allow-Origin：`https://juejin.cn`。通过将Access-Control-Allow-Origin设置为特定的域，服务器只允许来自指定域的请求进行跨域访问。这样可以限制快于请求的范围，避免不可信的域获取到用户敏感信息。
+- 为了避免潜在的安全风险，服务器不能将Access-Control-Allow-Headers的值设为通配符`*`。这是因为不受限制的请求头可能被滥用。相反，应该将其设置为包含标头名称的列表，例如：Access-Control-Allow-Header：X-PINGOTHER，Content-Type。通过将Access-Control-Allow-Headers设置为明确的标头名称列表，服务器可以限制哪些自定义请求头是允许的。只有在允许的标头列表中的头部字段才能在跨域请求中被接受。
+- 为了比秒潜在的安全风险，服务器不能将Access-Control-Allow-Methods的值设为通配符`*`。这样做将允许来自任意域的请求使用任意的HTTP方法，
 
 注意看上述生成的 AST（抽象语法树），有一些特殊的对象，都具有自己的类型描述，他们就是这个“树”上的节点，如下所示:
 
-```js
-// 数字片段节点
-{
-   type: 'NumberLiteral',
-   value: '2',
-}
-
-// 调用语句节点
- {
-   type: 'CallExpression',
-   name: 'subtract',
-   params: [{
-     type: 'NumberLiteral', // 数字片段节点
-     value: '4',
-   }, {
-     type: 'NumberLiteral', // 数字片段节点
-     value: '2',
-   }]
- }
-```
 
 在案例中我们是想将 lisp 语言转化为 C 语言，因此需要构建一个新的 AST（抽象语法树），这个创建的过程就需要遍历这个“树”的节点并读取其内容，由此引出 **Traversal(遍历)** 和 **Visitors (访问器)**。
 
