@@ -1,9 +1,9 @@
 ---
 icon: edit
-date: 2023-05-31
+date: 2023-10-31
 category:
   - GPT
-tag:
+tags:
   - OpenAI
 ---
 
