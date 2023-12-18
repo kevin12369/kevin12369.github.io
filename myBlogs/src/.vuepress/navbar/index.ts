@@ -3,14 +3,51 @@ import { navbar } from "vuepress-theme-hope";
 export const zhNavbar = navbar([
     "/",
     {
-        text: "心得与总结",
+        text: "兴趣爱好",
         icon: "debug",
-        link: "/blogs/",
+        prefix: "/blogs/",
+        children: [
+            {
+                text: "随笔",
+                icon: "edit",
+                children: [
+                    { text: "2023年个人总结", icon: "computer", link: "2023年个人总结" },
+                ],
+            },
+            {
+                text: "摄影",
+                icon: "edit",
+                children: [
+                    { text: "2023年度摄影总结", icon: "computer", link: "2023年度摄影总结" },
+                ],
+            },
+            {
+                text: "音乐",
+                icon: "edit",
+                children: [
+                    { text: "CD播放器测评", icon: "computer", link: "CD播放器测评" },
+                ],
+            },
+        ]
     },
     {
         text: "物联网相关",
         icon: "blog",
-        link: "/thingsboard/",
+        prefix: "/thingsboard/",
+        children: [
+            {
+                text: "ThingsBoard",
+                icon: "edit",
+                children: [
+                    { text: "什么是物联网", icon: "computer", link: "什么是物联网" },
+                    { text: "什么是ThingsBoard", icon: "computer", link: "什么是ThingsBoard" },
+                    { text: "基于MQTT的RPC协议", icon: "computer", link: "基于MQTT的RPC协议" },
+                    { text: "在Ubuntu（Linux）中部署ThingsBoard", icon: "computer", link: "在Ubuntu（Linux）中部署ThingsBoard" },
+                    { text: "在Windows10中部署ThingsBoard", icon: "computer", link: "在Windows10中部署ThingsBoard" },
+                ],
+
+            },
+        ]
     },
     {
         text: "编程的知识",
@@ -33,8 +70,18 @@ export const zhNavbar = navbar([
                 icon: "edit",
                 prefix: "technology/",
                 children: [
-                    { text: "前端编程", icon: "computer", link: "menu" },
+                    { text: "AST抽象语法树", icon: "computer", link: "AST抽象语法树" },
                     { text: "post为什么会发送两次请求", icon: "computer", link: "post为什么会发送两次请求" },
+                ],
+
+            },
+            {
+                text: "探索人工智能",
+                icon: "edit",
+                prefix: "GPT/",
+                children: [
+                    { text: "OpenAI接口文档", icon: "computer", link: "OpenAI接口文档" },
+                    { text: "LIama 2：详解Meta的大语言模型!", icon: "computer", link: "LIama 2：详解Meta的大语言模型!" },
                 ],
 
             },
@@ -61,7 +108,7 @@ export const zhNavbar = navbar([
                 prefix: "GameProductionTutorial/",
                 children: [
                     { text: "第一个游戏：《打地鼠》", icon: "computer", link: "打地鼠" },
-                    { text: "第一个游戏：《打地鼠》", icon: "computer", link: "打地鼠" },
+                    // { text: "第一个游戏：《打地鼠》", icon: "computer", link: "打地鼠" },
                 ],
 
             },
