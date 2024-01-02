@@ -117,7 +117,7 @@ cd FastChat
 
 conda activate autogen
 
-python -m fastchat.serve.controller
+python -m fastchat.serve.controller --host 0.0.0.0
 
 # model_worker 模型执行器
 
@@ -164,6 +164,41 @@ if __name__ == '__main__':
 
 ```
 
+## 问题解决
+
+#### 问题1：
+启动FastChat的controller时报错：
+`ERROR: [Errno 99] error while attempting to bind on address ('::1', 21001, 0, 0): cannot assign requested address`
+这时，需要在需要在启动命令后加 - -host 0.0.0.0
+`python -m fastchat.serve.controller --host 0.0.0.0`
+#### 问题2：
+`AttributeError: 'ChatGLMTokenizer' object has no attribute 'tokenizer'. Did you mean: 'tokenize'`
+修改transformers的版本：`pip install transformers == 4.33.2`
+
+#### 问题3：
+有文档里autogen测试代码中ChatGLM的请求地址前参数写的是api_base，运行代码会报错，不能识别该参数。
+`Completions.create() got an unexpected keyword argument 'api_base'`
+这时，需要把api_base要改成base_url。
+
+#### 问题4：
+有文档里autogen测试代码中ChatGLM配置里包括api_type参数，运行代码会报错，不能识别该参数。
+`Completions.create() got an unexpected keyword argument 'api_type'`
+这时，需要把该参数注释掉。
+
+#### 问题5：
+运行代码会报错，测试代码中ChatGLM配置里model参数不能识别。
+`openai.BadRequestError: Error code: 400 - {'object': 'error', 'message': 'Only chatglm2-6b allowed now, your model ChatGLM-6B', 'code': 40301}`
+这时，需要修改模型的名称，需要与FastChat的model_worker启动时的模型名称相同才会识别。
+
+#### 问题6：
+当给大模型的任务需要执行python代码时，程序会使用到docker，没有安装docker的话就会报错。
+`AttributeError: module 'docker' has no attribute 'from_env'`
+这时，执行pip3 install docker。
+
+#### 问题7：
+问题6安装docker后，执行仍报错。
+`docker.errors.DockerException: Error while fetching server API version: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))`
+在代码的code_execution_config中添加"use_docker":”python:3”，use_docker的值可以填docker镜像，填写镜像即是在镜像中执行模型自动生成的python代码，也可以什么都不填，什么都不填即是在本机运行，我这里因为是测试，就没有填实际的镜像。
 ## 结论
 
 。
