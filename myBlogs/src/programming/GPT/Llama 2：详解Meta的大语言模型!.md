@@ -6,7 +6,7 @@ category:
 tags:
   - Llama
 ---
-
+![[Pasted image 20240102160951.png]]
 # LIama 2：详解Meta的大语言模型!
 
 [参考自Llama 2：详解Meta的大语言模型!](https://juejin.cn/post/7311217582371274803)
