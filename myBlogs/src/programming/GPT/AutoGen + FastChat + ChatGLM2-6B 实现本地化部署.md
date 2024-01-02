@@ -106,7 +106,7 @@ pip install pyautogen -i https://pypi.mirrors.ustc.edu.cn/simple --trusted-host=
 
 ### 下载Chatglm2-6b模型
 
-模型可从HaggingFace官网手动下载到/FastChat/ChatGLM-6B目录，没有目录的下载目录。
+模型可从Hugging Face官网手动下载到/FastChat/ChatGLM-6B目录，没有目录的创建一个ChatGLM-6B目录（关键）。
 
 ## 加载模型
 
@@ -138,7 +138,31 @@ python -m fastchat.serve.openai_api_server --host 0.0.0.0 --port 9527
 
 ## 测试代码
 
+```bash
+from autogen import oai
+from autogen import AssistantAgent, UserProxyAgent, config_list_from_json
 
+def TestAutoGen():
+    config_list = [
+        {
+            "model": "ChatGLM-6B",
+            "base_url": "http://127.0.0.1:9527/v1",
+            #"api_type": "open_ai",#该行要注释掉，不然报错
+            "api_key": "NULL"
+        }
+    ]
+    assistant = AssistantAgent("assistant", llm_config={
+                               "config_list": config_list})
+    user_proxy = UserProxyAgent(
+        "user_proxy", code_execution_config={"work_dir": "coding"})
+    user_proxy.initiate_chat(
+        assistant, message="用react.js写一个用户登录程序")
+
+
+if __name__ == '__main__':
+    TestAutoGen()
+
+```
 
 ## 结论
 
