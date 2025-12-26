@@ -1,62 +1,75 @@
 ---
-title: Page Config
-icon: page
-order: 1
-author: Ms.Hope
-date: 2020-01-01
+title: 笔记
+icon: book
+order: 2
+author: Kevin
+date: 2025-12-26
 category:
-  - Guide
+  - 生活
 tags:
-  - Page
-  - config
-  - Guide
+  - 笔记
+  - 学习
 sticky: false
 star: false
-footer: Footer content for test
+footer: 笔记
 copyright: No Copyright
 ---
 
-Content before `more` comment is regarded as page excerpt.
+# 笔记
 
-<!-- more -->
+## 关于笔记
 
-## Page Information
+好记性不如烂笔头。笔记是学习过程中最重要的工具之一，它不仅能帮助我们记录信息，更能帮助我们思考和理解。
 
-You can set page information in Markdown’s Frontmatter.
+## 我的笔记习惯
 
-- The author is Ms.Hope.
-- The writing date is January 1, 2020
-- Category is "Guide"
-- Tags are "Page Config" and "Guide"
+我坚持写笔记，因为：
 
-## Page Content
+- **加深理解**：写笔记的过程就是对知识的再加工
+- **方便复习**：笔记是最好的复习资料
+- **整理思路**：写笔记能帮我梳理混乱的思路
+- **记录灵感**：很多好的想法都是在写笔记时产生的
 
-You are free to write your Markdown here.
+## 笔记的方法
 
-::: tip Assets
+我常用的几种笔记方式：
 
-- You can place images besides your Markdown files, but you should use **relative links** (i.e.: starting with `./`) for them.
+### 思维导图
+适合梳理知识结构，理清知识点之间的关系。
 
-- For images in `.vuepress/public` directory, please use absolute links (i.e.: starting with `/`) for them.
+### 康奈尔笔记法
+适合课堂笔记和读书笔记，把页面分成三个区域：
+- 左边：关键词和问题
+- 中间：主要内容
+- 底部：总结和反思
 
-:::
+### 卡片盒笔记法
+适合积累知识点，用卡片记录单个概念，方便检索和连接。
 
-The theme contains a custom badge:
+## 数字化笔记
 
-> A dark blue badge text badge at the end of line. <Badge text="Badge text" color="#242378" />
+现在我也用电子工具做笔记：
 
-## Page Structure
+- **Notion**：功能强大，适合整理复杂的知识体系
+- **Obsidian**：双向链接，适合建立知识网络
+- **OneNote**：微软出品，和 Office 集成度高
+- **Markdown**：纯文本，格式简洁，版本控制方便
 
-This page should contain:
+## 笔记的价值
 
-- [BreadCrumb](https://theme-hope.vuejs.press/guide/layout/breadcrumb.html)
-- [Title and information](https://theme-hope.vuejs.press/guide/feature/page-info.html)
-- [TOC (Table of Contents)](https://theme-hope.vuejs.press/guide/layout/page.html#header-list)
-- [Meta information including update time and contributors](https://theme-hope.vuejs.press/guide/feature/meta.html)
-- [Comments](https://theme-hope.vuejs.press/guide/feature/comment.html)
-- [Navbar](https://theme-hope.vuejs.press/guide/layout/navbar.html)
-- [Sidebar](https://theme-hope.vuejs.press/guide/layout/sidebar.html)
-- [Footer](https://theme-hope.vuejs.press/guide/layout/footer.html)
-- Back to top button
+笔记不只是记录，更是一种思考方式。好的笔记应该：
 
-You can customize them in theme options and page frontmatter.
+- **简洁明了**：抓住重点，不要罗嗦
+- **结构清晰**：有层次，方便查找
+- **有自己的理解**：不是抄书，而是消化后的输出
+- **可扩展**：留有余地，方便补充和修改
+
+## 笔记分享
+
+这里会分享一些我的学习笔记和笔记方法。
+
+如果你有好的笔记习惯或工具推荐，欢迎交流！
+
+---
+
+*笔记是思维的痕迹，是成长的见证。*

@@ -1,62 +1,50 @@
 ---
-title: Page Config
-icon: page
+title: 音乐
+icon: music
 order: 1
-author: Ms.Hope
-date: 2020-01-01
+author: Kevin
+date: 2025-12-26
 category:
-  - Guide
+  - 生活
 tags:
-  - Page
-  - config
-  - Guide
+  - 音乐
+  - 兴趣
 sticky: false
 star: false
-footer: Footer content for test
+footer: 音乐
 copyright: No Copyright
 ---
 
-Content before `more` comment is regarded as page excerpt.
+# 音乐
 
-<!-- more -->
+## 关于音乐
 
-## Page Information
+音乐是生活中不可或缺的一部分。它不仅是娱乐，更是一种情感的表达和心灵的慰藉。
 
-You can set page information in Markdown’s Frontmatter.
+## 我的音乐偏好
 
-- The author is Ms.Hope.
-- The writing date is January 1, 2020
-- Category is "Guide"
-- Tags are "Page Config" and "Guide"
+我喜欢听各种类型的音乐：
 
-## Page Content
+- **古典音乐**：巴赫、贝多芬、莫扎特的作品总是能让我平静下来
+- **流行音乐**：偶尔听听流行歌曲，感受当下的音乐潮流
+- **轻音乐**：工作或学习时，轻音乐是最好的背景音乐
+- **电影原声**：很多电影的原声带都非常出色，值得单独欣赏
 
-You are free to write your Markdown here.
+## 音乐的意义
 
-::: tip Assets
+对我来说，音乐有以下几个意义：
 
-- You can place images besides your Markdown files, but you should use **relative links** (i.e.: starting with `./`) for them.
+- **放松心情**：忙碌一天后，听听音乐能让我放松下来
+- **激发灵感**：有时候听音乐会给我带来新的想法和灵感
+- **陪伴时光**：无论是独处还是和朋友在一起，音乐都是很好的陪伴
+- **记录回忆**：每首歌都承载着一段回忆，听到熟悉的旋律就会想起过去
 
-- For images in `.vuepress/public` directory, please use absolute links (i.e.: starting with `/`) for them.
+## 音乐推荐
 
-:::
+这里会分享一些我喜欢的音乐和音乐相关的文章。
 
-The theme contains a custom badge:
+如果你也有喜欢的音乐，欢迎和我交流！
 
-> A dark blue badge text badge at the end of line. <Badge text="Badge text" color="#242378" />
+---
 
-## Page Structure
-
-This page should contain:
-
-- [BreadCrumb](https://theme-hope.vuejs.press/guide/layout/breadcrumb.html)
-- [Title and information](https://theme-hope.vuejs.press/guide/feature/page-info.html)
-- [TOC (Table of Contents)](https://theme-hope.vuejs.press/guide/layout/page.html#header-list)
-- [Meta information including update time and contributors](https://theme-hope.vuejs.press/guide/feature/meta.html)
-- [Comments](https://theme-hope.vuejs.press/guide/feature/comment.html)
-- [Navbar](https://theme-hope.vuejs.press/guide/layout/navbar.html)
-- [Sidebar](https://theme-hope.vuejs.press/guide/layout/sidebar.html)
-- [Footer](https://theme-hope.vuejs.press/guide/layout/footer.html)
-- Back to top button
-
-You can customize them in theme options and page frontmatter.
+*音乐是灵魂的语言，它能跨越时空，连接人心。*

@@ -1,62 +1,77 @@
 ---
-title: Page Config
-icon: page
-order: 1
-author: Ms.Hope
-date: 2020-01-01
+title: 摄影
+icon: camera
+order: 3
+author: Kevin
+date: 2025-12-26
 category:
-  - Guide
+  - 生活
 tags:
-  - Page
-  - config
-  - Guide
+  - 摄影
+  - 兴趣
 sticky: false
 star: false
-footer: Footer content for test
+footer: 摄影
 copyright: No Copyright
 ---
 
-Content before `more` comment is regarded as page excerpt.
+# 摄影
 
-<!-- more -->
+## 关于摄影
 
-## Page Information
+摄影是用镜头记录生活、表达情感的艺术。一张好的照片，能让人感受到拍摄者的心境和故事。
 
-You can set page information in Markdown’s Frontmatter.
+## 我的摄影之路
 
-- The author is Ms.Hope.
-- The writing date is January 1, 2020
-- Category is "Guide"
-- Tags are "Page Config" and "Guide"
+我不是专业摄影师，只是一个热爱记录生活的普通人：
 
-## Page Content
+- **刚开始**：用手机随手拍，记录生活中的美好瞬间
+- **入门阶段**：买了第一台相机，开始学习构图和光线
+- **持续学习**：看教程、看作品、不断练习和尝试
+- **享受过程**：现在更享受拍摄的过程，而不是追求完美
 
-You are free to write your Markdown here.
+## 摄影的意义
 
-::: tip Assets
+对我来说，摄影有几个重要的意义：
 
-- You can place images besides your Markdown files, but you should use **relative links** (i.e.: starting with `./`) for them.
+- **记录生活**：把美好的瞬间定格，留作回忆
+- **发现美**：摄影让我学会用不同的角度观察世界
+- **表达情感**：有时候照片比语言更能表达内心的感受
+- **分享故事**：每张照片背后都有一个故事
 
-- For images in `.vuepress/public` directory, please use absolute links (i.e.: starting with `/`) for them.
+## 摄影技巧
 
-:::
+我正在学习和实践的几个方面：
 
-The theme contains a custom badge:
+### 构图
+- 三分法：把画面分成九宫格，把主体放在交叉点上
+- 引导线：利用线条引导观众的视线
+- 框架：用自然或人工的框架突出主体
 
-> A dark blue badge text badge at the end of line. <Badge text="Badge text" color="#242378" />
+### 光线
+- 黄金时刻：日出后和日落前一小时，光线柔和温暖
+- 逆光：创造剪影和光晕效果
+- 侧光：突出物体的质感和立体感
 
-## Page Structure
+### 后期
+- 调整曝光和对比度
+- 调整色彩平衡
+- 裁剪和构图优化
 
-This page should contain:
+## 摄影器材
 
-- [BreadCrumb](https://theme-hope.vuejs.press/guide/layout/breadcrumb.html)
-- [Title and information](https://theme-hope.vuejs.press/guide/feature/page-info.html)
-- [TOC (Table of Contents)](https://theme-hope.vuejs.press/guide/layout/page.html#header-list)
-- [Meta information including update time and contributors](https://theme-hope.vuejs.press/guide/feature/meta.html)
-- [Comments](https://theme-hope.vuejs.press/guide/feature/comment.html)
-- [Navbar](https://theme-hope.vuejs.press/guide/layout/navbar.html)
-- [Sidebar](https://theme-hope.vuejs.press/guide/layout/sidebar.html)
-- [Footer](https://theme-hope.vuejs.press/guide/layout/footer.html)
-- Back to top button
+我不追求昂贵的器材，相信"最好的相机是你随身带着的那一台"：
 
-You can customize them in theme options and page frontmatter.
+- **手机**：随时可以拍摄，方便快捷
+- **微单相机**：画质更好，可换镜头
+- **三脚架**：稳定拍摄，长曝光必备
+
+## 摄影分享
+
+这里会分享一些摄影作品和摄影心得。
+
+如果你也喜欢摄影，欢迎交流，一起进步！
+
+---
+
+*摄影是时间的切片，是瞬间的永恒。*
