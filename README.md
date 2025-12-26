@@ -1,39 +1,59 @@
-# myBlogs
+# Kevin 的博客
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+基于 VuePress 2.0 + vuepress-theme-hope 主题构建的个人技术博客。
 
-#### 软件架构
-软件架构说明
+## 项目结构
 
+```
+myBlogs/
+├── docs/                 # 博客源码目录
+│   ├── .vuepress/        # VuePress 配置
+│   ├── blogs/            # 博客文章
+│   ├── programming/      # 编程相关文章
+│   └── thingsboard/      # ThingsBoard 相关文章
+├── .github/              # GitHub Actions 配置
+├── package.json          # 项目配置
+└── pnpm-lock.yaml        # 依赖锁定文件
+```
 
-#### 安装教程
+## 本地开发
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### 安装依赖
 
-#### 使用说明
+```bash
+pnpm install
+```
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### 启动开发服务器
 
-#### 参与贡献
+```bash
+pnpm docs:dev
+```
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+### 构建生产版本
 
+```bash
+pnpm docs:build
+```
 
-#### 特技
+## 部署
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+本项目使用 GitHub Actions 自动部署到 GitHub Pages。
+
+### 部署步骤
+
+1. 将代码推送到 GitHub 仓库
+2. 在 GitHub 仓库设置中启用 GitHub Pages：
+   - 进入 `Settings` → `Pages`
+   - Source 选择 `GitHub Actions`
+3. 每次推送到 `master` 分支会自动触发部署
+
+## 技术栈
+
+- **VuePress 2.0**: 静态站点生成器
+- **vuepress-theme-hope**: 主题
+- **pnpm**: 包管理器
+
+## 许可证
+
+MIT
