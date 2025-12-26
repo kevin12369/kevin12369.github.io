@@ -10,7 +10,7 @@ export default hopeTheme({
     url: 'https://www.baidu.com',
   },
 
-  iconAssets: 'iconfont',
+  iconAssets: 'iconify',
 
   logo: '/logo.svg',
 
