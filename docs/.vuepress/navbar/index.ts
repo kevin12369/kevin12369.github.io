@@ -18,14 +18,15 @@ export const zhNavbar = navbar([
             //         { text: "2025年大模型技术突破与趋势", icon: "trending-up", link: "2025年大模型技术突破与趋势" },
             //     ],
             // },
-            {
-                text: "AI框架",
-                icon: "puzzle-piece",
-                prefix: "AI框架/",
-                children: [
-                    { text: "AutoGen + FastChat + ChatGLM2-6B 实现本地化部署", icon: "gears", link: "AutoGen + FastChat + ChatGLM2-6B 实现本地化部署" },
-                ],
-            },
+            // AI框架系列已隐藏，待更新后重新开放
+            // {
+            //     text: "AI框架",
+            //     icon: "puzzle-piece",
+            //     prefix: "AI框架/",
+            //     children: [
+            //         { text: "AutoGen + FastChat + ChatGLM2-6B 实现本地化部署", icon: "gears", link: "AutoGen + FastChat + ChatGLM2-6B 实现本地化部署" },
+            //     ],
+            // },
             {
                 text: "本周AIGC资讯",
                 icon: "newspaper",
