@@ -78,8 +78,68 @@ export const zhSidebar = sidebar({
       prefix: 'ai-fullstack/',
       children: [
         {
-          text: 'AI增强型全栈开发者',
-          link: 'AI增强型全栈开发者：2026年最具竞争力的技术角色',
+          text: '认知与趋势',
+          icon: 'lightbulb',
+          children: [
+            {
+              text: '01. 技术角色全景解析',
+              link: '01-AI增强型全栈开发者：2026年技术角色全景解析',
+            },
+          ],
+        },
+        {
+          text: '工具与实践',
+          icon: 'tools',
+          children: [
+            {
+              text: '04. AI工具链深度评测',
+              link: '04-AI工具链深度评测：Cursor、COZE、Dify等核心工具对比',
+            },
+            {
+              text: '05. Cursor IDE实战',
+              link: '05-Cursor IDE实战：从入门到精通的完整指南',
+            },
+            {
+              text: '06. COZE企业级应用开发',
+              link: '06-COZE企业级应用开发：从零构建智能客服系统',
+            },
+          ],
+        },
+        {
+          text: '能力与方法',
+          icon: 'brain',
+          children: [
+            {
+              text: '07. Prompt Engineering进阶',
+              link: '07-Prompt Engineering进阶：从初级到大师的实战指南',
+            },
+            {
+              text: '08. 系统设计革命',
+              link: '08-系统设计革命：AI时代的架构思维与最佳实践',
+            },
+            {
+              text: '09. 产品思维觉醒',
+              link: '09-产品思维觉醒：AI增强型开发者的核心竞争力',
+            },
+          ],
+        },
+        {
+          text: '实战与未来',
+          icon: 'rocket',
+          children: [
+            {
+              text: '10. 实战案例：24小时构建SaaS',
+              link: '10-实战案例：用AI在24小时内构建完整的SaaS产品',
+            },
+            {
+              text: '11. 职业发展路径',
+              link: '11-职业发展路径：AI增强型全栈开发者的成长路线图',
+            },
+            {
+              text: '12. 2026年趋势预测',
+              link: '12-2026年趋势预测：AI应用开发的前沿技术与机遇',
+            },
+          ],
         },
       ],
     },
