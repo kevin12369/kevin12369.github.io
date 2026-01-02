@@ -80,6 +80,9 @@ export const zhNavbar = navbar([
             { text: "前言", icon: "list-ol", link: "数据结构与算法1-前言" },
             { text: "数组", icon: "database", link: "数据结构与算法2-数组" },
             { text: "二维数组", icon: "table", link: "数据结构与算法3-二维数组" },
+            { text: "链表", icon: "link", link: "数据结构与算法4-链表" },
+            { text: "栈与队列", icon: "layer-group", link: "数据结构与算法5-栈与队列" },
+            { text: "树", icon: "sitemap", link: "数据结构与算法6-树" },
         ]
     },
     {
