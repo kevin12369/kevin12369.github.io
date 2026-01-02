@@ -40,8 +40,23 @@ export const zhSidebar = sidebar({
           prefix: 'AI应用/',
           children: [
             {
+              text: '第2期',
+              link: '本周AIGC资讯-第2期',
+            },
+            {
               text: '第1期',
               link: '本周AIGC资讯-第1期',
+            },
+          ],
+        },
+        {
+          text: '年度回顾',
+          icon: 'star',
+          prefix: 'AI应用/',
+          children: [
+            {
+              text: '2025年AIGC年度回顾',
+              link: '2025年AIGC年度回顾特刊',
             },
           ],
         },
