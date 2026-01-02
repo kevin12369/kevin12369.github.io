@@ -85,6 +85,8 @@ export const zhNavbar = navbar([
             { text: "树", icon: "sitemap", link: "数据结构与算法6-树" },
             { text: "排序算法", icon: "sort", link: "数据结构与算法7-排序算法" },
             { text: "查找算法", icon: "search", link: "数据结构与算法8-查找算法" },
+            { text: "动态规划", icon: "brain", link: "数据结构与算法9-动态规划" },
+            { text: "贪心算法", icon: "bolt", link: "数据结构与算法10-贪心算法" },
         ]
     },
     {

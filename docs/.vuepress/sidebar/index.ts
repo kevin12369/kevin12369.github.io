@@ -160,6 +160,14 @@ export const zhSidebar = sidebar({
           text: '查找算法',
           link: '数据结构与算法8-查找算法',
         },
+        {
+          text: '动态规划',
+          link: '数据结构与算法9-动态规划',
+        },
+        {
+          text: '贪心算法',
+          link: '数据结构与算法10-贪心算法',
+        },
       ],
     },
     {
