@@ -46,6 +46,18 @@ export const zhNavbar = navbar([
         ]
     },
     {
+        text: "AI全栈开发",
+        icon: "cpu",
+        prefix: "/ai-fullstack/",
+        children: [
+            {
+                text: "AI增强型全栈开发者",
+                icon: "robot",
+                link: "AI增强型全栈开发者：2026年最具竞争力的技术角色",
+            },
+        ]
+    },
+    {
         text: "前端开发",
         icon: "code",
         prefix: "/frontend/",
