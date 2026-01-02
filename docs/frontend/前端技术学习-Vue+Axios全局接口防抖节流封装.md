@@ -13,7 +13,7 @@ lastUpdated: true
 footer: Vue + Axios 全局防抖节流封装
 ---
 
-# Vue + Axios 全局接口防抖、节流封装（2025版）
+# 前端技术学习 - Vue+Axios全局接口防抖节流封装（2025版）
 
 ## 为什么需要防抖和节流？
 
@@ -160,7 +160,7 @@ class RequestManager {
   // 添加防抖请求
   addDebounceRequest(config, wait = 500) {
     const key = this.generateKey(config);
-    
+
     // 清除之前的定时器
     if (this.debounceTimers.has(key)) {
       clearTimeout(this.debounceTimers.get(key));
@@ -186,7 +186,7 @@ class RequestManager {
   // 添加节流请求
   addThrottleRequest(config, wait = 1000) {
     const key = this.generateKey(config);
-    
+
     // 如果已有节流定时器，返回相同的 Promise
     if (this.throttleTimers.has(key)) {
       return this.throttleTimers.get(key).promise;
@@ -545,7 +545,7 @@ class RequestManager {
 
   addDebounceRequest(config: AxiosConfig, wait: number = 500): Promise<any> {
     const key = this.generateKey(config);
-    
+
     if (this.debounceTimers.has(key)) {
       clearTimeout(this.debounceTimers.get(key)!);
     }
@@ -636,14 +636,14 @@ const cache = new Map();
 
 async function cachedRequest(config) {
   const key = JSON.stringify(config);
-  
+
   if (cache.has(key)) {
     return cache.get(key);
   }
 
   const promise = request(config);
   cache.set(key, promise);
-  
+
   return promise;
 }
 ```

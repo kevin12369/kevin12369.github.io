@@ -68,9 +68,9 @@ export const zhNavbar = navbar([
                 text: "技术学习",
                 icon: "lightbulb",
                 children: [
-                    { text: "AST抽象语法树", icon: "tree", link: "AST抽象语法树" },
-                    { text: "POST请求发送两次的原因", icon: "question-circle", link: "post为什么会发送两次请求" },
-                    { text: "Vue+Axios全局接口防抖、节流封装", icon: "shield-check", link: "Vue+Axios全局接口防抖、节流封装实现，让你前端开发更高效" },
+                    { text: "AST抽象语法树", icon: "tree", link: "前端技术学习-AST抽象语法树" },
+                    { text: "POST请求发送两次的原因", icon: "question-circle", link: "前端技术学习-POST请求发送两次的原因" },
+                    { text: "Vue+Axios全局接口防抖节流封装", icon: "shield-check", link: "前端技术学习-Vue+Axios全局接口防抖节流封装" },
                     { text: "浏览器渲染原理", icon: "monitor", link: "前端技术学习-浏览器渲染原理" },
                     { text: "HTTP协议详解", icon: "network-wired", link: "前端技术学习-HTTP协议详解" },
                     { text: "跨域问题详解", icon: "globe", link: "前端技术学习-跨域问题详解" },

@@ -12,7 +12,7 @@ lastUpdated: true
 footer: AST 抽象语法树详解
 ---
 
-# AST 抽象语法树详解（2025版）
+# 前端技术学习 - AST抽象语法树（2025版）
 
 ## 什么是 AST？
 
@@ -218,7 +218,7 @@ const visitor = {
   Identifier(path) {
     console.log('Enter:', path.node.name);
   },
-  
+
   // 离开节点时调用
   Identifier: {
     exit(path) {
@@ -282,12 +282,12 @@ const ast = parser.parse(code);
 traverse(ast, {
   FunctionDeclaration(path) {
     const body = path.node.body;
-    
+
     // 检查是否已经有 try-catch
     const hasTryCatch = body.body.some(
       node => node.type === 'TryStatement'
     );
-    
+
     if (!hasTryCatch && path.node.async) {
       // 创建 try-catch 节点
       const tryStatement = types.tryStatement(
@@ -299,7 +299,7 @@ traverse(ast, {
           ])
         )
       );
-      
+
       body.body = [tryStatement];
     }
   }
@@ -331,7 +331,7 @@ const ast = parser.parse(code, {
 traverse(ast, {
   ImportDeclaration(path) {
     const source = path.node.source.value;
-    
+
     if (source === 'antd') {
       // 将导入转换为按需导入
       const imports = path.node.specifiers.map(spec => ({
@@ -340,7 +340,7 @@ traverse(ast, {
         ),
         local: types.identifier(spec.local.name)
       }));
-      
+
       path.replaceWithMultiple(
         imports.map(imp => types.importDeclaration(
           [imp.default],
@@ -373,21 +373,21 @@ const ast = parser.parse(code);
 traverse(ast, {
   FunctionDeclaration(path) {
     const node = path.node;
-    
+
     // 检查是否已有注释
     if (node.leadingComments) return;
-    
+
     // 生成 JSDoc 注释
-    const params = node.params.map(param => 
+    const params = node.params.map(param =>
       `@param {${getParamType(param)}} ${param.name}`
     ).join('\n   * ');
-    
+
     const comment = `/**
    * ${node.id.name}
    * ${params}
    * @returns {number}
    */`;
-    
+
     // 添加注释
     path.addComment('leading', comment);
   }
@@ -491,7 +491,7 @@ function getAST(code) {
   if (astCache.has(code)) {
     return astCache.get(code);
   }
-  
+
   const ast = parser.parse(code);
   astCache.set(code, ast);
   return ast;
@@ -524,12 +524,12 @@ module.exports = function({ types: t }) {
       // 使用具名函数
       FunctionDeclaration(path, state) {
         const opts = state.opts || {};
-        
+
         // 检查配置
         if (opts.skipAsync && path.node.async) {
           return;
         }
-        
+
         // 清晰的逻辑
         transformFunction(path, opts);
       }
@@ -550,7 +550,7 @@ try {
   traverse(ast, visitor);
 } catch (error) {
   console.error('AST 转换失败:', error);
-  
+
   // 提供友好的错误信息
   if (error.code === 'BABEL_PARSE_ERROR') {
     console.error('语法错误:', error.message);
@@ -569,7 +569,7 @@ test('should remove console.log', () => {
   const output = transform(input, {
     plugins: [removeConsolePlugin]
   });
-  
+
   expect(output.code).toBe('');
 });
 ```

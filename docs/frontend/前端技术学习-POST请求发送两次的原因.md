@@ -12,7 +12,7 @@ lastUpdated: true
 footer: POST 请求发送两次的原因解析
 ---
 
-# POST 请求为什么会发送两次？（2025版）
+# 前端技术学习 - POST请求发送两次的原因（2025版）
 
 ## 问题背景
 
@@ -348,24 +348,24 @@ server {
     location / {
         # 允许的源
         add_header Access-Control-Allow-Origin http://example.com;
-        
+
         # 允许的方法
         add_header Access-Control-Allow-Methods 'GET, POST, PUT, DELETE, OPTIONS';
-        
+
         # 允许的头部
         add_header Access-Control-Allow-Headers 'Content-Type, Authorization';
-        
+
         # 允许携带凭证
         add_header Access-Control-Allow-Credentials true;
-        
+
         # 预检请求缓存时间
         add_header Access-Control-Max-Age 86400;
-        
+
         # 处理 OPTIONS 预检请求
         if ($request_method = 'OPTIONS') {
             return 204;
         }
-        
+
         # 其他请求
         proxy_pass http://backend;
     }

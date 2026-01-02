@@ -121,15 +121,15 @@ export const zhSidebar = sidebar({
           children: [
             {
               text: 'AST抽象语法树',
-              link: 'AST抽象语法树',
+              link: '前端技术学习-AST抽象语法树',
             },
             {
               text: 'POST请求发送两次的原因',
-              link: 'post为什么会发送两次请求',
+              link: '前端技术学习-POST请求发送两次的原因',
             },
             {
-              text: 'Vue+Axios全局接口防抖、节流封装',
-              link: 'Vue+Axios全局接口防抖、节流封装实现，让你前端开发更高效',
+              text: 'Vue+Axios全局接口防抖节流封装',
+              link: '前端技术学习-Vue+Axios全局接口防抖节流封装',
             },
             {
               text: '浏览器渲染原理',
