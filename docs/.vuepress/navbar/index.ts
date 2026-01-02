@@ -52,6 +52,7 @@ export const zhNavbar = navbar([
         children: [
             { text: "技术角色全景解析", icon: "eye", link: "01-AI增强型全栈开发者：2026年技术角色全景解析" },
             { text: "全栈开发者的进化史", icon: "history", link: "02-全栈开发者的进化史：从传统到AI增强的变革之路" },
+            { text: "AI编程趋势报告", icon: "chart-line", link: "03-2025-2026 AI编程趋势报告：生产力提升与氛围编程陷阱" },
             { text: "AI工具链深度评测", icon: "tools", link: "04-AI工具链深度评测：Cursor、COZE、Dify等核心工具对比" },
             { text: "Cursor IDE实战", icon: "terminal", link: "05-Cursor IDE实战：从入门到精通的完整指南" },
             { text: "COZE企业级应用开发", icon: "robot", link: "06-COZE企业级应用开发：从零构建智能客服系统" },
@@ -61,18 +62,6 @@ export const zhNavbar = navbar([
             { text: "实战案例：24小时构建SaaS", icon: "rocket", link: "10-实战案例：用AI在24小时内构建完整的SaaS产品" },
             { text: "职业发展路径", icon: "chart-line", link: "11-职业发展路径：AI增强型全栈开发者的成长路线图" },
             { text: "2026年趋势预测", icon: "crystal-ball", link: "12-2026年趋势预测：AI应用开发的前沿技术与机遇" },
-        ]
-    },
-    {
-        text: "AI全栈开发",
-        icon: "cpu",
-        prefix: "/ai-fullstack/",
-        children: [
-            {
-                text: "AI增强型全栈开发者",
-                icon: "robot",
-                link: "AI增强型全栈开发者：2026年最具竞争力的技术角色",
-            },
         ]
     },
     {
