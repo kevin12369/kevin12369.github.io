@@ -7,15 +7,17 @@ export const zhNavbar = navbar([
         icon: "robot",
         prefix: "/aigc/",
         children: [
-            {
-                text: "大语言模型",
-                icon: "brain",
-                prefix: "大语言模型/",
-                children: [
-                    { text: "OpenAI接口文档", icon: "code", link: "OpenAI接口文档" },
-                    { text: "Llama 2：详解Meta的大语言模型!", icon: "language", link: "Llama 2：详解Meta的大语言模型!" },
-                ],
-            },
+            // 大语言模型系列已隐藏，待更新后重新开放
+            // {
+            //     text: "大语言模型",
+            //     icon: "brain",
+            //     prefix: "大语言模型/",
+            //     children: [
+            //         { text: "OpenAI接口文档", icon: "code", link: "OpenAI接口文档" },
+            //         { text: "Llama 3：Meta开源大模型的进化之路", icon: "language", link: "Llama 3：Meta开源大模型的进化之路" },
+            //         { text: "2025年大模型技术突破与趋势", icon: "trending-up", link: "2025年大模型技术突破与趋势" },
+            //     ],
+            // },
             {
                 text: "AI框架",
                 icon: "puzzle-piece",

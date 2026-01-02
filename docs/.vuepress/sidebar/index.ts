@@ -8,21 +8,26 @@ export const zhSidebar = sidebar({
       icon: 'robot',
       prefix: 'aigc/',
       children: [
-        {
-          text: '大语言模型',
-          icon: 'note',
-          prefix: '大语言模型/',
-          children: [
-            {
-              text: 'OpenAI接口文档',
-              link: 'OpenAI接口文档',
-            },
-            {
-              text: 'Llama 2：详解Meta的大语言模型!',
-              link: 'Llama 2：详解Meta的大语言模型!',
-            },
-          ],
-        },
+        // 大语言模型系列已隐藏，待更新后重新开放
+        // {
+        //   text: '大语言模型',
+        //   icon: 'note',
+        //   prefix: '大语言模型/',
+        //   children: [
+        //     {
+        //       text: 'OpenAI接口文档',
+        //       link: 'OpenAI接口文档',
+        //     },
+        //     {
+        //       text: 'Llama 3：Meta开源大模型的进化之路',
+        //       link: 'Llama 3：Meta开源大模型的进化之路',
+        //     },
+        //     {
+        //       text: '2025年大模型技术突破与趋势',
+        //       link: '2025年大模型技术突破与趋势',
+        //     },
+        //   ],
+        // },
         {
           text: 'AI框架',
           icon: 'note',
