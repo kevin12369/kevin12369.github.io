@@ -152,6 +152,14 @@ export const zhSidebar = sidebar({
           text: '树',
           link: '数据结构与算法6-树',
         },
+        {
+          text: '排序算法',
+          link: '数据结构与算法7-排序算法',
+        },
+        {
+          text: '查找算法',
+          link: '数据结构与算法8-查找算法',
+        },
       ],
     },
     {
