@@ -7,26 +7,25 @@ export const zhNavbar = navbar([
         icon: "robot",
         prefix: "/aigc/",
         children: [
-            // 大语言模型系列已隐藏，待更新后重新开放
-            // {
-            //     text: "大语言模型",
-            //     icon: "brain",
-            //     prefix: "大语言模型/",
-            //     children: [
-            //         { text: "OpenAI接口文档", icon: "code", link: "OpenAI接口文档" },
-            //         { text: "Llama 3：Meta开源大模型的进化之路", icon: "language", link: "Llama 3：Meta开源大模型的进化之路" },
-            //         { text: "2025年大模型技术突破与趋势", icon: "trending-up", link: "2025年大模型技术突破与趋势" },
-            //     ],
-            // },
-            // AI框架系列已隐藏，待更新后重新开放
-            // {
-            //     text: "AI框架",
-            //     icon: "puzzle-piece",
-            //     prefix: "AI框架/",
-            //     children: [
-            //         { text: "AutoGen + FastChat + ChatGLM2-6B 实现本地化部署", icon: "gears", link: "AutoGen + FastChat + ChatGLM2-6B 实现本地化部署" },
-            //     ],
-            // },
+            {
+                text: "大语言模型",
+                icon: "brain",
+                prefix: "大语言模型/",
+                children: [
+                    { text: "OpenAI接口文档", icon: "code", link: "OpenAI接口文档" },
+                    { text: "Llama 3：Meta开源大模型的进化之路", icon: "language", link: "Llama 3：Meta开源大模型的进化之路" },
+                    { text: "2025年大模型技术突破与趋势", icon: "trending-up", link: "2025年大模型技术突破与趋势" },
+                ],
+            },
+            {
+                text: "AI框架",
+                icon: "puzzle-piece",
+                prefix: "AI框架/",
+                children: [
+                    { text: "LangChain：构建AI智能体的操作系统", icon: "robot", link: "LangChain：构建AI智能体的操作系统" },
+                    { text: "2025年大模型部署框架全解析：vLLM vs Ollama", icon: "server", link: "2025年大模型部署框架全解析：vLLM vs Ollama" },
+                ],
+            },
             {
                 text: "本周AIGC资讯",
                 icon: "newspaper",
