@@ -124,12 +124,28 @@ export const zhSidebar = sidebar({
               link: 'AST抽象语法树',
             },
             {
-              text: 'post为什么会发送两次请求',
+              text: 'POST请求发送两次的原因',
               link: 'post为什么会发送两次请求',
             },
             {
               text: 'Vue+Axios全局接口防抖、节流封装',
               link: 'Vue+Axios全局接口防抖、节流封装实现，让你前端开发更高效',
+            },
+            {
+              text: '浏览器渲染原理',
+              link: '前端技术学习-浏览器渲染原理',
+            },
+            {
+              text: 'HTTP协议详解',
+              link: '前端技术学习-HTTP协议详解',
+            },
+            {
+              text: '跨域问题详解',
+              link: '前端技术学习-跨域问题详解',
+            },
+            {
+              text: 'Web安全详解',
+              link: '前端技术学习-Web安全',
             },
           ],
         },

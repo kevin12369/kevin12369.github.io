@@ -1,158 +1,476 @@
 ---
 icon: edit
-date: 2023-12-08
+date: 2025-01-02
 category:
-  - Programing
-tag:
-  - POST
   - 前端技术
+tag:
   - HTTP
+  - CORS
+  - 跨域
+sticky: false
+lastUpdated: true
+footer: POST 请求发送两次的原因解析
 ---
 
-# post为什么会发送两次请求？
+# POST 请求为什么会发送两次？（2025版）
 
-## post为什么会发送两次请求？
+## 问题背景
 
-[参考自掘金《京东一面：post为什么会发送两次请求？🤪🤪🤪》](https://juejin.cn/post/7269952188927017015)
+在开发过程中，你可能会发现某些 POST 请求在浏览器中发送了两次：
 
-在前段时间的一次面试中，被问到了一个如标题这样的问题。要想好好地去回答这个问题，这里牵扯到的知识点也是比较多的。
+```
+OPTIONS /api/data
+POST /api/data
+```
 
-那么接下来这篇文章我们就一点一点开始引出这个问题。
+这是一个非常经典的前端面试题，也是实际开发中经常遇到的问题。要理解这个问题，我们需要深入了解浏览器的同源策略和 CORS（跨域资源共享）机制。
 
 ## 同源策略
 
-来浏览器中，内容是很开放的，任何资源都可以接入其中，如JavaScript文件、图片、音频、视频等资源，甚至可以下载其他站点的可执行文件。
+### 什么是同源策略？
 
-但也不是说浏览器就是完全自有的，如果不加以空值，就会出现一些不可控的局面，例如会出现一些安全问题，如：
+同源策略（Same-Origin Policy）是浏览器最核心的安全策略之一，它限制了从一个源加载的文档或脚本如何与另一个源的资源进行交互。
 
-- 跨站脚本攻击（XSS）。
-- SQL注入攻击。
-- OS命令注入攻击。
-- HTTP首部注入攻击。
-- 跨站点请求伪造（CSRF）。
-- 等等......。
+**同源的定义**：如果两个 URL 的协议、域名和端口都相同，则它们同源。
 
-如果这些都没有限制的话，对于我们用户而言，是相对危险的，因此需要一些安全策略来保障我们的隐私和数据安全。
+| URL | 结果 | 原因 |
+|-----|------|------|
+| `http://example.com:80/page1` | 同源 | 相同的协议、域名、端口 |
+| `http://example.com:80/page2` | 同源 | 只有路径不同 |
+| `https://example.com:80/page1` | 不同源 | 协议不同（HTTP vs HTTPS） |
+| `http://example.com:8080/page1` | 不同源 | 端口不同（80 vs 8080） |
+| `http://other.com:80/page1` | 不同源 | 域名不同 |
 
-这就引出了最基础、最核心的安全策略：同源策略。
+### 同源策略的限制
 
-### 什么是同源策略
+同源策略主要限制三个方面：
 
-同源策略是一个重要的安全策略，它用于限制一个源的文档或者它加载的脚本如何与另一个源的资源进行交互。
+1. **DOM 访问限制**：脚本不能访问跨源页面的 DOM
+2. **Cookie 和本地存储限制**：不能访问跨源的 Cookie、LocalStorage 等
+3. **网络请求限制**：XMLHttpRequest 和 Fetch API 默认不能跨域请求
 
-如果两个URL的协议、主机和端口都相同，我们就称这两个URL同源。
+## CORS（跨域资源共享）
 
--　协议：协议是定义了数据如何在计算机内和之间进行交换的规则的系统，例如HTTP、HTTPS。
--　主机：是已链接到一个计算机网络的一台电子计算机或者其他设备。网络主机可以想网络上的用户或者其他节点提供信息资源、服务和应用。使用TCP、IP协议族参与网络的计算机也可称为IP主机。
--　端口：主机是计算机到计算机之间的通信，那么端口就是进程到进程之间的通信。
+### 什么是 CORS？
 
-如下表给出了与URL`http://store.company.com:80/dir/page.html`的源进行对比的示例：
+CORS（Cross-Origin Resource Sharing）是一种机制，允许在受控的条件下，不同源的网页能够请求和共享资源。它通过 HTTP 头部来告知浏览器哪些跨域请求是被允许的。
 
-|URL|结果|原因|
-|---|---|---|
-|`http://store.company.com:80/dir2/page.html`|同源|只有路径不同|
-|`http://store.company.com:80/dir/inner/another.html`|同源|只有路径不同|
-|`http://store.company.com:443/secure.html`|不同源|协议不同，HTTP和HTTPS|
-|`http://store.company.com:81/dir/etc.html`|不同源|端口不同|
-|`http://store.company.com:80/dir/other.html`|不同源|主机不同|
+### CORS 的两种请求类型
 
-同源策略主要表现在以下三个反面：DOM、Web数据和网络。
+#### 1. 简单请求（Simple Request）
 
-- DOM访问限制：同源策略限制了网页脚本（如JavaScript）访问其他源的DOM。这意味着通过脚本无法直接访问跨源页面的DOM元素、属性或方法。这是为了防止恶意网站从其他网站窃取敏感信息。
-- Web数据限制：同源策略也限制了从其他源加载的Web数据（例如XMLHttpRequest或Fetch API）。在同源策略下，XMLHttpRequest或Fetch请求只能发送到与当前网页具有相同源的目标。这有助于防止跨站点请求伪造（CSRF）等攻击。
-- 网络通信限制：同源策略还限制了跨源的网络通信。浏览器会阻止从一个源发出的请求获取来自其他源的响应。这样做是为了确保只有受信任的源能够与服务器进行通信，以避免恶意行为。
+不会触发预检请求的 CORS 请求称为简单请求。满足以下所有条件的请求才是简单请求：
 
-## CORS
+**HTTP 方法限制**：
+- GET
+- HEAD
+- POST
 
-对于浏览器限制这个词，要着重解释一下：不一定是浏览器限制了发起跨站请求，也可能是跨站请求可以正常发起，但是返回结果被浏览器拦截了。
+**HTTP 头部限制**：
+只能使用以下标准字段：
+- `Accept`
+- `Accept-Language`
+- `Content-Language`
+- `Content-Type`（仅限三个值）
+- `Last-Event-ID`
+- `DPR`
+- `Downlink`
+- `Save-Data`
+- `Viewport-Width`
+- `Width`
 
-浏览器将不同域的内容隔离在不同的进程中，网络进程负责下载资源并将器送到渲染进程中，但由于跨域限制，某些资源可能被阻止加载到渲染进程。如果浏览器发现一个跨域响应包含了敏感数据，它可能会阻止脚本访问这些数据，即使网络进程已经获得了这些数据。CORB的目标是在渲染之前今早阻止恶意代码获取跨域数据。
+**Content-Type 的限制**：
+- `application/x-www-form-urlencoded`
+- `multipart/form-data`
+- `text/plain`
 
-> CORB是一种安全机制，用于防止跨域请求恶意访问跨域响应的数据。渲染进程会在CORB机制的约束下，选择性地将哪些资源送入渲染进程供页面使用。
+**示例**：
+```javascript
+// 简单请求示例
+fetch('http://api.example.com/data', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  body: 'name=value'
+});
+```
 
-例如，一个网页可能通过AJAX请求从另一个域的服务器获取数据。虽然某然情况下这样的请求可能会成功，但如果浏览器检查到请求返回的数据可能包含恶意代码与同源内测了冲突，浏览器可能会阻止网页访问访问的数据，以确保用户的安全。
+#### 2. 预检请求（Preflight Request）
 
-跨源资源共享（Cross-Origin Resource Sharing，CORS）是一种机制；允许在受控的条件下，不同源的网页能够请求和共享资源。由于浏览器的同源策略限制了跨域请求，CORS提供了一种方式来解决在Web应用中进行跨域数据交换的问题。
+不满足简单请求条件的 CORS 请求会先发送一个预检请求（OPTIONS 方法），询问服务器是否允许实际的跨域请求。
 
-CORS的基本思想是，服务器在响应中提供一个标头（HTTP头），指示哪些源被允许访问资源。浏览器在发起跨域请求时会先发送一个预检请求（**OPTIONS 请求**）到服务器，服务器通过设置适当的CORS表头来指定是否允许跨域请求，并指定允许的请求源、方法、表头等信息。
+**触发预检请求的情况**：
+- 使用了 PUT、DELETE 等非简单请求方法
+- 自定义了请求头（如 `X-Custom-Header`）
+- Content-Type 不是上述三个值之一（如 `application/json`）
 
-### 简单请求
+## 为什么会发送两次请求？
 
-不会触发CORS预检请求。这样的请求为`简单请求`。若请求满足所有下述条件，则该请求可视为`简单请求`：
+### 原因分析
 
-1. HTTP方法限制：之恶能使用GET、FEAD、POST这三种HTTP方法之一。如果请求使用了其他HTTP方法，就不再视为简单请求。
+当你的 POST 请求满足以下条件之一时，浏览器会自动发送预检请求：
 
-2. 自定义标头限制：请求的HTTP标头只能是以下几种常见的标头：`Accept`、`Accept-Language`、`Content-Language`、`Last-Event-ID`、`Content-Type`（仅限于`application/x-www-form-urlencoded`、`multipart/from-data`、`text/plain`）。HTML头部header field字段：DRP、Download、Save-Data、Viewport-Width、Width。如果请求使用了其他标头，同样不再被视为简单请求。
+1. **Content-Type 为 `application/json`**
+```javascript
+fetch('http://api.example.com/data', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'  // 触发预检
+  },
+  body: JSON.stringify({ name: 'value' })
+});
+```
 
-3. 请求中没有使用ReadableStream对象。
+2. **使用自定义请求头**
+```javascript
+fetch('http://api.example.com/data', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer token',  // 自定义头部
+    'X-Custom-Header': 'custom'       // 自定义头部
+  },
+  body: JSON.stringify({ name: 'value' })
+});
+```
 
-4. 不使用自定义请求标头，请求不能包含用户自定义的标头。
+3. **使用非简单请求方法**
+```javascript
+fetch('http://api.example.com/data', {
+  method: 'PUT',  // PUT 不是简单请求方法
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ name: 'value' })
+});
+```
 
-5. 请求中的任意XMLHttpRequestUpload对象均没有注册任何事件监听器；XMLHttpRequestUpload对象可以使用XMLHttpRequest.upload属性访问。
+### 两次请求的详细过程
 
-### 预检请求
+```javascript
+// 客户端代码
+fetch('http://api.example.com/data', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ name: 'value' })
+});
+```
 
-非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为`预检请求`。
+**第一次请求：OPTIONS 预检请求**
 
-需预检的请求要求必须首先使用OPTIONS方法发起一个预检请求到服务器，以获知服务器是否允许该实际请求。`预检请求`的使用，可以避免跨域请求对服务器的用户数据产生未预期的影响。
+```http
+OPTIONS /api/data HTTP/1.1
+Host: api.example.com
+Origin: http://example.com
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: Content-Type
+```
 
-例如我们再掘金上删除一条沸点：
+**服务器响应（允许跨域）**
 
-!['预检请求'](./images/两次请求-1.png '预检请求')
+```http
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: http://example.com
+Access-Control-Allow-Methods: POST, GET, OPTIONS
+Access-Control-Allow-Headers: Content-Type
+Access-Control-Max-Age: 86400
+```
 
-它首先会发起一个预检请求，预检请求的头信息包括两个特殊字段：
+**第二次请求：实际的 POST 请求**
 
-- Access-Control-Request-Method：该字段是必须的，用来列出浏览器的CORS请求会用到哪些HTTP方法，上例是POST。
-- Access-Control-Request-Header：该字段是一个逗号分隔的字符串，指定浏览器CORS请求会额外发送的头信息字段，上例是`content-type`，`x-secsdk-csrf=-token`。
-- Access-Control-Allow-Origin：在上述例子中，表示`https：//juejin.cn`可以请求数据，也可以设置为`*`符号，表示统一任意跨源请求。
-- Access-Control-Max-Age：该字段可选，用来指定本次预检请求的有效期，单位为秒。上面的结果中，有效期是1天（86408秒），即允许缓存该条回应1天（86408秒），在此期间，不会发送另一条预检请求。
+```http
+POST /api/data HTTP/1.1
+Host: api.example.com
+Origin: http://example.com
+Content-Type: application/json
 
-一旦服务器通过了`预检请求`，以后每次浏览器正常的CORS请求，就都跟简单请求一样，会有一个Origin头信息字段。服务器的回应，也会有一个Access-Control-Allow-Origin头信息字段。服务器的回应，也有一个Access-Control-Allow-Origin头信息字段。
+{"name":"value"}
+```
 
-!['预检请求'](./images/两次请求-2.png '预检请求')
+**服务器响应**
 
-上面头信息中，Access-Control-Allow-Origin字段是每次回应都必定包含的。
+```http
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: http://example.com
+Content-Type: application/json
 
-### 附带身份凭证的请求与通配符
+{"success": true}
+```
 
-在响应附带身份凭证的请求时：
-- 为了避免恶意网站滥用Access-Control-Allow-Origin头部字段来获取用户敏感信息，服务器在设置时不能将其值设为通配符`*`相反，应该将其设置为特定的域，例如：Access-Control-Allow-Origin：`https://juejin.cn`。通过将Access-Control-Allow-Origin设置为特定的域，服务器只允许来自指定域的请求进行跨域访问。这样可以限制快于请求的范围，避免不可信的域获取到用户敏感信息。
-- 为了避免潜在的安全风险，服务器不能将Access-Control-Allow-Headers的值设为通配符`*`。这是因为不受限制的请求头可能被滥用。相反，应该将其设置为包含标头名称的列表，例如：Access-Control-Allow-Header：X-PINGOTHER，Content-Type。通过将Access-Control-Allow-Headers设置为明确的标头名称列表，服务器可以限制哪些自定义请求头是允许的。只有在允许的标头列表中的头部字段才能在跨域请求中被接受。
-- 为了比秒潜在的安全风险，服务器不能将Access-Control-Allow-Methods的值设为通配符`*`。这样做将允许来自任意域的请求使用任意的HTTP方法，可能导致滥用行为的发生。相反，应该将其设置为特定的请求方法名称列表，例如：Access-Control-Allow-Methods：POST、GET。通过将Access-Control-Allow-Methods设置为明确的请求方法列表，服务器可以限制哪些方法是允许的。只有再允许的方法列表中的方法才能在跨域请求中被接收和处理。
-- 对于携带身份凭证的请求（通常是Cookie），这是因为请求的标头中携带了Cookie信息，如果Access-Control-Allow-Origin的值为`*`，请求将会失败。而将Access-Control-Allow-Origin的值设置为`http://juejin.cn`，则请求将成功执行。
+## 预检请求的缓存
 
-另外，响应标头中也携带了Set-Cookie，尝试对Cookie进行修改。如果操作失败，将会抛出异常。
+### Access-Control-Max-Age
 
-## 为什么本地使用webpack进行dev开发时，不需要服务器端配置CORS的情况下访问到线上接口？
+服务器可以通过 `Access-Control-Max-Age` 响应头来指定预检请求的缓存时间（单位：秒）。
 
-当你在本地通过Ajax或者其他方式请求线上接口时，由于浏览器的同源策略，会出现跨域的问题。但是在服务器端并不会出现这个问题。
+```http
+Access-Control-Max-Age: 86400  // 缓存 24 小时
+```
 
-它是通过Webpack Dev Server来实现这个功能。当你在浏览器中发送请求时，请求会先被Webpack Dev Server捕获，然后根据你的代理规则将请求转发到目标服务器，目标服务器返回的数据再经由Webpack Dev Server转发回浏览器。这样就绕过了浏览器的同源策略限制，使你能够再本地开发环境中访问线上接口。
+在缓存有效期内，浏览器不会再次发送预检请求，直接发送实际请求。
 
-## 参考文章
+### 缓存示例
 
-[CORS简单请求+预检请求](https://github.com/amandakelake/blog/issues/62)
+```javascript
+// 第一次请求：发送预检请求
+fetch('http://api.example.com/data', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'value' })
+});
 
-[跨域资源共享CORS详解](http://www.ruanyifeng.com/blog/2016/04/cors.html)
+// 第二次请求（24小时内）：不会发送预检请求
+fetch('http://api.example.com/data', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'value2' })
+});
+```
 
-[跨源资源共享（CORS） - HTTP | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#%E9%A2%84%E6%A3%80%E8%AF%B7%E6%B1%82)
+## 如何避免预检请求？
+
+### 1. 使用简单请求
+
+```javascript
+// 不触发预检
+fetch('http://api.example.com/data', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  body: 'name=value'
+});
+
+// 或
+fetch('http://api.example.com/data', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'text/plain'
+  },
+  body: 'name=value'
+});
+```
+
+### 2. 同源部署
+
+将前端和后端部署在同一域名下，避免跨域：
+
+```
+前端：http://example.com
+后端：http://example.com/api
+```
+
+### 3. 使用代理（开发环境）
+
+**Webpack Dev Server 代理配置**：
+
+```javascript
+// webpack.config.js
+module.exports = {
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://api.example.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+  }
+};
+
+// 使用
+fetch('/api/data', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'value' })
+});
+```
+
+**Vite 代理配置**：
+
+```javascript
+// vite.config.js
+export default {
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://api.example.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  }
+};
+```
+
+### 4. 服务端配置 CORS
+
+如果必须发送预检请求，确保服务器正确配置 CORS 响应头。
+
+**Node.js（Express）示例**：
+
+```javascript
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+// 基本配置
+app.use(cors());
+
+// 或详细配置
+app.use(cors({
+  origin: 'http://example.com',  // 允许的源
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  maxAge: 86400  // 预检请求缓存时间
+}));
+
+app.post('/data', (req, res) => {
+  res.json({ success: true });
+});
+
+app.listen(3000);
+```
+
+**Nginx 配置示例**：
+
+```nginx
+server {
+    listen 80;
+    server_name api.example.com;
+
+    location / {
+        # 允许的源
+        add_header Access-Control-Allow-Origin http://example.com;
+        
+        # 允许的方法
+        add_header Access-Control-Allow-Methods 'GET, POST, PUT, DELETE, OPTIONS';
+        
+        # 允许的头部
+        add_header Access-Control-Allow-Headers 'Content-Type, Authorization';
+        
+        # 允许携带凭证
+        add_header Access-Control-Allow-Credentials true;
+        
+        # 预检请求缓存时间
+        add_header Access-Control-Max-Age 86400;
+        
+        # 处理 OPTIONS 预检请求
+        if ($request_method = 'OPTIONS') {
+            return 204;
+        }
+        
+        # 其他请求
+        proxy_pass http://backend;
+    }
+}
+```
+
+## 携带凭证的请求
+
+### 配置凭证
+
+**客户端**：
+
+```javascript
+fetch('http://api.example.com/data', {
+  method: 'POST',
+  credentials: 'include',  // 包含 Cookie
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ name: 'value' })
+});
+```
+
+**服务端**：
+
+```javascript
+app.use(cors({
+  origin: 'http://example.com',  // 不能是 *
+  credentials: true
+}));
+```
+
+**注意**：当请求携带凭证时，`Access-Control-Allow-Origin` 不能设置为 `*`，必须指定具体的源。
+
+## 常见问题
+
+### 1. 预检请求失败
+
+**错误信息**：
+```
+Access to XMLHttpRequest at 'http://api.example.com/data' from origin 'http://example.com' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+```
+
+**解决方案**：确保服务器正确配置 CORS 响应头。
+
+### 2. 预检请求缓存不生效
+
+**原因**：
+- 浏览器缓存被清除
+- `Access-Control-Max-Age` 未设置或设置过小
+- 请求参数发生变化
+
+**解决方案**：合理设置 `Access-Control-Max-Age` 值。
+
+### 3. 开发环境跨域问题
+
+**解决方案**：使用 Webpack 或 Vite 的代理功能。
+
+## 2025 年最佳实践
+
+### 1. 优先使用同源部署
+
+- 前端和后端部署在同一域名下
+- 使用路径区分不同服务
+
+### 2. 合理配置 CORS
+
+- 明确指定允许的源（避免使用 `*`）
+- 设置合理的预检请求缓存时间
+- 只允许必要的请求方法和头部
+
+### 3. 开发环境使用代理
+
+- Webpack Dev Server 代理
+- Vite 代理
+- Nginx 反向代理
+
+### 4. 生产环境使用 CDN
+
+- 静态资源托管到 CDN
+- API 使用同源或正确配置 CORS
 
 ## 总结
 
-预检请求是在进行跨域资源共享CORS时，由浏览器自动发起的一种OPTIONS请求。它的存在是为了保障安全，并允许服务器决定是否允许跨域请求。
+POST 请求发送两次的原因是触发了 CORS 预检请求机制：
 
-跨域请求是指在浏览器中向不同域名、不同端口或不同协议的资源发送请求。出于安全原因，浏览器默认禁止跨域请求，只允许同源策略。而当网页需要进行跨域请求时，浏览器会自动发送一个预检请求，以确定服务器是否允许实际的跨域请求。
+1. **第一次请求**：OPTIONS 预检请求，询问服务器是否允许跨域
+2. **第二次请求**：实际的 POST 请求，发送数据
 
-预检请求中包含了一些额外的头部信息，如Origin和Access-Control-Request-Methods等，用于告知服务器实际请求的方法和来源。服务器收到预检请求后，可以根据这些头部信息，进行验证和授权判断。如果服务器认可该跨域请求，将返回一个包含Access-Control-Allow-Origin等头部信息的响应，浏览器才会继续发送实际的跨域请求。
+**触发条件**：
+- Content-Type 不是简单请求的三个值之一
+- 使用自定义请求头
+- 使用非简单请求方法（PUT、DELETE 等）
 
-使用预检请求机制可以有效地防范跨域请求带来的安全风险，保护用户数据和隐私。
+**解决方案**：
+- 使用简单请求（避免预检）
+- 同源部署（避免跨域）
+- 开发环境使用代理
+- 生产环境正确配置 CORS
 
-整个完整的请求流程有如下图所示：
+理解 CORS 机制对于前端开发者来说非常重要，它不仅关系到跨域请求的实现，还关系到应用的安全性和性能。
 
-!['请求流程'](./images/CORS请求流程.png '请求流程')
+## 参考资源
 
-最后分享两个我的两个开源项目，它们分别是：
-
-[前端脚手架create-neat](https://github.com/xun082/react-cli)
-
-[在线代码协同编辑器](https://github.com/xun082/online-cooperative-edit)
+- [MDN - CORS](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS)
+- [MDN - 同源策略](https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy)
+- [Fetch API - CORS](https://fetch.spec.whatwg.org/#cors-protocol)
+- [HTTP 访问控制（CORS）](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS)
