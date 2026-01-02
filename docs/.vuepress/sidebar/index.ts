@@ -94,6 +94,18 @@ export const zhSidebar = sidebar({
               link: '2023年前端面试系列-HTML&CSS篇',
             },
             {
+              text: 'TypeScript篇',
+              link: '前端面试系列-TypeScript篇',
+            },
+            {
+              text: '性能优化篇',
+              link: '前端面试系列-性能优化篇',
+            },
+            {
+              text: '工程化篇',
+              link: '前端面试系列-工程化篇',
+            },
+            {
               text: '50道CSS基础面试题',
               link: '前端面试系列-50道CSS基础面试题（附答案）',
             },

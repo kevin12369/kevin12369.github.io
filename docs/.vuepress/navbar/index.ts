@@ -57,8 +57,11 @@ export const zhNavbar = navbar([
                     { text: "Vue篇", icon: "vuejs", link: "2023年前端面试系列-vue篇" },
                     { text: "JS篇", icon: "javascript", link: "2023年前端面试系列-JS篇" },
                     {text: "HTML&CSS篇", icon: "html5", link: "2023年前端面试系列-HTML&CSS篇" },
+                    { text: "TypeScript篇", icon: "code", link: "前端面试系列-TypeScript篇" },
+                    { text: "性能优化篇", icon: "rocket", link: "前端面试系列-性能优化篇" },
+                    { text: "工程化篇", icon: "tools", link: "前端面试系列-工程化篇" },
                     { text: "50道CSS基础面试题", icon: "css3-alt", link: "前端面试系列-50道CSS基础面试题（附答案）" },
-                    { text: "HTML 5 语义化", icon: "code", link: "前端面试系列-HTML 5 语义化" },
+                    { text: "HTML 5 语义化", icon: "file-code", link: "前端面试系列-HTML 5 语义化" },
                 ],
             },
             {
