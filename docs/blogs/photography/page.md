@@ -6,7 +6,7 @@ author: Kevin
 date: 2025-12-26
 category:
   - 生活
-tags:
+tag:
   - 摄影
   - 兴趣
 sticky: false

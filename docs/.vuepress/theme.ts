@@ -127,12 +127,12 @@ export default hopeTheme({
       attrs: true,
       chart: true,
       codetabs: true,
-      container: true,
       demo: true,
       echarts: true,
       figure: true,
       flowchart: true,
       gfm: true,
+      hint: true,
       imgLazyload: true,
       imgSize: true,
       include: true,
@@ -142,7 +142,7 @@ export default hopeTheme({
       playground: {
         presets: ['ts', 'vue'],
       },
-      presentation: {
+      revealJs: {
         plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
       },
       stylize: [

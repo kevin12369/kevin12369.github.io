@@ -3,7 +3,7 @@ icon: edit
 date: 2023-12-14
 category:
   - GPT
-tags:
+tag:
   - Llama
 ---
 ![[Pasted image 20240102160951.png]]

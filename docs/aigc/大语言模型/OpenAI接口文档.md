@@ -3,7 +3,7 @@ icon: edit
 date: 2023-10-31
 category:
   - GPT
-tags:
+tag:
   - OpenAI
 ---
 

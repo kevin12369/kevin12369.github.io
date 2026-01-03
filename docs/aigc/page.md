@@ -6,7 +6,7 @@ author: Kevin
 date: 2025-12-26
 category:
   - AIGC
-tags:
+tag:
   - AI
   - GPT
   - 大语言模型
