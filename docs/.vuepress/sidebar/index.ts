@@ -86,30 +86,48 @@ export const zhSidebar = sidebar({
               link: '01-AI增强型全栈开发者：2026年技术角色全景解析',
             },
             {
-              text: '02. 全栈开发者的进化史',
-              link: '02-全栈开发者的进化史：从传统到AI增强的变革之路',
+              text: '02. 技术演进历程',
+              link: '02-全栈开发的技术演进：从工具时代到智能体时代',
             },
             {
-              text: '03. AI编程趋势报告',
-              link: '03-2025-2026 AI编程趋势报告：生产力提升与氛围编程陷阱',
+              text: '03. 编程效率实证研究',
+              link: '03-AI编程效率的实证研究：从神话到现实',
             },
           ],
         },
         {
-          text: '工具与实践',
+          text: '技术范式',
+          icon: 'robot',
+          children: [
+            {
+              text: '04. Agents vs Skills',
+              link: '04-Agents vs Skills - 技术范式之争',
+            },
+            {
+              text: '05. Vibe Coding分析',
+              link: '05-Vibe Coding的批判性分析',
+            },
+            {
+              text: '06. Claude Skills解析',
+              link: '06-Claude Skills深度解析',
+            },
+          ],
+        },
+        {
+          text: '工程实践',
           icon: 'tools',
           children: [
             {
-              text: '04. AI工具链深度评测',
-              link: '04-AI工具链深度评测：Cursor、COZE、Dify等核心工具对比',
+              text: '07. 工具链工程化实践',
+              link: '07-AI工具链的工程化实践',
             },
             {
-              text: '05. Cursor IDE实战',
-              link: '05-Cursor IDE实战：从入门到精通的完整指南',
+              text: '08. 企业级应用实践',
+              link: '08-企业级AI应用的最佳实践',
             },
             {
-              text: '06. COZE企业级应用开发',
-              link: '06-COZE企业级应用开发：从零构建智能客服系统',
+              text: '09. 系统设计思维',
+              link: '09-AI时代的系统设计思维',
             },
           ],
         },
@@ -118,34 +136,16 @@ export const zhSidebar = sidebar({
           icon: 'brain',
           children: [
             {
-              text: '07. Prompt Engineering进阶',
-              link: '07-Prompt Engineering进阶：从初级到大师的实战指南',
+              text: '10. Prompt Engineering',
+              link: '10-Prompt Engineering的工程化方法',
             },
             {
-              text: '08. 系统设计革命',
-              link: '08-系统设计革命：AI时代的架构思维与最佳实践',
+              text: '11. 记忆与上下文管理',
+              link: '11-AI Agent的记忆与上下文管理',
             },
             {
-              text: '09. 产品思维觉醒',
-              link: '09-产品思维觉醒：AI增强型开发者的核心竞争力',
-            },
-          ],
-        },
-        {
-          text: '实战与未来',
-          icon: 'rocket',
-          children: [
-            {
-              text: '10. 实战案例：24小时构建SaaS',
-              link: '10-实战案例：用AI在24小时内构建完整的SaaS产品',
-            },
-            {
-              text: '11. 职业发展路径',
-              link: '11-职业发展路径：AI增强型全栈开发者的成长路线图',
-            },
-            {
-              text: '12. 2026年趋势预测',
-              link: '12-2026年趋势预测：AI应用开发的前沿技术与机遇',
+              text: '12. 技术趋势预测',
+              link: '12-2026-2030技术趋势大胆预测与多方向展望',
             },
           ],
         },
