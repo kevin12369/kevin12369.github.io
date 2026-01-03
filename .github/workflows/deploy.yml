@@ -28,8 +28,30 @@ jobs:
           node-version: "18"
           cache: "pnpm"
 
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache VuePress
+        uses: actions/cache@v3
+        with:
+          path: docs/.vuepress/.temp
+          key: ${{ runner.os }}-vuepress-temp-${{ hashFiles('docs/**/*') }}
+          restore-keys: |
+            ${{ runner.os }}-vuepress-temp-
+
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build VuePress site
         run: pnpm docs:build
@@ -39,3 +61,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/.vuepress/dist
+          cname: www.baidu.com
