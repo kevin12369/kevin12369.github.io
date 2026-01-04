@@ -182,20 +182,33 @@ export const zhSidebar = sidebar({
           text: 'AIGC资讯',
           icon: 'robot',
           children: [
-            { text: '大语言模型', prefix: 'aigc/大语言模型/', children: [
-              { text: 'OpenAI接口文档', link: 'OpenAI接口文档' },
-              { text: 'Llama 3：Meta开源大模型的进化之路', link: 'Llama 3：Meta开源大模型的进化之路' },
-              { text: '2025年大模型技术突破与趋势', link: '2025年大模型技术突破与趋势' },
-            ] },
-            { text: 'AI框架', prefix: 'aigc/AI框架/', children: [
-              { text: 'LangChain：构建AI智能体的操作系统', link: 'LangChain：构建AI智能体的操作系统' },
-              { text: '2025年大模型部署框架全解析：vLLM vs Ollama', link: '2025年大模型部署框架全解析：vLLM vs Ollama' },
-            ] },
-            { text: 'AI应用', prefix: 'aigc/AI应用/', children: [
-              { text: '2025年AIGC年度回顾', link: '2025年AIGC年度回顾特刊' },
-              { text: '本周AIGC资讯-第2期', link: '本周AIGC资讯-第2期' },
-              { text: '本周AIGC资讯-第1期', link: '本周AIGC资讯-第1期' },
-            ] },
+            {
+              text: '大语言模型',
+              prefix: 'aigc/大语言模型/',
+              children: [
+                { text: 'OpenAI接口文档', link: 'OpenAI接口文档' },
+                { text: 'Llama 2：详解Meta的大语言模型!', link: 'Llama 2：详解Meta的大语言模型!' },
+                { text: 'Llama 3：Meta开源大模型的进化之路', link: 'Llama 3：Meta开源大模型的进化之路' },
+                { text: '2025年大模型技术突破与趋势', link: '2025年大模型技术突破与趋势' },
+              ],
+            },
+            {
+              text: 'AI框架',
+              prefix: 'aigc/AI框架/',
+              children: [
+                { text: 'LangChain：构建AI智能体的操作系统', link: 'LangChain：构建AI智能体的操作系统' },
+                { text: '2025年大模型部署框架全解析：vLLM vs Ollama', link: '2025年大模型部署框架全解析：vLLM vs Ollama' },
+              ],
+            },
+            {
+              text: 'AI应用',
+              prefix: 'aigc/AI应用/',
+              children: [
+                { text: '2025年AIGC年度回顾特刊', link: '2025年AIGC年度回顾特刊' },
+                { text: '本周AIGC资讯-第2期', link: '本周AIGC资讯-第2期' },
+                { text: '本周AIGC资讯-第1期', link: '本周AIGC资讯-第1期' },
+              ],
+            },
           ],
         },
         {
@@ -220,30 +233,9 @@ export const zhSidebar = sidebar({
       icon: 'pen',
       prefix: '/essays/',
       children: [
-        {
-          text: '学习笔记',
-          icon: 'note',
-          prefix: 'notes/',
-          children: [{ text: '笔记', link: 'page' }],
-        },
-        {
-          text: '项目复盘',
-          icon: 'review',
-          prefix: 'review/',
-          children: [{ text: '复盘', link: 'page' }],
-        },
-        {
-          text: '技术总结',
-          icon: 'file-alt',
-          prefix: 'summary/',
-          children: [{ text: '总结', link: 'page' }],
-        },
-        {
-          text: '生活随笔',
-          icon: 'heart',
-          prefix: 'life/',
-          children: [{ text: '随笔', link: 'page' }],
-        },
+        { text: '音乐', icon: 'music', link: 'blogs/music/page' },
+        { text: '笔记', icon: 'note', link: 'blogs/notes/page' },
+        { text: '摄影', icon: 'camera', link: 'blogs/photography/page' },
       ],
     },
     {

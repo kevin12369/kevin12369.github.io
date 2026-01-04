@@ -1,6 +1,8 @@
 import { hopeTheme } from "vuepress-theme-hope";
 import { zhNavbar } from "./navbar/index.js";
 import { zhSidebar } from "./sidebar/index.js";
+import { enNavbar } from "./navbar/en.js";
+import { enSidebar } from "./sidebar/en.js";
 
 export default hopeTheme({
   hostname: 'https://kevin12369.github.io',
@@ -22,6 +24,15 @@ export default hopeTheme({
       displayFooter: true,
       metaLocales: {
         editLink: '在 GitHub 上编辑此页',
+      },
+    },
+    '/en/': {
+      navbar: enNavbar,
+      sidebar: enSidebar,
+      footer: '© 2024-present Kevin | MIT License',
+      displayFooter: true,
+      metaLocales: {
+        editLink: 'Edit this page on GitHub',
       },
     },
   },

@@ -21,17 +21,17 @@ export default defineUserConfig({
     ["meta", { name: "robots", content: "all" }],
   ],
 
-  // 多语言配置框架（为将来双语化做准备）
+  // 多语言配置
   locales: {
     '/': {
       lang: 'zh-CN',
       title: 'Kevin.AI',
       description: '探索AI增强型全栈开发的实践与思考'
     },
-    // '/en/': {
-    //   lang: 'en-US',
-    //   title: 'Kevin.AI',
-    //   description: 'Building AI-augmented systems for the future'
-    // }
+    '/en/': {
+      lang: 'en-US',
+      title: 'Kevin.AI',
+      description: 'Building AI-augmented systems for the future'
+    }
   },
 });

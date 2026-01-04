@@ -51,10 +51,9 @@ export const zhNavbar = navbar([
     icon: "pen",
     prefix: "/essays/",
     children: [
-      { text: "学习笔记", icon: "note", prefix: "notes/", children: [{ text: "笔记", link: "page" }] },
-      { text: "项目复盘", icon: "review", prefix: "review/", children: [{ text: "复盘", link: "page" }] },
-      { text: "技术总结", icon: "file-alt", prefix: "summary/", children: [{ text: "总结", link: "page" }] },
-      { text: "生活随笔", icon: "heart", prefix: "life/", children: [{ text: "随笔", link: "page" }] },
+      { text: "音乐", icon: "music", link: "blogs/music/page" },
+      { text: "笔记", icon: "note", link: "blogs/notes/page" },
+      { text: "摄影", icon: "camera", link: "blogs/photography/page" },
     ],
   },
   {
@@ -66,5 +65,11 @@ export const zhNavbar = navbar([
       { text: "内容类型", icon: "list", link: "type/" },
       { text: "难度等级", icon: "signal", link: "difficulty/" },
     ],
+  },
+  // 语言切换按钮（为双语化做准备）
+  {
+    text: "🌐 English",
+    link: "/en/",
+    icon: "language",
   },
 ]);
