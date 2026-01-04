@@ -167,8 +167,8 @@ export const siteConfig: SiteConfig = {
     ],
     // bangumi 配置
     bangumi: {
-        // 用户 ID
-        userId: "your-bangumi-id", // 可以设置为 "sai" 测试
+        // 用户 ID（设置为空字符串以禁用）
+        userId: "",
     },
 };
 
