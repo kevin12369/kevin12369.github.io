@@ -7,7 +7,6 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://kevin12369.github.io',
   base: '/',
-  trailingSlash: 'always',
 
   integrations: [
     mdx(),
@@ -30,11 +29,7 @@ export default defineConfig({
 
   compressHTML: true,
   
-  // AstroPaper 主题配置
+  // 博客配置
   title: 'Kevin.AI',
   description: '探索AI增强型全栈开发的实践与思考',
-  author: 'Kevin',
-  siteLogo: '/logo.svg',
-  siteFavicon: '/favicon.ico',
-  ogLocale: 'zh_CN',
 });
