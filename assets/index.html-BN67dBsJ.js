@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-8daa1a0e","path":"/","title":"首页","lang":"zh-CN","frontmatter":{"home":true,"layout":"BlogHome","icon":"home","title":"首页","heroImage":"/logo.svg","heroText":"勿忘初心","tagline":"最可怕的敌人，就是没有坚强的信念。——罗曼·罗兰","heroFullScreen":true,"projects":null,"footer":"customize your footer text"},"headers":[]}');export{e as data};
