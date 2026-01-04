@@ -66,10 +66,4 @@ export const zhNavbar = navbar([
       { text: "难度等级", icon: "signal", link: "difficulty/" },
     ],
   },
-  // 语言切换按钮（为双语化做准备）
-  {
-    text: "🌐 English",
-    link: "/en/",
-    icon: "language",
-  },
 ]);
