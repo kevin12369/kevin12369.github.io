@@ -10,8 +10,6 @@ export default hopeTheme({
     url: 'https://github.com/kevin12369',
   },
 
-  iconAssets: 'iconify',
-
   logo: '/logo.svg',
 
   docsDir: 'docs',
@@ -20,7 +18,7 @@ export default hopeTheme({
     '/': {
       navbar: zhNavbar,
       sidebar: zhSidebar,
-      footer: '默认页脚',
+      footer: '© 2024-present Kevin | MIT License',
       displayFooter: true,
       metaLocales: {
         editLink: '在 GitHub 上编辑此页',
@@ -29,14 +27,101 @@ export default hopeTheme({
   },
 
   plugins: {
+    icon: {
+      assets: 'iconify',
+    },
+
+    blog: {
+      description: '一个在泥潭挣扎的工具人 - 技术博客',
+      intro: '/intro.html',
+    },
+
     mdEnhance: {
+      align: true,
+      attrs: true,
+      chartjs: true,
+      codeTabs: true,
+      demo: true,
+      echarts: true,
+      figure: true,
+      flowchart: true,
       gfm: true,
       hint: true,
+      imgLazyload: true,
+      imgSize: true,
+      include: true,
       mark: true,
+      mermaid: true,
+      playground: {
+        presets: ['ts', 'vue'],
+      },
+      stylize: [
+        {
+          matcher: 'Recommended',
+          replacer: ({ tag }) => {
+            if (tag === 'em')
+              return {
+                tag: 'Badge',
+                attrs: { type: 'tip' },
+                content: 'Recommended',
+              };
+          },
+        },
+      ],
       sub: true,
       sup: true,
       tabs: true,
       vPre: true,
+      vuePlayground: true,
     },
+
+    comment: {
+      provider: 'Waline',
+      serverURL: 'https://waline.kevin12369.vercel.app',
+    },
+
+    pwa: {
+      favicon: '/favicon.ico',
+      cacheHTML: true,
+      cachePic: true,
+      appendBase: true,
+      apple: {
+        icon: '/assets/icon/apple-icon-152.png',
+        statusBarColor: 'black',
+      },
+      msTile: {
+        image: '/assets/icon/ms-icon-144.png',
+        color: '#ffffff',
+      },
+      manifest: {
+        icons: [
+          {
+            src: '/assets/icon/chrome-mask-512.png',
+            sizes: '512x512',
+            purpose: 'maskable',
+            type: 'image/png',
+          },
+          {
+            src: '/assets/icon/chrome-mask-192.png',
+            sizes: '192x192',
+            purpose: 'maskable',
+            type: 'image/png',
+          },
+          {
+            src: '/assets/icon/chrome-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+          {
+            src: '/assets/icon/chrome-192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+        ],
+      },
+    },
+
+    seo: true,
+    sitemap: true,
   },
 });

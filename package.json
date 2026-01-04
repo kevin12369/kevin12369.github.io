@@ -11,7 +11,11 @@
     "docs:update-package": "pnpm dlx vp-update"
   },
   "devDependencies": {
-    "@vuepress/client": "2.0.0-rc.26",
+    "@vue/repl": "^4.7.1",
+    "@vuepress/plugin-pwa": "^1.9.10",
+    "@vuepress/plugin-revealjs": "^2.0.0-rc.47",
+    "@waline/client": "^3.8.0",
+    "chart.js": "^4.5.1",
     "sass-embedded": "^1.97.1",
     "typescript": "^5.9.3",
     "vue": "^3.3.10",
