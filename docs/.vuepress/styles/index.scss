@@ -494,6 +494,21 @@ body {
   .navbar-brand:hover {
     animation: glitchText 0.3s ease;
   }
+
+  // 侧边栏切换按钮样式
+  .toggle-sidebar-button {
+    color: var(--text-secondary);
+    transition: all var(--transition-base);
+
+    &:hover {
+      color: var(--cyber-cyan);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+    }
+
+    .icon {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -1631,8 +1646,7 @@ html.dark {
 
 // 隐藏主题切换按钮
 .theme-toggle-button,
-.color-picker-button,
-.navbar .toggle-sidebar-button {
+.color-picker-button {
   display: none !important;
 }
 
