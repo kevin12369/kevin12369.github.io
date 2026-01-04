@@ -299,6 +299,7 @@ body {
   line-height: 1.8;
   overflow-x: hidden;
   position: relative;
+  min-height: 100vh;
 
   // 扫描线效果
   &::before {
@@ -319,6 +320,14 @@ body {
     z-index: 9999;
     opacity: 0.3;
   }
+}
+
+// 确保页面容器背景为黑色
+#app,
+.page,
+.theme-container,
+.theme-default-content {
+  background: var(--bg-primary) !important;
 }
 
 // 滚动条样式
@@ -356,15 +365,18 @@ body {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 .navbar {
-  background: rgba(10, 10, 10, 0.85) !important;
+  background: rgba(10, 10, 10, 0.95) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-color);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   transition: all var(--transition-base);
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
 
   &.blur {
-    background: rgba(10, 10, 10, 0.95) !important;
+    background: rgba(10, 10, 10, 0.98) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
   }
 
@@ -416,6 +428,40 @@ body {
 
           &::before {
             width: 80%;
+          }
+        }
+      }
+
+      // 下拉菜单样式
+      .dropdown-wrapper {
+        .navbar-dropdown {
+          background: var(--bg-secondary);
+          border: 1px solid var(--border-color);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+          border-radius: 8px;
+          padding: 0.5rem 0;
+          min-width: 200px;
+          z-index: 1001 !important;
+          position: absolute !important;
+          top: 100% !important;
+          left: 50% !important;
+          transform: translateX(-50%) !important;
+
+          .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            transition: all var(--transition-base);
+
+            &:hover {
+              background: rgba(0, 240, 255, 0.1);
+              color: var(--cyber-cyan);
+            }
+
+            &.active {
+              background: rgba(0, 240, 255, 0.15);
+              color: var(--cyber-cyan);
+            }
           }
         }
       }
@@ -1554,4 +1600,38 @@ html.dark {
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000px;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// 🚫 隐藏不需要的主题组件
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// 隐藏主题切换按钮
+.theme-toggle-button,
+.color-picker-button,
+.navbar .toggle-sidebar-button {
+  display: none !important;
+}
+
+// 隐藏首页的箭头和X按钮
+.home .hero .action-button::before,
+.home .hero .action-button::after,
+.home .hero .hero-actions::before,
+.home .hero .hero-actions::after {
+  display: none !important;
+}
+
+// 确保页面上下边距为黑色
+.page {
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+// 隐藏所有可能的切换按钮
+button[aria-label*="theme"],
+button[aria-label*="color"],
+button[aria-label*="toggle"],
+button[class*="theme"],
+button[class*="toggle"] {
+  display: none !important;
 }

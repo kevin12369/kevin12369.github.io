@@ -14,6 +14,14 @@ export default hopeTheme({
 
   docsDir: 'docs',
 
+  // 禁用主题切换功能
+  themePlugins: {
+    // 移除主题切换插件
+    themeColor: false,
+    // 移除返回顶部按钮
+    backToTop: false,
+  },
+
   locales: {
     '/': {
       navbar: zhNavbar,
