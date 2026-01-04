@@ -123,7 +123,7 @@ export const zhNavbar = navbar([
             { text: "Unity是什么", icon: "controller", link: "Unity是什么" },
             { text: "Unreal Engine是什么", icon: "cube", link: "Unreal Engine是什么" },
             { text: "Godot是什么", icon: "dice", link: "Godot是什么" },
-            { text: "打地鼠（Godot+C#）", icon: "game-controller", link: "打地鼠-Godot-C#完整教程" },
+            { text: "打地鼠（Godot+C#）", icon: "game-controller", link: "打地鼠-Godot-CSharp完整教程" },
         ]
     },
     {

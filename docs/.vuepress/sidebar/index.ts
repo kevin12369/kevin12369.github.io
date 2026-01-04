@@ -296,7 +296,7 @@ export const zhSidebar = sidebar({
               },
               {
                 text: '打地鼠（Godot+C#）',
-                link: '打地鼠-Godot-C#完整教程',
+                link: '打地鼠-Godot-CSharp完整教程',
               },
             ],
           },    {
