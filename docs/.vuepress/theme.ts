@@ -1,16 +1,45 @@
-import { defaultTheme } from '@vuepress/theme-default'
+import { plumeTheme } from 'vuepress-theme-plume'
 
-export default defaultTheme({
-  logo: '/logo.svg',
-  
+export default plumeTheme({
   // 导航栏配置
   navbar: [
     { text: '首页', link: '/' },
-    { text: '📚 深度学习', link: '/learning/' },
-    { text: '🛠️ 实战项目', link: '/projects/' },
-    { text: '💡 面试准备', link: '/interview/' },
-    { text: '📰 技术资讯', link: '/news/' },
-    { text: '📝 个人随笔', link: '/essays/' },
+    {
+      text: '📚 深度学习',
+      children: [
+        { text: 'AI全栈开发', link: '/learning/ai-fullstack/' },
+        { text: '数据结构与算法', link: '/learning/algorithm/' },
+        { text: '前端深度解析', link: '/learning/frontend-deep/' },
+        { text: '游戏开发深度', link: '/learning/game-deep/' },
+      ],
+    },
+    {
+      text: '🛠️ 实战项目',
+      children: [
+        { text: '游戏项目', link: '/projects/game/' },
+        { text: '物联网项目', link: '/projects/iot/' },
+      ],
+    },
+    {
+      text: '💡 面试准备',
+      children: [
+        { text: '前端面试', link: '/interview/frontend/' },
+      ],
+    },
+    {
+      text: '📰 技术资讯',
+      children: [
+        { text: 'AIGC资讯', link: '/news/aigc/' },
+      ],
+    },
+    {
+      text: '📝 个人随笔',
+      children: [
+        { text: '学习笔记', link: '/essays/notes/' },
+        { text: '摄影', link: '/essays/photography/' },
+        { text: '音乐', link: '/essays/music/' },
+      ],
+    },
     { text: '🏷️ 标签云', link: '/tags/' },
   ],
 
@@ -20,7 +49,6 @@ export default defaultTheme({
       {
         text: 'AI全栈开发',
         collapsible: true,
-        collapsed: false,
         children: [
           'ai-fullstack/01-AI增强型全栈开发者：2026年技术角色全景解析',
           'ai-fullstack/02-全栈开发的技术演进：从工具时代到智能体时代',
@@ -39,7 +67,6 @@ export default defaultTheme({
       {
         text: '数据结构与算法',
         collapsible: true,
-        collapsed: false,
         children: [
           'algorithm/数据结构与算法1-前言',
           'algorithm/数据结构与算法2-数组',
@@ -56,7 +83,6 @@ export default defaultTheme({
       {
         text: '前端深度解析',
         collapsible: true,
-        collapsed: false,
         children: [
           'frontend-deep/前端技术学习-AST抽象语法树',
           'frontend-deep/前端技术学习-HTTP协议详解',
@@ -70,7 +96,6 @@ export default defaultTheme({
       {
         text: '游戏开发深度',
         collapsible: true,
-        collapsed: false,
         children: [
           'game-deep/Godot是什么',
           'game-deep/Unity是什么',
@@ -82,7 +107,6 @@ export default defaultTheme({
       {
         text: '游戏项目',
         collapsible: true,
-        collapsed: false,
         children: [
           'game/打地鼠-Godot-CSharp完整教程',
         ]
@@ -90,7 +114,6 @@ export default defaultTheme({
       {
         text: '物联网项目',
         collapsible: true,
-        collapsed: false,
         children: [
           'iot/什么是物联网',
           'iot/什么是ThingsBoard',
@@ -104,7 +127,6 @@ export default defaultTheme({
       {
         text: '前端面试',
         collapsible: true,
-        collapsed: false,
         children: [
           'frontend/2023年前端面试系列-vue篇',
           'frontend/2023年前端面试系列-JS篇',
@@ -121,7 +143,6 @@ export default defaultTheme({
       {
         text: 'AIGC资讯',
         collapsible: true,
-        collapsed: false,
         children: [
           'aigc/',
         ]
@@ -131,7 +152,6 @@ export default defaultTheme({
       {
         text: '学习笔记',
         collapsible: true,
-        collapsed: false,
         children: [
           'notes/page',
         ]
@@ -139,7 +159,6 @@ export default defaultTheme({
       {
         text: '项目复盘',
         collapsible: true,
-        collapsed: false,
         children: [
           'review/page',
         ]
@@ -147,7 +166,6 @@ export default defaultTheme({
       {
         text: '技术总结',
         collapsible: true,
-        collapsed: false,
         children: [
           'summary/page',
         ]
@@ -155,7 +173,6 @@ export default defaultTheme({
       {
         text: '生活随笔',
         collapsible: true,
-        collapsed: false,
         children: [
           'life/page',
         ]
@@ -164,27 +181,18 @@ export default defaultTheme({
   },
 
   // 其他配置
-  sidebarDepth: 2,
-  editLinks: true,
-  editLinkText: '在 GitHub 上编辑此页',
+  logo: '/logo.svg',
+  repo: 'kevin12369/kevin12369.github.io',
+  docsRepo: 'kevin12369/kevin12369.github.io',
+  docsBranch: 'master',
+  docsDir: 'docs',
+  editLink: true,
   lastUpdated: true,
-  lastUpdatedText: '最后更新',
   contributors: true,
-  contributorsText: '贡献者',
-  
-  // 外观配置
-  colorMode: 'auto',
-  colorModeSwitch: true,
   
   // 页脚配置
   footer: {
     message: 'Released under the MIT License.',
     copyright: 'Copyright © 2024-present Kevin',
   },
-  
-  // 社交链接
-  socialLinks: [
-    { icon: 'github', link: 'https://github.com/kevin12369' },
-    { icon: 'email', link: 'mailto:example@example.com' },
-  ],
 })
