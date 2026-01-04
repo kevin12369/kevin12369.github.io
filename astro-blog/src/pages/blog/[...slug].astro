@@ -1,0 +1,83 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={`${post.data.title} - Kevin.AI`}>
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+    <article class="bg-gray-900 rounded-lg p-8 border border-gray-800">
+      <header class="mb-8 border-b border-gray-800 pb-6">
+        <div class="flex items-center gap-2 mb-4">
+          {post.data.category && (
+            <span class="text-xs px-2 py-1 bg-blue-900 text-blue-300 rounded">
+              {post.data.category}
+            </span>
+          )}
+          <time class="text-sm text-gray-500">
+            {post.data.pubDate.toLocaleDateString('zh-CN')}
+          </time>
+          {post.data.updatedDate && (
+            <span class="text-sm text-gray-500">
+              · 更新于 {post.data.updatedDate.toLocaleDateString('zh-CN')}
+            </span>
+          )}
+        </div>
+        <h1 class="text-4xl font-bold mb-4">{post.data.title}</h1>
+        {post.data.description && (
+          <p class="text-xl text-gray-400">{post.data.description}</p>
+        )}
+        {post.data.tags.length > 0 && (
+          <div class="flex flex-wrap gap-2 mt-4">
+            {post.data.tags.map((tag) => (
+              <span class="text-sm px-3 py-1 bg-gray-800 text-gray-400 rounded">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <div class="prose prose-invert max-w-none">
+        <Content />
+      </div>
+    </article>
+
+    <nav class="mt-8 flex justify-between">
+      <a href="/blog/" class="text-blue-400 hover:text-blue-300">
+        ← 返回文章列表
+      </a>
+    </nav>
+  </main>
+</Layout>
+
+<style>
+  .prose {
+    --tw-prose-body: #e6e6e6;
+    --tw-prose-headings: #ffffff;
+    --tw-prose-lead: #a1a1a1;
+    --tw-prose-links: #3b82f6;
+    --tw-prose-bold: #ffffff;
+    --tw-prose-counters: #a1a1a1;
+    --tw-prose-bullets: #a1a1a1;
+    --tw-prose-hr: #2a2a2a;
+    --tw-prose-quotes: #a1a1a1;
+    --tw-prose-quote-borders: #3b82f6;
+    --tw-prose-captions: #a1a1a1;
+    --tw-prose-code: #e6e6e6;
+    --tw-prose-pre-code: #e6e6e6;
+    --tw-prose-pre-bg: #1a1a1a;
+    --tw-prose-th-borders: #2a2a2a;
+    --tw-prose-td-borders: #2a2a2a;
+  }
+</style>
