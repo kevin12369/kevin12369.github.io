@@ -1,0 +1,226 @@
+import{_ as l}from"./plugin-vue_export-helper-DlAUqK2U.js";import{c as e,d as i,o as n}from"./app-ry7nqkQQ.js";const d={};function a(s,t){return n(),e("div",null,[...t[0]||(t[0]=[i(`<h1 id="html-5-语义化-2025版" tabindex="-1"><a class="header-anchor" href="#html-5-语义化-2025版" aria-hidden="true">#</a> HTML 5 语义化（2025版）</h1><p><a href="https://rainylog.com/post/ife-note-1/" target="_blank" rel="noopener noreferrer">IFE-NOTE：页面结构语义化 | 雨落 (rainylog.com)</a></p><h2 id="什么是语义化" tabindex="-1"><a class="header-anchor" href="#什么是语义化" aria-hidden="true">#</a> 什么是语义化？</h2><p>语义化是指使用恰当的HTML标签来描述内容的含义和结构，而不仅仅是外观。语义化的核心思想是：<strong>用正确的标签做正确的事情</strong>。</p><p><strong>语义化包括两个层面</strong>：</p><ol><li><strong>内容语义化</strong>：使用恰当的标签来描述内容的含义</li><li><strong>代码语义化</strong>：编写清晰、易于理解的代码结构</li></ol><h2 id="为什么需要语义化" tabindex="-1"><a class="header-anchor" href="#为什么需要语义化" aria-hidden="true">#</a> 为什么需要语义化？</h2><ol><li><p><strong>可访问性（Accessibility）</strong>：</p><ul><li>屏幕阅读器能够更好地解析页面结构</li><li>键盘导航更加友好</li><li>帮助视障用户理解页面内容</li></ul></li><li><p><strong>SEO优化</strong>：</p><ul><li>搜索引擎能够更好地理解页面内容</li><li>提高页面在搜索结果中的排名</li><li>更好的结构化数据支持</li></ul></li><li><p><strong>代码可维护性</strong>：</p><ul><li>代码结构清晰，易于阅读</li><li>降低团队协作成本</li><li>便于后期维护和修改</li></ul></li><li><p><strong>面向未来</strong>：</p><ul><li>浏览器在未来可能提供更丰富的支持</li><li>更好的API集成</li><li>更智能的内容处理</li></ul></li></ol><h2 id="html5语义化标签" tabindex="-1"><a class="header-anchor" href="#html5语义化标签" aria-hidden="true">#</a> HTML5语义化标签</h2><h3 id="页面结构标签" tabindex="-1"><a class="header-anchor" href="#页面结构标签" aria-hidden="true">#</a> 页面结构标签</h3><h4 id="header" tabindex="-1"><a class="header-anchor" href="#header" aria-hidden="true">#</a> <code>&lt;header&gt;</code></h4><p><strong>用途</strong>：表示页面或区块的头部</p><p><strong>特点</strong>：</p><ul><li>可以包含标题、logo、导航等</li><li>一个页面可以包含多个 <code>&lt;header&gt;</code> 元素</li><li>通常包含 <code>&lt;h1&gt;</code> 到 <code>&lt;h6&gt;</code> 标题</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;header&gt;
+  &lt;h1&gt;网站标题&lt;/h1&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;article&gt;
+  &lt;header&gt;
+    &lt;h2&gt;文章标题&lt;/h2&gt;
+    &lt;p&gt;发布时间：2025-01-02&lt;/p&gt;
+  &lt;/header&gt;
+&lt;/article&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="nav" tabindex="-1"><a class="header-anchor" href="#nav" aria-hidden="true">#</a> <code>&lt;nav&gt;</code></h4><p><strong>用途</strong>：表示导航链接区域</p><p><strong>特点</strong>：</p><ul><li>用于主要导航或文章导航</li><li>一个页面可以包含多个 <code>&lt;nav&gt;</code> 元素</li><li>通常包含 <code>&lt;ul&gt;</code> 列表</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;/&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/about&quot;&gt;关于&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/contact&quot;&gt;联系&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="main" tabindex="-1"><a class="header-anchor" href="#main" aria-hidden="true">#</a> <code>&lt;main&gt;</code></h4><p><strong>用途</strong>：表示页面的主要内容</p><p><strong>特点</strong>：</p><ul><li>每个页面只能有一个 <code>&lt;main&gt;</code> 元素</li><li>不应包含在 <code>&lt;article&gt;</code>、<code>&lt;aside&gt;</code>、<code>&lt;footer&gt;</code>、<code>&lt;header&gt;</code> 或 <code>&lt;nav&gt;</code> 中</li><li>帮助屏幕阅读器快速定位主要内容</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;body&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;main&gt;
+    &lt;article&gt;...&lt;/article&gt;
+    &lt;article&gt;...&lt;/article&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="article" tabindex="-1"><a class="header-anchor" href="#article" aria-hidden="true">#</a> <code>&lt;article&gt;</code></h4><p><strong>用途</strong>：表示一个独立的、完整的内容块</p><p><strong>特点</strong>：</p><ul><li>可以独立分发或重用</li><li>应包含完整的标题、作者、发布时间、正文</li><li>可以嵌套使用（如评论）</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;article&gt;
+  &lt;header&gt;
+    &lt;h1&gt;文章标题&lt;/h1&gt;
+    &lt;p&gt;作者：张三 | 发布时间：2025-01-02&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;p&gt;文章内容...&lt;/p&gt;
+  &lt;footer&gt;
+    &lt;p&gt;版权所有 © 2025&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="section" tabindex="-1"><a class="header-anchor" href="#section" aria-hidden="true">#</a> <code>&lt;section&gt;</code></h4><p><strong>用途</strong>：表示文档中的一个独立章节</p><p><strong>特点</strong>：</p><ul><li>通常包含标题</li><li>用于对内容进行分组</li><li>可以嵌套使用</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;section&gt;
+  &lt;h2&gt;章节标题&lt;/h2&gt;
+  &lt;p&gt;章节内容...&lt;/p&gt;
+&lt;/section&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="aside" tabindex="-1"><a class="header-anchor" href="#aside" aria-hidden="true">#</a> <code>&lt;aside&gt;</code></h4><p><strong>用途</strong>：表示与页面主要内容相关但独立的内容</p><p><strong>特点</strong>：</p><ul><li>可以用于侧边栏</li><li>也可以用于文章中的注释、广告等</li><li>表示与周围内容没有密切关系的内容</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;aside&gt;
+  &lt;h3&gt;相关文章&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;文章1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;文章2&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/aside&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="footer" tabindex="-1"><a class="header-anchor" href="#footer" aria-hidden="true">#</a> <code>&lt;footer&gt;</code></h4><p><strong>用途</strong>：表示页面或区块的页脚</p><p><strong>特点</strong>：</p><ul><li>包含版权、联系方式、法律信息等</li><li>一个页面可以包含多个 <code>&lt;footer&gt;</code> 元素</li><li>不应包含主要内容</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;footer&gt;
+  &lt;p&gt;版权所有 © 2025&lt;/p&gt;
+  &lt;p&gt;联系方式：contact@example.com&lt;/p&gt;
+&lt;/footer&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="文本内容标签" tabindex="-1"><a class="header-anchor" href="#文本内容标签" aria-hidden="true">#</a> 文本内容标签</h3><h4 id="figure-和-figcaption" tabindex="-1"><a class="header-anchor" href="#figure-和-figcaption" aria-hidden="true">#</a> <code>&lt;figure&gt;</code> 和 <code>&lt;figcaption&gt;</code></h4><p><strong>用途</strong>：表示图片、图表、代码等及其说明</p><p><strong>特点</strong>：</p><ul><li><code>&lt;figure&gt;</code> 表示独立的内容</li><li><code>&lt;figcaption&gt;</code> 表示内容的说明</li><li>可以包含图片、视频、代码等</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;figure&gt;
+  &lt;img src=&quot;image.jpg&quot; alt=&quot;示例图片&quot;&gt;
+  &lt;figcaption&gt;这是一个示例图片&lt;/figcaption&gt;
+&lt;/figure&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="time" tabindex="-1"><a class="header-anchor" href="#time" aria-hidden="true">#</a> <code>&lt;time&gt;</code></h4><p><strong>用途</strong>：表示日期和时间</p><p><strong>特点</strong>：</p><ul><li>提供机器可读的时间格式</li><li>支持日期、时间、日期时间等</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;p&gt;发布时间：&lt;time datetime=&quot;2025-01-02&quot;&gt;2025年1月2日&lt;/time&gt;&lt;/p&gt;
+&lt;p&gt;活动时间：&lt;time datetime=&quot;2025-01-02T14:30&quot;&gt;2025年1月2日 14:30&lt;/time&gt;&lt;/p&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="mark" tabindex="-1"><a class="header-anchor" href="#mark" aria-hidden="true">#</a> <code>&lt;mark&gt;</code></h4><p><strong>用途</strong>：表示高亮或标记的文本</p><p><strong>特点</strong>：</p><ul><li>用于突出显示重要内容</li><li>不同于 <code>&lt;strong&gt;</code>（重要性）和 <code>&lt;em&gt;</code>（强调）</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;p&gt;请注意&lt;mark&gt;重要提示&lt;/mark&gt;：...&lt;/p&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="details-和-summary" tabindex="-1"><a class="header-anchor" href="#details-和-summary" aria-hidden="true">#</a> <code>&lt;details&gt;</code> 和 <code>&lt;summary&gt;</code></h4><p><strong>用途</strong>：表示可展开/折叠的内容</p><p><strong>特点</strong>：</p><ul><li><code>&lt;summary&gt;</code> 定义可见的标题</li><li><code>&lt;details&gt;</code> 包含可折叠的内容</li><li>无需JavaScript即可实现交互</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;details&gt;
+  &lt;summary&gt;点击展开更多内容&lt;/summary&gt;
+  &lt;p&gt;这里是详细内容...&lt;/p&gt;
+&lt;/details&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="dialog" tabindex="-1"><a class="header-anchor" href="#dialog" aria-hidden="true">#</a> <code>&lt;dialog&gt;</code></h4><p><strong>用途</strong>：表示对话框或模态框</p><p><strong>特点</strong>：</p><ul><li>原生支持模态框</li><li>提供API控制显示/隐藏</li><li>支持无障碍访问</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;dialog id=&quot;myDialog&quot;&gt;
+  &lt;p&gt;这是一个对话框&lt;/p&gt;
+  &lt;button id=&quot;closeDialog&quot;&gt;关闭&lt;/button&gt;
+&lt;/dialog&gt;
+
+&lt;button id=&quot;openDialog&quot;&gt;打开对话框&lt;/button&gt;
+
+&lt;script&gt;
+  const dialog = document.getElementById(&#39;myDialog&#39;);
+  document.getElementById(&#39;openDialog&#39;).onclick = () =&gt; dialog.showModal();
+  document.getElementById(&#39;closeDialog&#39;).onclick = () =&gt; dialog.close();
+&lt;/script&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="其他语义化标签" tabindex="-1"><a class="header-anchor" href="#其他语义化标签" aria-hidden="true">#</a> 其他语义化标签</h3><h4 id="address" tabindex="-1"><a class="header-anchor" href="#address" aria-hidden="true">#</a> <code>&lt;address&gt;</code></h4><p><strong>用途</strong>：表示联系信息</p><p><strong>特点</strong>：</p><ul><li>用于作者或文档的联系信息</li><li>通常包含在 <code>&lt;footer&gt;</code> 中</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;address&gt;
+  &lt;p&gt;作者：张三&lt;/p&gt;
+  &lt;p&gt;邮箱：zhangsan@example.com&lt;/p&gt;
+  &lt;p&gt;地址：北京市朝阳区&lt;/p&gt;
+&lt;/address&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="abbr" tabindex="-1"><a class="header-anchor" href="#abbr" aria-hidden="true">#</a> <code>&lt;abbr&gt;</code></h4><p><strong>用途</strong>：表示缩写或首字母缩略词</p><p><strong>特点</strong>：</p><ul><li>提供完整形式的说明</li><li>帮助屏幕阅读器理解</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;p&gt;&lt;abbr title=&quot;HyperText Markup Language&quot;&gt;HTML&lt;/abbr&gt; 是网页的标记语言。&lt;/p&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="cite" tabindex="-1"><a class="header-anchor" href="#cite" aria-hidden="true">#</a> <code>&lt;cite&gt;</code></h4><p><strong>用途</strong>：表示作品的标题</p><p><strong>特点</strong>：</p><ul><li>用于书籍、电影、音乐等作品标题</li><li>不应包含人名</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;p&gt;我最近读了&lt;cite&gt;百年孤独&lt;/cite&gt;这本书。&lt;/p&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="data" tabindex="-1"><a class="header-anchor" href="#data" aria-hidden="true">#</a> <code>&lt;data&gt;</code></h4><p><strong>用途</strong>：表示机器可读的数据</p><p><strong>特点</strong>：</p><ul><li><code>value</code> 属性提供机器可读的值</li><li>内容提供人类可读的值</li></ul><p><strong>示例</strong>：</p><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;p&gt;价格：&lt;data value=&quot;99.99&quot;&gt;¥99.99&lt;/data&gt;&lt;/p&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="语义化最佳实践" tabindex="-1"><a class="header-anchor" href="#语义化最佳实践" aria-hidden="true">#</a> 语义化最佳实践</h2><h3 id="_1-正确使用标题层级" tabindex="-1"><a class="header-anchor" href="#_1-正确使用标题层级" aria-hidden="true">#</a> 1. 正确使用标题层级</h3><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;!-- 推荐 --&gt;
+&lt;h1&gt;网站标题&lt;/h1&gt;
+&lt;article&gt;
+  &lt;h2&gt;文章标题&lt;/h2&gt;
+  &lt;section&gt;
+    &lt;h3&gt;小节标题&lt;/h3&gt;
+  &lt;/section&gt;
+&lt;/article&gt;
+
+&lt;!-- 不推荐 --&gt;
+&lt;h1&gt;网站标题&lt;/h1&gt;
+&lt;h3&gt;文章标题&lt;/h3&gt; &lt;!-- 跳过了h2 --&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-使用列表组织导航" tabindex="-1"><a class="header-anchor" href="#_2-使用列表组织导航" aria-hidden="true">#</a> 2. 使用列表组织导航</h3><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;!-- 推荐 --&gt;
+&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;/&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/about&quot;&gt;关于&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- 不推荐 --&gt;
+&lt;nav&gt;
+  &lt;a href=&quot;/&quot;&gt;首页&lt;/a&gt;
+  &lt;a href=&quot;/about&quot;&gt;关于&lt;/a&gt;
+&lt;/nav&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-使用表单语义化标签" tabindex="-1"><a class="header-anchor" href="#_3-使用表单语义化标签" aria-hidden="true">#</a> 3. 使用表单语义化标签</h3><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;!-- 推荐 --&gt;
+&lt;form&gt;
+  &lt;label for=&quot;name&quot;&gt;姓名：&lt;/label&gt;
+  &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;
+  &lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- 不推荐 --&gt;
+&lt;div&gt;
+  &lt;span&gt;姓名：&lt;/span&gt;
+  &lt;input type=&quot;text&quot;&gt;
+  &lt;div&gt;提交&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-使用表格语义化标签" tabindex="-1"><a class="header-anchor" href="#_4-使用表格语义化标签" aria-hidden="true">#</a> 4. 使用表格语义化标签</h3><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;!-- 推荐 --&gt;
+&lt;table&gt;
+  &lt;caption&gt;员工信息表&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;姓名&lt;/th&gt;
+      &lt;th&gt;年龄&lt;/th&gt;
+      &lt;th&gt;职位&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;张三&lt;/td&gt;
+      &lt;td&gt;25&lt;/td&gt;
+      &lt;td&gt;工程师&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;!-- 不推荐 --&gt;
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;姓名&lt;/td&gt;
+    &lt;td&gt;年龄&lt;/td&gt;
+    &lt;td&gt;职位&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;张三&lt;/td&gt;
+    &lt;td&gt;25&lt;/td&gt;
+    &lt;td&gt;工程师&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-使用引用语义化标签" tabindex="-1"><a class="header-anchor" href="#_5-使用引用语义化标签" aria-hidden="true">#</a> 5. 使用引用语义化标签</h3><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;!-- 推荐 --&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;这里是引用的内容&lt;/p&gt;
+  &lt;footer&gt;—— &lt;cite&gt;作者名&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- 不推荐 --&gt;
+&lt;p&gt;“这里是引用的内容” —— 作者名&lt;/p&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2025年新增语义化特性" tabindex="-1"><a class="header-anchor" href="#_2025年新增语义化特性" aria-hidden="true">#</a> 2025年新增语义化特性</h2><h3 id="_1-搜索元素-search" tabindex="-1"><a class="header-anchor" href="#_1-搜索元素-search" aria-hidden="true">#</a> 1. 搜索元素 <code>&lt;search&gt;</code></h3><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;search&gt;
+  &lt;label for=&quot;search-input&quot;&gt;搜索：&lt;/label&gt;
+  &lt;input type=&quot;search&quot; id=&quot;search-input&quot; name=&quot;q&quot;&gt;
+  &lt;button type=&quot;submit&quot;&gt;搜索&lt;/button&gt;
+&lt;/search&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-结构化数据" tabindex="-1"><a class="header-anchor" href="#_2-结构化数据" aria-hidden="true">#</a> 2. 结构化数据</h3><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;script type=&quot;application/ld+json&quot;&gt;
+{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;Article&quot;,
+  &quot;headline&quot;: &quot;文章标题&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Person&quot;,
+    &quot;name&quot;: &quot;张三&quot;
+  },
+  &quot;datePublished&quot;: &quot;2025-01-02&quot;
+}
+&lt;/script&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-无障碍增强" tabindex="-1"><a class="header-anchor" href="#_3-无障碍增强" aria-hidden="true">#</a> 3. 无障碍增强</h3><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;!-- ARIA标签 --&gt;
+&lt;nav aria-label=&quot;主导航&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;/&quot; aria-current=&quot;page&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/about&quot;&gt;关于&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- 跳过导航链接 --&gt;
+&lt;a href=&quot;#main-content&quot; class=&quot;skip-link&quot;&gt;跳到主要内容&lt;/a&gt;
+&lt;main id=&quot;main-content&quot;&gt;
+  &lt;!-- 主要内容 --&gt;
+&lt;/main&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="语义化检查工具" tabindex="-1"><a class="header-anchor" href="#语义化检查工具" aria-hidden="true">#</a> 语义化检查工具</h2><ol><li><p><strong>W3C Markup Validation Service</strong></p><ul><li>官方的HTML验证工具</li><li>检查HTML语法和语义</li></ul></li><li><p><strong>HTML5 Outliner</strong></p><ul><li>生成页面大纲</li><li>检查标题层级</li></ul></li><li><p><strong>axe DevTools</strong></p><ul><li>检查可访问性问题</li><li>提供修复建议</li></ul></li><li><p><strong>Lighthouse</strong></p><ul><li>Google的网站审计工具</li><li>包含可访问性检查</li></ul></li></ol><h2 id="常见错误" tabindex="-1"><a class="header-anchor" href="#常见错误" aria-hidden="true">#</a> 常见错误</h2><h3 id="_1-过度使用-div" tabindex="-1"><a class="header-anchor" href="#_1-过度使用-div" aria-hidden="true">#</a> 1. 过度使用 <code>&lt;div&gt;</code></h3><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;!-- 不推荐 --&gt;
+&lt;div class=&quot;header&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;nav&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;content&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;...&lt;/div&gt;
+
+&lt;!-- 推荐 --&gt;
+&lt;header&gt;...&lt;/header&gt;
+&lt;nav&gt;...&lt;/nav&gt;
+&lt;main&gt;...&lt;/main&gt;
+&lt;footer&gt;...&lt;/footer&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-忽略标题层级" tabindex="-1"><a class="header-anchor" href="#_2-忽略标题层级" aria-hidden="true">#</a> 2. 忽略标题层级</h3><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;!-- 不推荐 --&gt;
+&lt;h1&gt;网站标题&lt;/h1&gt;
+&lt;h4&gt;文章标题&lt;/h4&gt; &lt;!-- 跳过了h2和h3 --&gt;
+
+&lt;!-- 推荐 --&gt;
+&lt;h1&gt;网站标题&lt;/h1&gt;
+&lt;article&gt;
+  &lt;h2&gt;文章标题&lt;/h2&gt;
+&lt;/article&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-滥用-section" tabindex="-1"><a class="header-anchor" href="#_3-滥用-section" aria-hidden="true">#</a> 3. 滥用 <code>&lt;section&gt;</code></h3><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;!-- 不推荐 --&gt;
+&lt;section class=&quot;header&quot;&gt;...&lt;/section&gt;
+&lt;section class=&quot;footer&quot;&gt;...&lt;/section&gt;
+
+&lt;!-- 推荐 --&gt;
+&lt;header&gt;...&lt;/header&gt;
+&lt;footer&gt;...&lt;/footer&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-忽略表单标签" tabindex="-1"><a class="header-anchor" href="#_4-忽略表单标签" aria-hidden="true">#</a> 4. 忽略表单标签</h3><div class="language-html line-numbers-mode" data-ext="html"><pre class="language-html"><code>&lt;!-- 不推荐 --&gt;
+&lt;input type=&quot;text&quot; placeholder=&quot;姓名&quot;&gt;
+&lt;button&gt;提交&lt;/button&gt;
+
+&lt;!-- 推荐 --&gt;
+&lt;label for=&quot;name&quot;&gt;姓名：&lt;/label&gt;
+&lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;
+&lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="总结" tabindex="-1"><a class="header-anchor" href="#总结" aria-hidden="true">#</a> 总结</h2><p>语义化是HTML开发的重要原则，它不仅能够提高代码的可读性和可维护性，还能提升网站的可访问性和SEO效果。在实际开发中，我们应该：</p><ol><li><strong>选择合适的标签</strong>：根据内容的含义选择恰当的标签</li><li><strong>保持结构清晰</strong>：合理使用标题层级和嵌套关系</li><li><strong>关注可访问性</strong>：使用ARIA标签和语义化属性</li><li><strong>持续学习</strong>：关注HTML5的新特性和最佳实践</li></ol><p>记住：<strong>语义化不是为了浏览器，而是为了人和机器更好地理解你的内容</strong>。</p><h2 id="参考链接" tabindex="-1"><a class="header-anchor" href="#参考链接" aria-hidden="true">#</a> 参考链接</h2><p><a href="https://rainylog.com/post/ife-note-1/" target="_blank" rel="noopener noreferrer">IFE-NOTE：页面结构语义化 | 雨落 (rainylog.com)</a><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank" rel="noopener noreferrer">MDN Web Docs - HTML elements</a><a href="https://www.w3.org/TR/html5/" target="_blank" rel="noopener noreferrer">W3C HTML5 Specification</a></p>`,143)])])}const o=l(d,[["render",a],["__file","前端面试系列-HTML 5 语义化.html.vue"]]);export{o as default};
