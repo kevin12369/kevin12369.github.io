@@ -1,7 +1,7 @@
 {
   "name": "vuepress-theme-hope-template",
-  "version": "1.0.0",
-  "description": "Kevin's Blogs Progarm",
+  "version": "2.0.0",
+  "description": "Kevin's Blogs Program - 2026 Technology Knowledge Base",
   "license": "MIT",
   "type": "module",
   "scripts": {
