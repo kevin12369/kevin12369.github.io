@@ -34,7 +34,8 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
 // https://astro.build/config
 // Choose adapter depending on deployment environment
-const adapter = process.env.CF_PAGES ? cloudflarePages() : vercel({ mode: "serverless" });
+// GitHub Pages 部署使用纯静态构建，不需要 adapter
+const adapter = process.env.CF_PAGES ? cloudflarePages() : (process.env.VERCEL ? vercel({ mode: "serverless" }) : undefined);
 
 export default defineConfig({
     site: siteConfig.siteURL,
