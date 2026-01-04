@@ -34,6 +34,10 @@ export default hopeTheme({
     blog: {
       description: '一个在泥潭挣扎的工具人 - 技术博客',
       intro: '/intro.html',
+      medias: {
+        GitHub: 'https://github.com/kevin12369',
+        Email: 'mailto:491750329@qq.com',
+      },
     },
 
     mdEnhance: {
@@ -73,11 +77,6 @@ export default hopeTheme({
       tabs: true,
       vPre: true,
       vuePlayground: true,
-    },
-
-    comment: {
-      provider: 'Waline',
-      serverURL: 'https://waline.kevin12369.vercel.app',
     },
 
     pwa: {
