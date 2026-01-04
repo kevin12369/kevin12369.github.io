@@ -7,7 +7,7 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://kevin12369.github.io',
   base: '/',
-  trailingSlash: 'never',
+  trailingSlash: 'always',
 
   integrations: [
     mdx(),
@@ -18,7 +18,7 @@ export default defineConfig({
   ],
 
   build: {
-    format: 'file',
+    format: 'directory',
   },
 
   markdown: {
