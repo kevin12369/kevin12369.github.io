@@ -621,6 +621,9 @@ body {
   transition: transform 0.3s ease !important;
   display: block !important;
   flex-shrink: 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: translateX(0) !important;
 
   .sidebar-heading {
     font-family: var(--font-mono);
