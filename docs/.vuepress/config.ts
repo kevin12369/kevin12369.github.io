@@ -6,8 +6,8 @@ export default defineUserConfig({
   base: "/",
 
   lang: "zh-CN",
-  title: "Kevin的技术博客",
-  description: "一个在泥潭挣扎的工具人 - 技术博客，涵盖AI全栈、前端开发、算法、游戏开发等领域",
+  title: "Kevin.AI",
+  description: "探索AI增强型全栈开发的实践与思考",
 
   bundler: viteBundler(),
 
@@ -20,4 +20,18 @@ export default defineUserConfig({
     ["meta", { name: "author", content: "Kevin" }],
     ["meta", { name: "robots", content: "all" }],
   ],
+
+  // 多语言配置框架（为将来双语化做准备）
+  locales: {
+    '/': {
+      lang: 'zh-CN',
+      title: 'Kevin.AI',
+      description: '探索AI增强型全栈开发的实践与思考'
+    },
+    // '/en/': {
+    //   lang: 'en-US',
+    //   title: 'Kevin.AI',
+    //   description: 'Building AI-augmented systems for the future'
+    // }
+  },
 });

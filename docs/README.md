@@ -1,9 +1,9 @@
 ---
 home: true
 heroImage: /logo.svg
-heroText: Kevin的技术博客
-tagline: 一个在泥潭挣扎的工具人
-heroAlt: Kevin的技术博客
+heroText: Kevin.AI
+tagline: 探索AI增强型全栈开发的实践与思考
+heroAlt: Kevin.AI
 features:
   - title: 📚 深度学习
     details: AI全栈开发、数据结构与算法、前端深度解析、游戏开发深度

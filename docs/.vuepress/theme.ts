@@ -32,7 +32,7 @@ export default hopeTheme({
     },
 
     blog: {
-      description: '一个在泥潭挣扎的工具人 - 技术博客',
+      description: '探索AI增强型全栈开发的实践与思考',
       intro: '/intro.html',
       medias: {
         GitHub: 'https://github.com/kevin12369',
