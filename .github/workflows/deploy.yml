@@ -1,4 +1,4 @@
-name: Deploy Twilight to GitHub Pages
+name: Deploy Astro Blog to GitHub Pages
 
 on:
   push:
@@ -26,23 +26,18 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9.14.4
-
       - name: Install dependencies
-        working-directory: ./Twilight
-        run: pnpm install --frozen-lockfile
+        working-directory: ./astro-blog
+        run: npm install
 
-      - name: Build Twilight
-        working-directory: ./Twilight
-        run: pnpm build
+      - name: Build Astro Blog
+        working-directory: ./astro-blog
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./Twilight/dist
+          path: ./astro-blog/dist
 
   deploy:
     environment:
