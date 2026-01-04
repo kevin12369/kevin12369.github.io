@@ -19,6 +19,8 @@
   "dependencies": {
     "@vue/repl": "^3.0.0",
     "@vuepress/bundler-vite": "^2.0.0-rc.26",
+    "@vuepress/plugin-git": "^2.0.0-rc.121",
+    "@vuepress/plugin-search": "^1.9.10",
     "chart.js": "^4.4.1",
     "echarts": "^5.4.3",
     "flowchart.ts": "^2.0.0",
