@@ -278,29 +278,28 @@ export const zhSidebar = sidebar({
       ],
     },
     {
-      text: '游戏开发',
-      icon: 'gamepad',
-      prefix: 'game/',
-      children: [
-        {
-          text: 'Unity是什么',
-          link: 'Unity是什么',
-        },
-        {
-          text: 'Unreal Engine是什么',
-          link: 'Unreal Engine是什么',
-        },
-        {
-          text: 'Godot是什么',
-          link: 'Godot是什么',
-        },
-        {
-          text: '打地鼠',
-          link: '打地鼠',
-        },
-      ],
-    },
-    {
+            text: '游戏开发',
+            icon: 'gamepad',
+            prefix: 'game/',
+            children: [
+              {
+                text: 'Unity是什么',
+                link: 'Unity是什么',
+              },
+              {
+                text: 'Unreal Engine是什么',
+                link: 'Unreal Engine是什么',
+              },
+              {
+                text: 'Godot是什么',
+                link: 'Godot是什么',
+              },
+              {
+                text: '打地鼠（Godot+C#）',
+                link: '打地鼠-Godot-C#完整教程',
+              },
+            ],
+          },    {
       text: '物联网',
       icon: 'link',
       prefix: 'thingsboard/',
