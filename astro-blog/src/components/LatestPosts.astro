@@ -14,9 +14,9 @@ const { posts } = Astro.props;
 		<p class="text-xl font-bold">Latest Posts</p>
 		<a href="/blog/" class="underline hover:text-orange-600">all posts →</a>
 	</div>
-	<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+	<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 		{
-			posts.map((post: any) => (
+			posts.slice(0, 4).map((post: any) => (
 				<div>
 					<Card post={post} />
 				</div>

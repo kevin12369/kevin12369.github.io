@@ -1,11 +1,10 @@
 const disabledCss = {
-	'code::before': false,
-	'code::after': false,
-	'blockquote p:first-of-type::before': false,
-	'blockquote p:last-of-type::after': false,
+	// 禁用代码块的默认样式，使用rehype-pretty-code
 	pre: false,
 	code: false,
-	'pre code': false
+	'pre code': false,
+	'code::before': false,
+	'code::after': false
 };
 
 /** @type {import('tailwindcss').Config} */

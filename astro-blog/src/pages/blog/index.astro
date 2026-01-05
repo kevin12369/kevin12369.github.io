@@ -5,7 +5,7 @@ import Card from '../../components/Card.astro';
 import Section from '../../components/Section.astro';
 import { AppConfig } from '../../utils/AppConfig';
 
-const POSTS_PER_PAGE = 9;
+const POSTS_PER_PAGE = 4;
 
 const allPosts = (await getCollection('blog'))
   .filter(post => !post.data.draft)
@@ -18,7 +18,8 @@ const categories = Array.from(
 
 // Get current category from URL params
 const url = new URL(Astro.url);
-const currentCategory = url.searchParams.get('category');
+const categoryParam = url.searchParams.get('category');
+const currentCategory = categoryParam ? decodeURIComponent(categoryParam) : null;
 
 // Get current page from URL params
 const currentPage = parseInt(url.searchParams.get('page') || '1', 10);
@@ -113,8 +114,8 @@ const visiblePages = getVisiblePages(currentPage, totalPages);
         ))}
       </div>
 
-      <!-- Posts Grid - 3x3 layout -->
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-3 mb-12">
+      <!-- Posts Grid - 2x2 layout -->
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 mb-12">
         {currentPosts.map((post) => (
           <div>
             <Card post={post} />
