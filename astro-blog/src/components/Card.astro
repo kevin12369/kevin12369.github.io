@@ -19,28 +19,30 @@ const hasDescription = post.data.description && post.data.description.length > 0
 		<div
 			class="flex h-full w-full flex-col rounded-[1rem] bg-stone-300 p-4 text-gray-900 opacity-90 dark:bg-stone-800 dark:text-white"
 		>
-			<div class="flex-auto">
-				<div class="flex flex-col justify-between gap-2 pb-4 text-xs">
-					<div class="flex items-center gap-2">
-						{isPinned && <PinnedBadge size="sm" />}
-						<p>{formatDate(post.data.pubDate)}</p>
+			<div class="flex flex-col justify-between h-full">
+				<div>
+					<div class="flex flex-col justify-between gap-2 pb-4 text-xs">
+						<div class="flex items-center gap-2">
+							{isPinned && <PinnedBadge size="sm" />}
+							<p>{formatDate(post.data.pubDate)}</p>
+						</div>
+						<div>
+							<p class="font-bold">{post.data.minutesRead}</p>
+						</div>
 					</div>
-					<div>
-						<p class="font-bold">{post.data.minutesRead}</p>
-					</div>
-				</div>
 
-				<p class="pb-4 text-lg font-bold">{post.data.title}</p>
+					<p class="pb-4 text-lg font-bold">{post.data.title}</p>
 
-				<Tags tags={post.data.tags} />
-				
-				{hasDescription && (
-					<p class="line-clamp-3 pt-4 text-sm text-gray-600 dark:text-gray-400">
-						{post.data.description}
+					<Tags tags={post.data.tags} />
+
+					<p
+						class="line-clamp-3 pt-4 text-sm text-gray-600 dark:text-gray-400 min-h-[4.5em]"
+					>
+						{hasDescription ? post.data.description : '暂无描述'}
 					</p>
-				)}
+				</div>
+				<p class="pt-4 underline text-sm">read more →</p>
 			</div>
-			<p class="pt-4 underline text-sm">read more →</p>
 		</div>
 	</div>
 </a>
