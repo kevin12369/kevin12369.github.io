@@ -21,23 +21,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: "20"
+          bun-version: latest
 
       - name: Install dependencies
-        working-directory: ./astro-blog
-        run: npm install
+        working-directory: ./astro-blog-new
+        run: bun install
 
       - name: Build Astro Blog
-        working-directory: ./astro-blog
-        run: npm run build
+        working-directory: ./astro-blog-new
+        run: bun run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./astro-blog/dist
+          path: ./astro-blog-new/dist
 
   deploy:
     environment:
