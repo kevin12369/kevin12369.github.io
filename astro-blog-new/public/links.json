@@ -3,20 +3,7 @@
     {
       "id_name": "common-links",
       "desc": "常用友链",
-      "link_list": [
-        {
-          "name": "Arthals' ink",
-          "intro": "所见高山远木，阔云流风；所幸岁月盈余，了无拘束",
-          "link": "https://arthals.ink/",
-          "avatar": "https://cdn.arthals.ink/Arthals.png"
-        },
-        {
-          "name": "CWorld Site",
-          "intro": "求知若愚，虚怀若谷",
-          "link": "https://cworld0.com/",
-          "avatar": "https://cravatar.cn/avatar/1ffe42aa45a6b1444a786b1f32dfa8aa?s=200"
-        }
-      ]
+      "link_list": []
     },
     {
       "id_name": "inactive-links",
@@ -26,20 +13,7 @@
     {
       "id_name": "special-links",
       "desc": "特殊链接",
-      "link_list": [
-        {
-          "name": "Astro",
-          "intro": "用于构建内容驱动型网站的 Web 框架",
-          "link": "https://astro.build/",
-          "avatar": "https://avatars.githubusercontent.com/u/44914786?s=200&v=4"
-        },
-        {
-          "name": "GitHub",
-          "intro": "全球最大的代码托管平台",
-          "link": "https://github.com/",
-          "avatar": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-        }
-      ]
+      "link_list": []
     }
   ]
 }
