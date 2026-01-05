@@ -3,7 +3,7 @@ import type { CardListData, Config, IntegrationUserConfig, ThemeUserConfig } fro
 export const theme: ThemeUserConfig = {
   // [Basic]
   /** Title for your website. Will be used in metadata and as browser tab title. */
-  title: 'Kevin 的技术博客',
+  title: 'Kevin.AI',
   /** Will be used in index page & copyright declaration */
   author: 'Kevin',
   /** Description metadata for your website. Can be used in page metadata. */
