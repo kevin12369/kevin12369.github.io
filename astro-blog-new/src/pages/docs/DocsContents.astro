@@ -17,9 +17,9 @@ const docsByCate = docsCollection.reduce((acc: { [key: string]: typeof docsColle
 }, {})
 
 const docCategories = {
-  setup: 'Setup',
-  integrations: 'Integrations',
-  advanced: 'Advanced'
+  learning: '学习笔记',
+  interview: '面试题库',
+  showcase: '项目展示'
 }
 
 type Props = {
@@ -39,7 +39,14 @@ const { title = true, class: className, ...props } = Astro.props
           <h3 class='text-muted-foreground text-xs tracking-widest uppercase'>{title}</h3>
           <ul class='mt-2 flex flex-col'>
             {docsByCate[id]
-              .sort((a, b) => a.data.order - b.data.order)
+              ?.sort((a, b) => {
+                // 如果有order字段，使用order排序
+                if (a.data.order !== undefined && b.data.order !== undefined) {
+                  return a.data.order - b.data.order
+                }
+                // 否则按标题排序
+                return a.data.title.localeCompare(b.data.title)
+              })
               .map((doc) => (
                 <li class='docs-item flex relative ms-2 px-3 py-1 text-foreground/75 transition-all rounded-2xl'>
                   <a class='flex-1 hover:text-foreground' href={`/docs/${doc.id}`}>
