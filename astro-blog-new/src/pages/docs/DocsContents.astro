@@ -8,16 +8,40 @@ export const prerender = true
 export const partial = true
 
 const docsCollection = (await getBlogCollection('docs')) as CollectionEntry<'docs'>[]
-// Group docs by id first part (setup, integrations, advanced, etc.)
-const docsByCate = docsCollection.reduce((acc: { [key: string]: typeof docsCollection }, doc) => {
+
+// Group docs by technical field
+const docsByField = docsCollection.reduce((acc: { [key: string]: typeof docsCollection }, doc) => {
   const id = doc.id.split('/')[0]
-  if (!acc[id]) acc[id] = [] as typeof docsCollection
-  acc[id].push(doc)
+  const subId = doc.id.split('/')[1]
+  
+  // Determine the technical field
+  let field = 'other'
+  if (id === 'interview') {
+    field = 'interview'
+  } else if (id === 'showcase') {
+    field = 'showcase'
+  } else if (id === 'learning') {
+    if (subId === 'ai-fullstack' || subId === 'llm') {
+      field = 'ai-fullstack'
+    } else if (subId === 'algorithm') {
+      field = 'algorithm'
+    } else if (subId === 'frontend-deep') {
+      field = 'frontend'
+    } else if (subId === 'game-deep') {
+      field = 'game'
+    }
+  }
+  
+  if (!acc[field]) acc[field] = [] as typeof docsCollection
+  acc[field].push(doc)
   return acc
 }, {})
 
 const docCategories = {
-  learning: '学习笔记',
+  'ai-fullstack': 'AI 全栈',
+  algorithm: '算法',
+  frontend: '前端开发',
+  game: '游戏开发',
   interview: '面试题库',
   showcase: '项目展示'
 }
@@ -38,13 +62,22 @@ const { title = true, class: className, ...props } = Astro.props
         <li>
           <h3 class='text-muted-foreground text-xs tracking-widest uppercase'>{title}</h3>
           <ul class='mt-2 flex flex-col'>
-            {docsByCate[id]
+            {docsByField[id]
               ?.sort((a, b) => {
-                // 如果有order字段，使用order排序
-                if (a.data.order !== undefined && b.data.order !== undefined) {
-                  return a.data.order - b.data.order
+                // 优先按数字编号排序（从标题中提取数字）
+                const getNumber = (title: string) => {
+                  const match = title.match(/^(\d+)([-.])/)
+                  return match ? parseInt(match[1], 10) : 999
                 }
-                // 否则按标题排序
+                
+                const numA = getNumber(a.data.title)
+                const numB = getNumber(b.data.title)
+                
+                if (numA !== numB) {
+                  return numA - numB
+                }
+                
+                // 如果编号相同，按标题排序
                 return a.data.title.localeCompare(b.data.title)
               })
               .map((doc) => (
