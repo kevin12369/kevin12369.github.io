@@ -1,6 +1,6 @@
 ---
 title: 'OpenAI-API 接口文档(中文版)'
-description: '如果你想使用我么你的 API，你可以通过 **HTTP** 请求从任何语言与 API 进行交互，也可以使用我们官方 Python 绑定、官方 Node.js 库或者使用[社区维护的库](https://platform.openai.com/docs/libraries/community-l...'
+description: 'OpenAI API提供了强大的AI能力，可以通过HTTP请求从任何语言进行交互。本文详细介绍OpenAI接口的使用方法和最佳实践。'
 pubDate: 2024-01-01
 
 category: '技术前沿'

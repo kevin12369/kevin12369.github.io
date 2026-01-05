@@ -27,9 +27,8 @@ const hasDescription = post.data.description && post.data.description.length > 0
 							<p>{formatDate(post.data.pubDate)}</p>
 						</div>
 						<div>
-							<p class="font-bold">{post.data.minutesRead || '阅读中...'}</p>
-						</div>
-					</div>
+							<p class="font-bold">{post.data.minutesRead || '待更新'}</p>
+						</div>					</div>
 
 					<p class="pb-4 text-lg font-bold line-clamp-2 min-h-[2.875em]">
 						{post.data.title}
