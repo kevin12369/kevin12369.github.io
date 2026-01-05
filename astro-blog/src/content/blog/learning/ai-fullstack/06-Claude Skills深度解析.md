@@ -3,7 +3,7 @@ title: 'Claude Skills深度解析：渐进式披露架构的革命'
 description: '2025年10月，Anthropic发布了Claude Skills，提出了一个全新的AI能力扩展范式。'
 pubDate: 2026-01-03
 updatedDate: 2026-01-03
-category: '未分类'
+category: '深度学习'
 tags: []
 draft: false
 ---

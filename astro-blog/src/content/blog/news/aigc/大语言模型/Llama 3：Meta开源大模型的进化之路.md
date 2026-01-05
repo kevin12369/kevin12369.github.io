@@ -3,7 +3,7 @@ title: 'Llama 3：Meta开源大模型的进化之路'
 description: '> 从Llama 1到Llama 3，Meta如何重塑开源AI的格局？'
 pubDate: 2025-12-26
 
-category: '未分类'
+category: '技术前沿'
 tags: []
 draft: false
 ---

@@ -1,9 +1,9 @@
 ---
 title: 'HTML 5 语义化（2025版）'
-description: '[IFE-NOTE：页面结构语义化 | 雨落 (rainylog.com)](https://rainylog.com/post/ife-note-1/)'
+description: 'IFE-NOTE：页面结构语义化 | 雨落 (rainylog.com)'
 pubDate: 2024-01-01
 
-category: '未分类'
+category: '面试指南'
 tags: []
 draft: false
 ---

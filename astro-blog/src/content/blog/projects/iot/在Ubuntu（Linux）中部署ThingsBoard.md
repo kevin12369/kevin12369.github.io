@@ -3,7 +3,7 @@ title: '在 Ubuntu（Linux）中部署 ThingsBoard'
 description: '在开始部署之前，需要先准备好以下环境：'
 pubDate: 2025-12-26
 
-category: '未分类'
+category: '项目实战'
 tags: []
 draft: false
 ---

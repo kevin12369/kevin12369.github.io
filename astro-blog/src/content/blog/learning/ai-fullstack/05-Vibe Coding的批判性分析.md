@@ -3,7 +3,7 @@ title: 'Vibe Coding的批判性分析：从"氛围编程"到工程化实践'
 description: '2025年2月，前特斯拉AI总监、OpenAI联合创始人Andrej Karpathy提出了"Vibe Coding"这个概念。'
 pubDate: 2026-01-03
 updatedDate: 2026-01-03
-category: '未分类'
+category: '深度学习'
 tags: []
 draft: false
 ---

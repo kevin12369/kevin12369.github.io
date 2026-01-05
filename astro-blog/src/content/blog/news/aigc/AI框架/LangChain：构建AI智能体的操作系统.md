@@ -3,7 +3,7 @@ title: 'LangChain：构建AI智能体的操作系统'
 description: '> 从工具链到平台化，LangChain如何成为AI智能体的核心基础设施'
 pubDate: 2025-12-26
 
-category: '未分类'
+category: '技术前沿'
 tags: []
 draft: false
 ---

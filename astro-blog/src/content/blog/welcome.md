@@ -2,7 +2,7 @@
 title: '欢迎来到 Kevin.AI'
 description: '这是使用 Astro 框架构建的全新博客，探索AI增强型全栈开发的实践与思考。'
 pubDate: 2024-01-04
-category: '公告'
+category: '网站公告'
 tags: ['Astro', '博客', '更新']
 ---
 

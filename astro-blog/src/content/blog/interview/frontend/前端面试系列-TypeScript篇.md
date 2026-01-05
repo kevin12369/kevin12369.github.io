@@ -3,7 +3,7 @@ title: 'TypeScript 常见面试题总结（2025版）'
 description: '- **TypeScript 成为必备技能**：不再是可选项，而是前端开发的标准配置'
 pubDate: 2024-01-01
 
-category: '未分类'
+category: '面试指南'
 tags: []
 draft: false
 ---

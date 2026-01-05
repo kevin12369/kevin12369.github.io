@@ -3,7 +3,7 @@ title: 'Agents vs Skills - 技术范式之争'
 description: '2025年10月，Anthropic发布了Claude Skills，提出了一个全新的AI能力扩展范式。与此同时，开源社区也在探索类似的方向，如Deep Agents CLI。'
 pubDate: 2026-01-03
 updatedDate: 2026-01-03
-category: '未分类'
+category: '深度学习'
 tags: []
 draft: false
 ---

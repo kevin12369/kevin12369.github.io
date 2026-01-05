@@ -1,0 +1,26 @@
+---
+import Section from './Section.astro';
+import Card from './Card.astro';
+
+interface Props {
+	posts: any[];
+}
+
+const { posts } = Astro.props;
+---
+
+<Section>
+	<div class="flex justify-between pb-4">
+		<p class="text-xl font-bold">Latest Posts</p>
+		<a href="/blog/" class="underline hover:text-orange-600">all posts →</a>
+	</div>
+	<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+		{
+			posts.map((post: any) => (
+				<div>
+					<Card post={post} />
+				</div>
+			))
+		}
+	</div>
+</Section>

@@ -3,7 +3,7 @@ title: '《打地鼠》游戏开发教程：Godot 4.x + C# 从零到完成'
 description: '- [第一章：准备工作](#第一章准备工作)'
 pubDate: 2025-01-04
 updatedDate: 2025-01-04
-category: '未分类'
+category: '项目实战'
 tags: []
 draft: false
 ---

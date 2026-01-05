@@ -3,7 +3,7 @@ title: '前端技术学习 - HTTP 协议详解（2025版）'
 description: 'HTTP（HyperText Transfer Protocol）超文本传输协议，是用于在客户端和服务器之间传输数据的协议。'
 pubDate: 2025-01-02
 updatedDate: 2025-01-02
-category: '未分类'
+category: '深度学习'
 tags: []
 draft: false
 ---

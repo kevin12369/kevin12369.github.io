@@ -1,65 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import Hero from '../components/Hero.astro';
+import LatestPosts from '../components/LatestPosts.astro';
+import { AppConfig } from '../utils/AppConfig';
 
 const allPosts = (await getCollection('blog'))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const latestPosts = allPosts.slice(0, 9);
 ---
 
-<Layout title="Kevin.AI">
-  <main class="container mx-auto px-4 py-8 max-w-6xl">
-    <header class="mb-12 text-center">
-      <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-        Kevin.AI
-      </h1>
-      <p class="text-xl text-gray-400">探索AI增强型全栈开发的实践与思考</p>
-    </header>
-
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-6">最新文章</h2>
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {allPosts.slice(0, 6).map((post) => (
-          <article class="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 hover:border-blue-500 transition-colors">
-            <a href={`/blog/${post.slug}/`} class="block h-full">
-              <div class="p-6">
-                <div class="flex items-center gap-2 mb-3">
-                  {post.data.category && (
-                    <span class="text-xs px-2 py-1 bg-blue-900 text-blue-300 rounded">
-                      {post.data.category}
-                    </span>
-                  )}
-                  <time class="text-xs text-gray-500">
-                    {post.data.pubDate.toLocaleDateString('zh-CN')}
-                  </time>
-                </div>
-                <h3 class="text-xl font-bold mb-2 line-clamp-2">{post.data.title}</h3>
-                {post.data.description && (
-                  <p class="text-gray-400 text-sm line-clamp-3">{post.data.description}</p>
-                )}
-                {post.data.tags.length > 0 && (
-                  <div class="flex flex-wrap gap-2 mt-4">
-                    {post.data.tags.map((tag) => (
-                      <span class="text-xs px-2 py-1 bg-gray-800 text-gray-400 rounded">
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </a>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="text-center">
-      <a
-        href="/blog/"
-        class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-      >
-        查看所有文章
-      </a>
-    </section>
-  </main>
+<Layout
+  head={{
+    title: AppConfig.title,
+    description: AppConfig.description
+  }}
+>
+	<Hero />
+	<LatestPosts posts={latestPosts} />
 </Layout>

@@ -1,89 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --accent: #1246a8;
-  --accent-dark: #0a3674;
-  --black: #0a0a0a;
-  --gray: #1a1a1a;
-  --gray-light: #2a2a2a;
-  --white: #ffffff;
-  --white-gray: #e6e6e6;
-  --gray-text: #a1a1a1;
-}
+@plugin "@tailwindcss/typography";
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background-color: var(--black);
-  color: var(--white);
-  line-height: 1.6;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
+/* Tailwind doesn't fully support some of the complex CSS selectors needed for code highlighting,
+so we need to keep some custom CSS but applied through Tailwind's plugin system
+These styles are for code highlighting that can't be easily implemented with just Tailwind */
+@layer utilities {
+    .content pre {
+        @apply p-0;
+    }
 
-a:hover {
-  color: var(--accent-dark);
-}
+    .content code {
+        @apply overflow-x-auto;
+    }
 
-code {
-  font-family: 'Courier New', Courier, monospace;
-  background-color: var(--gray-light);
-  padding: 0.2em 0.4em;
-  border-radius: 4px;
-  font-size: 0.9em;
-}
+    .content [data-rehype-pretty-code-figure] code {
+        @apply p-0;
+    }
 
-pre {
-  background-color: var(--gray);
-  padding: 1em;
-  border-radius: 8px;
-  overflow-x: auto;
-}
+    .content pre > code span[data-line] {
+        @apply border-l-8 border-transparent px-2;
+    }
 
-pre code {
-  background-color: transparent;
-  padding: 0;
-}
+    .content pre > code span:first-of-type {
+        @apply rounded-t-lg pt-2;
+    }
 
-blockquote {
-  border-left: 4px solid var(--accent);
-  padding-left: 1em;
-  margin: 1em 0;
-  color: var(--gray-text);
-}
+    .content pre > code span:last-of-type {
+        @apply rounded-b-lg pb-2;
+    }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1em 0;
-}
+    .content pre > code .highlighted {
+        @apply border-l-8 !border-gray-300/60 bg-gray-200/5;
+    }
 
-th, td {
-  border: 1px solid var(--gray-light);
-  padding: 0.5em 1em;
-  text-align: left;
-}
+    .content pre > code[data-line-numbers] {
+        counter-reset: line;
+    }
 
-th {
-  background-color: var(--gray);
-  font-weight: bold;
-}
+    .content pre > code[data-line-numbers] > span[data-line]::before {
+        counter-increment: line;
+        content: counter(line);
+        @apply mr-8 inline-block w-4 text-left text-[#7ca2dfad];
+    }
 
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
+    .content pre > code > span[data-line]::before {
+        content: '';
+        @apply inline-block w-4 text-right;
+    }
 
-hr {
-  border: none;
-  border-top: 1px solid var(--gray-light);
-  margin: 2em 0;
+    .content pre > code[data-line-numbers-max-digits='2'] > span[data-line]::before {
+        @apply w-8;
+    }
+
+    .content code[data-line-numbers-max-digits='3'] > span[data-line]::before {
+        @apply w-12;
+    }
 }

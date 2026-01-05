@@ -1,9 +1,9 @@
 ---
 title: '50道CSS基础面试题（2025版）'
-description: '[50道CSS基础面试题（附答案） - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000013325778)'
+description: '50道CSS基础面试题（附答案） - 个人文章 - SegmentFault 思否'
 pubDate: 2024-01-01
 
-category: '未分类'
+category: '面试指南'
 tags: []
 draft: false
 ---

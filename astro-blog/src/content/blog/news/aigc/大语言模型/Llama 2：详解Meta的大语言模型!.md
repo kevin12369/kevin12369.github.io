@@ -3,7 +3,7 @@ title: 'LIama 2：详解Meta的大语言模型!'
 description: '![[Pasted image 20240102160951.png]]'
 pubDate: 2024-01-01
 
-category: '未分类'
+category: '技术前沿'
 tags: []
 draft: false
 ---
