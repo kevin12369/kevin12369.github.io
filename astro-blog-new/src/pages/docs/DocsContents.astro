@@ -21,8 +21,8 @@ const docsByField = docsCollection.reduce((acc: { [key: string]: typeof docsColl
   } else if (id === 'showcase') {
     field = 'showcase'
   } else if (id === 'learning') {
-    if (subId === 'ai-fullstack' || subId === 'llm') {
-      field = 'ai-fullstack'
+    if (subId === 'llm') {
+      field = 'llm'
     } else if (subId === 'algorithm') {
       field = 'algorithm'
     } else if (subId === 'frontend-deep') {
@@ -38,7 +38,7 @@ const docsByField = docsCollection.reduce((acc: { [key: string]: typeof docsColl
 }, {})
 
 const docCategories = {
-  'ai-fullstack': 'AI 全栈',
+  llm: '大语言模型',
   algorithm: '算法',
   frontend: '前端开发',
   game: '游戏开发',
