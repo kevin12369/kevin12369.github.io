@@ -1,0 +1,49 @@
+---
+import { formatDate } from '@/utils/data.util';
+import Tags from './Tags.astro';
+import PinnedBadge from './PinnedBadge.astro';
+
+interface Props {
+	post: any;
+}
+
+const { post } = Astro.props;
+const isPinned = post.data.isPinned === true;
+const hasDescription = post.data.description && post.data.description.length > 0;
+---
+
+<a href={`/blog/${post.slug}/`}>
+	<div
+		class="h-full rounded-2xl bg-stone-200/50 from-orange-900 via-amber-700 to-white p-[1px] text-sm shadow-[inset_0_0_0_1px_rgba(255,255,255,0.4)] hover:bg-gradient-to-r dark:bg-gray-900"
+	>
+		<div
+			class="flex h-full w-full flex-col rounded-[1rem] bg-stone-300 p-4 text-gray-900 opacity-90 dark:bg-stone-800 dark:text-white"
+		>
+			<div class="flex flex-col justify-between h-full">
+				<div>
+					<div class="flex flex-col justify-between gap-2 pb-4 text-xs min-h-[2.5em]">
+						<div class="flex items-center gap-2">
+							{isPinned && <PinnedBadge size="sm" />}
+							<p>{formatDate(post.data.pubDate)}</p>
+						</div>
+						<div>
+							<p class="font-bold">{post.data.minutesRead || '待更新'}</p>
+						</div>					</div>
+
+					<p class="pb-4 text-lg font-bold line-clamp-2 min-h-[2.875em]">
+						{post.data.title}
+					</p>
+
+					<Tags tags={post.data.tags.slice(0, 3)} />
+
+					<p
+						class="line-clamp-3 pt-4 text-sm text-gray-600 dark:text-gray-400 min-h-[4.5em]"
+					>
+						{hasDescription ? post.data.description : '暂无描述'}
+					</p>
+				</div>
+				<p class="pt-4 underline text-sm">read more →</p>
+			</div>
+		</div>
+	</div>
+</a>
