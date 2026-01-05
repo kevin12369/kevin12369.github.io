@@ -139,9 +139,14 @@ const visiblePages = getVisiblePages(currentPage, totalPages);
               return <span class="text-gray-500">...</span>;
             }
 
+            // Page 1 should link to /blog/ instead of /blog/1
+            const pageUrl = pageNum === 1
+              ? `/blog/${currentCategory ? `?category=${encodeURIComponent(currentCategory)}` : ''}`
+              : `/blog/${pageNum}${currentCategory ? `?category=${encodeURIComponent(currentCategory)}` : ''}`;
+
             return (
               <a
-                href={`/blog/${pageNum}${currentCategory ? `?category=${encodeURIComponent(currentCategory)}` : ''}`}
+                href={pageUrl}
                 class:font-bold={pageNum === currentPage}
                 class={`rounded-lg px-4 py-2 text-sm font-semibold ${
                   pageNum === currentPage

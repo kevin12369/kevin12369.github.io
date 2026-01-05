@@ -30,6 +30,11 @@ export async function getStaticPaths() {
 const { page } = Astro.params;
 const currentPage = parseInt(page || '1', 10);
 
+// Redirect page 1 to /blog/
+if (currentPage === 1) {
+  return Astro.redirect('/blog/');
+}
+
 // Validate page number
 if (isNaN(currentPage) || currentPage < 1) {
   return Astro.redirect('/blog/');
@@ -157,7 +162,9 @@ const visiblePages = getVisiblePages(currentPage, totalPages);
         <div class="flex justify-center items-center gap-2">
           {currentPage > 1 && (
             <a
-              href={`/blog/${currentPage - 1}${currentCategory ? `?category=${encodeURIComponent(currentCategory)}` : ''}`}
+              href={currentPage === 2
+                ? `/blog/${currentCategory ? `?category=${encodeURIComponent(currentCategory)}` : ''}`
+                : `/blog/${currentPage - 1}${currentCategory ? `?category=${encodeURIComponent(currentCategory)}` : ''}`}
               class="rounded-lg bg-stone-200 px-4 py-2 text-sm font-semibold text-stone-800 hover:bg-stone-300 dark:bg-stone-700 dark:text-stone-200 dark:hover:bg-stone-600"
             >
               ← Previous
@@ -169,9 +176,14 @@ const visiblePages = getVisiblePages(currentPage, totalPages);
               return <span class="text-gray-500">...</span>;
             }
 
+            // Page 1 should link to /blog/ instead of /blog/1
+            const pageUrl = pageNum === 1
+              ? `/blog/${currentCategory ? `?category=${encodeURIComponent(currentCategory)}` : ''}`
+              : `/blog/${pageNum}${currentCategory ? `?category=${encodeURIComponent(currentCategory)}` : ''}`;
+
             return (
               <a
-                href={`/blog/${pageNum}${currentCategory ? `?category=${encodeURIComponent(currentCategory)}` : ''}`}
+                href={pageUrl}
                 class:font-bold={pageNum === currentPage}
                 class={`rounded-lg px-4 py-2 text-sm font-semibold ${
                   pageNum === currentPage
