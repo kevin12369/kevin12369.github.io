@@ -6,6 +6,7 @@ import { PostPreview } from 'astro-pure/components/pages'
 import { getBlogCollection, sortMDByDate } from 'astro-pure/server'
 import { Button, Card, Icon, Label } from 'astro-pure/user'
 import PageLayout from '@/layouts/BaseLayout.astro'
+import ProjectCard from '@/components/home/ProjectCard.astro'
 import Section from '@/components/home/Section.astro'
 import SkillLayout from '@/components/home/SkillLayout.astro'
 import config from '@/site-config'
@@ -117,6 +118,32 @@ if (!images[imagePath])
           />
         </div>
       </Section>
+
+      {
+        /* 项目展示 - 预留用于展示GitHub项目 */
+        /* <Section title='项目展示'>
+        <div class='grid grid-cols-1 gap-3 sm:grid-cols-2'>
+          <ProjectCard
+            href='https://github.com/kevin12369/your-project'
+            heading='项目名称'
+            subheading='项目描述'
+            imagePath='/src/assets/projects/project-image.jpg'
+          />
+          <ProjectCard
+            href='https://github.com/kevin12369/your-project'
+            heading='项目名称'
+            subheading='项目描述'
+            imagePath='/src/assets/projects/project-image.jpg'
+          />
+          <ProjectCard
+            href='https://github.com/kevin12369/your-project'
+            heading='项目名称'
+            subheading='项目描述'
+            imagePath='/src/assets/projects/project-image.jpg'
+          />
+        </div>
+      </Section> */
+      }
     </div>
     <Quote class='mt-12' />
   </main>
