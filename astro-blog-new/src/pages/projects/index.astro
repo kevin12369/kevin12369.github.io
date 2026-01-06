@@ -1,21 +1,14 @@
 ---
 import { Image } from 'astro:assets'
 
-import { Button, Collapse, Icon } from 'astro-pure/user'
+import { Button, Collapse } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
 import ProjectSection from '@/components/projects/ProjectSection.astro'
-import Sponsors from '@/components/projects/Sponsors.astro'
-import Sponsorship from '@/components/projects/Sponsorship.astro'
-import alipay from '@/assets/alipay-qrcode.jpg'
-import KeyIcon from '@/assets/icons/key.svg'
-import wechat from '@/assets/wechat-qrcode.jpg'
 
 const headings = [
   { depth: 2, slug: 'programs', text: 'Programs' },
   { depth: 2, slug: 'learnings', text: 'Learnings' },
-  { depth: 2, slug: 'others', text: 'Others' },
-  { depth: 2, slug: 'gpg-signature', text: 'GPG Signature' },
-  { depth: 2, slug: 'sponsorship', text: 'Sponsorship' }
+  { depth: 2, slug: 'others', text: 'Others' }
 ]
 ---
 
@@ -33,40 +26,25 @@ const headings = [
   <p>Github Activities:</p>
   <p>
     <Image
-      src='https://ghchart.rshah.org/659eb9/cworld1'
+      src='https://ghchart.rshah.org/659eb9/kevin12369'
       alt='github activities'
       inferSize
       loading='lazy'
     />
   </p>
   <p>
-    If you think it would be useful or interesting to collaborate on a project, you can donate to
-    support my work or contact me to discuss a project.
+    If you think it would be useful or interesting to collaborate on a project, feel free to contact me.
   </p>
-  <Button title='Checkout sponsorship' class='w-fit' href='#sponsorship'>
-    <Icon class='size-5' name='receive-money' slot='before' />
-  </Button>
 
   <h2 id='programs'>Programs</h2>
   <ProjectSection
     projects={[
       {
-        name: '🎨 Astro Theme Pure',
-        description: 'A simple, fast and powerful blog & document theme built by Astro',
+        name: '🌐 kevin12369.github.io',
+        description: 'Personal blog and portfolio website built with Astro',
         links: [
-          { type: 'github', href: 'https://github.com/cworld1/astro-theme-pure' },
-          { type: 'site', href: 'https://astro-pure.js.org/' },
-          { type: 'doc', href: 'https://astro-pure.js.org/docs/list' },
-          { type: 'release', href: 'https://www.npmjs.com/package/astro-pure' }
-        ]
-      },
-      {
-        name: '💄 PKU Art',
-        description: 'A script to beautify pku course website',
-        links: [
-          { type: 'github', href: 'https://github.com/zhuozhiyongde/pku-art' },
-          { type: 'site', href: 'https://github.com/zhuozhiyongde/pku-art' },
-          { type: 'doc', href: 'https://docs.arthals.ink/docs/pku-art' }
+          { type: 'github', href: 'https://github.com/kevin12369/kevin12369.github.io' },
+          { type: 'site', href: 'https://kevin12369.github.io/' }
         ]
       }
     ]}
@@ -75,21 +53,11 @@ const headings = [
     <ProjectSection
       projects={[
         {
-          name: '🧩 rehype-autolink-headings-simple',
-          description: 'A simple version of rehype-autolink-headings',
+          name: '📚 Learning Resources',
+          description: 'Collection of learning materials and notes',
           links: [
-            { type: 'github', href: 'https://github.com/cworld1/rehype-autolink-headings-simple' },
-            {
-              type: 'release',
-              href: 'https://www.npmjs.com/package/rehype-autolink-headings-simple'
-            }
+            { type: 'github', href: 'https://github.com/kevin12369' }
           ]
-        },
-        {
-          name: 'Gaussian NB',
-          description:
-            'Simulating the Parsimonious Bayesian Algorithm with Python and Finding the Probability Prediction of Breast Cancer ',
-          links: [{ type: 'github', href: 'https://github.com/cworld1/gaussian-nb' }]
         }
       ]}
     />
@@ -100,21 +68,10 @@ const headings = [
     class='my-2'
     projects={[
       {
-        name: 'R Learning',
-        description: 'Some notes and code about learning R language',
+        name: '💻 Tech Learning',
+        description: 'Technical learning notes and code examples',
         links: [
-          { type: 'github', href: 'https://github.com/cworld1/r-learning' },
-          { type: 'site', href: 'https://cworld1.github.io/r-learning' }
-        ]
-      },
-      {
-        name: 'CS 213 Learning',
-        description: 'Notes, code and experiences for Introduction to Computer Systems course',
-        links: [
-          {
-            type: 'github',
-            href: 'https://github.com/zhuozhiyongde/Introduction-To-Computer-System-2023Fall-PKU'
-          }
+          { type: 'github', href: 'https://github.com/kevin12369' }
         ]
       }
     ]}
@@ -124,60 +81,20 @@ const headings = [
   <ProjectSection
     projects={[
       {
-        name: 'CWorld',
-        description: "CWorld's Github",
-        links: [{ type: 'github', href: 'https://github.com/cworld1' }]
-      },
-      {
-        name: 'Arthals',
-        description: 'Arthals Github',
-        links: [{ type: 'github', href: 'https://github.com/zhuozhiyongde' }]
+        name: '👤 Kevin',
+        description: 'Kevin\'s GitHub Profile',
+        links: [{ type: 'github', href: 'https://github.com/kevin12369' }]
       }
     ]}
   />
 
-  <h2 id='gpg-signature'>GPG Signature</h2>
+  <h2 id='contact'>Contact</h2>
   <p>
-    You can verify the authenticity of the files I signed by checking the GPG signature. My GPG key
-    is <code>114514</code>, and you can find it on the opengpg key servers or download from it.
+    Feel free to contact me for collaboration or just to say hi!
   </p>
-  <Button href='https://keys.openpgp.org/search?q=114514' title='Checkout my key' target='_blank'>
-    <KeyIcon class='size-5' slot='before' />
-  </Button>
-
-  <h2 id='sponsorship'>Sponsorship</h2>
-  <Sponsorship
-    methods={[
-      { name: 'WeChat', icon: 'wechat-pay', image: wechat },
-      { name: 'Alipay', icon: 'alipay', image: alipay }
-    ]}
-  />
-  <p>Please leave a message or contact me proactively after sponsorship. My email is:
-    <code style='cursor: pointer'
-      onclick='const m=atob(this.textContent);alert(m);window.open(`mailto:${m}`,"_blank")'
-    >Y3dvcmxkMEBxcS5jb20=</code>
-    (click code to transform base64).
+  <p>
+    You can find me on GitHub: <a href='https://github.com/kevin12369' target='_blank'>@kevin12369</a>
   </p>
-  <p>Thanks to the following sponsors:</p>
-  <Sponsors
-    progressMax={50}
-    sponsors={[
-      { name: 'hoochanlon', platform: 'Wechat', amount: 5, date: '2025-11-09' },
-      { name: 'Arthals', platform: 'Wechat', amount: 50, date: '2025-11-06' },
-      { name: '边缘星2020 (byx2020.com)', platform: 'Alipay', amount: 50, date: '2025-11-01' },
-      { name: '小哲', platform: 'Wechat', amount: 50, date: '2025-08-19' },
-      { name: 'Open1V', platform: 'Wechat', amount: 2, date: '2025-08-14' },
-      { name: 'Luis Xu (不赌不毒不烟不酒)', platform: 'Alipay', amount: 30, date: '2025-08-03' },
-      { name: '顾**', platform: 'Wechat', amount: 28, date: '2025-06-23' },
-      { name: 'Hans J.Han', platform: 'Wechat', amount: 10, date: '2025-04-04' },
-      { name: '**青', platform: 'Alipay', amount: 12, date: '2024-05-21' },
-      { name: 'Anonymous', platform: 'Wechat', amount: 20, date: '2022-04-06' },
-      { name: '华雄', platform: 'QQ', amount: 5, date: '2019-12-30' },
-      { name: '◌', platform: 'QQ', amount: 3, date: '2019-12-30' },
-      // 酷安@暴走の蜗牛
-      { name: 'C*a', amount: 2, date: '2019-07-02' }
-    ]}
-  />
 </PageLayout>
 
 <style>
