@@ -6,52 +6,51 @@ publishDate: 2024-01-01
 tags: []
 ---
 
-import { Card, Label } from 'astro-pure/user'
 
 # 什么是 ThingsBoard
 
 ## ThingsBoard 是什么？
 
-<Card>
+
 - ThingsBoard 是一个开源物联网平台，可实现物联网项目的快速开发、管理和扩展。
 - 目标是提供成熟的 IoT 云或本地解决方案以此做为您的 IoT 应用程序服务端基础架构。
-</Card>
+
 
 ## 特点
 
-<Card>
+
 ThingsBoard 可用于：
 
-<Label>设备管理</Label>
+**设备管理**
 设备管理，资产和客户并定义他们之间的关系。
 
-<Label>数据可视化</Label>
+**数据可视化**
 基于设备和资产收集数据并进行可视化。
 
-<Label>警报响应</Label>
+**警报响应**
 采集遥测数据并进行相关的事件处理进行警报响应。
 
-<Label>设备控制</Label>
+**设备控制**
 基于远程 RPC 调用进行设备控制。
 
-<Label>工作流构建</Label>
+**工作流构建**
 基于生命周期事件、REST API 事件、RPC 请求构建工作流。
 
-<Label>仪表板</Label>
+**仪表板**
 基于动态设计和响应仪表板向你的客户提供设备或资产的遥测数据。
 
-<Label>自定义功能</Label>
+**自定义功能**
 基于规则链自定义特定功能。
 
-<Label>数据发布</Label>
+**数据发布**
 发布设备数据至第三方系统。
-</Card>
+
 
 ## 架构
 
 ![ThingsBoard的架构](/thingsboard-架构图.png 'ThingsBoard的架构')
 
-<Card>
+
 ### ThingsBoard 传输
 
 ThingsBoard 提供了基于 MQTT、HTTP 和 CoAP 的 API，适用于你的设备应用程序/固件。
@@ -99,23 +98,22 @@ ThingsBoard 提供了一个使用 Express.js 框架编写的轻量级组件，�
 这些组件是完全无状态的，没有太多可用的配置。
 
 静态 Web UI 包含应用程序捆绑包加载后该应用程序将开始使用 ThingsBoard 核心提供的 REST API 和 WebSockets API。
-</Card>
+
 
 ## 设计原则
 
-<Card>
-<Label>高扩展</Label>
+
+**高扩展**
 使用领先开源技术构建的可水平扩展平台。
 
-<Label>高容错</Label>
+**高容错**
 无单点故障集群中的每个节点都是相同的。
 
-<Label>高性能</Label>
+**高性能**
 单个服务器节点可以根据用例处理几十甚至数十万个设备，集群可以处理数百万台设备。
 
-<Label>高灵活</Label>
+**高灵活**
 开发新功能可以方便的使用自定义部件、规则引擎等。
 
-<Label>持久化</Label>
+**持久化**
 数据永久保存
-</Card>

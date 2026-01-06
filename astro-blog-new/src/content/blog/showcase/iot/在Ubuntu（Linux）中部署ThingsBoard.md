@@ -2,7 +2,7 @@
 language: 'zh-CN'
 title: '在 Ubuntu（Linux）中部署 ThingsBoard'
 description: '在开始部署之前，需要先准备好以下环境：'
-publishDate: '2025-12-26'
+publishDate: 2025-12-26
 tags: []
 ---
 
@@ -10,6 +10,8 @@ tags: []
 # 在 Ubuntu（Linux）中部署 ThingsBoard
 
 ## 前置条件
+
+
 
 在开始部署之前，需要先准备好以下环境：
 
@@ -19,7 +21,11 @@ tags: []
 - Java 11 或更高版本
 - PostgreSQL 12 或更高版本
 
+
+
 ## 安装 Java
+
+**步骤1：安装Java运行环境**
 
 ThingsBoard 需要 Java 运行环境。先检查系统是否已安装 Java：
 
@@ -41,6 +47,8 @@ java -version
 ```
 
 ## 安装 PostgreSQL
+
+**步骤2：安装PostgreSQL数据库**
 
 ThingsBoard 使用 PostgreSQL 作为数据库。安装 PostgreSQL：
 
@@ -72,6 +80,8 @@ GRANT ALL PRIVILEGES ON DATABASE thingsboard TO thingsboard;
 
 ## 下载 ThingsBoard
 
+**步骤3：下载ThingsBoard安装包**
+
 从 ThingsBoard 官网下载最新版本：
 
 ```bash
@@ -81,6 +91,8 @@ wget https://github.com/thingsboard/thingsboard/releases/download/v3.6.4/thingsb
 （注：版本号可能需要根据实际情况调整，访问 [ThingsBoard GitHub Releases](https://github.com/thingsboard/thingsboard/releases) 查看最新版本）
 
 ## 安装 ThingsBoard
+
+**步骤4：安装ThingsBoard**
 
 使用 dpkg 安装下载的 deb 包：
 
@@ -95,6 +107,8 @@ sudo apt install -f
 ```
 
 ## 配置 ThingsBoard
+
+**步骤5：配置ThingsBoard数据库连接**
 
 编辑 ThingsBoard 配置文件：
 
@@ -120,6 +134,8 @@ POSTGRES_PASSWORD=thingsboard
 
 ## 初始化数据库
 
+**步骤6：初始化数据库**
+
 运行 ThingsBoard 安装脚本，初始化数据库：
 
 ```bash
@@ -137,6 +153,8 @@ sudo /usr/share/thingsboard/bin/install/install.sh
 ```
 
 ## 启动 ThingsBoard
+
+**步骤7：启动ThingsBoard服务**
 
 启动 ThingsBoard 服务：
 
@@ -160,6 +178,8 @@ sudo systemctl status thingsboard
 
 ## 访问 ThingsBoard
 
+**步骤8：访问ThingsBoard管理界面**
+
 打开浏览器，访问：
 
 ```
@@ -173,6 +193,8 @@ http://localhost:8080
 登录后，可以看到 ThingsBoard 的管理界面，包括设备列表、仪表板、规则链等功能。
 
 ## 常用命令
+
+
 
 ```bash
 # 启动服务
@@ -191,7 +213,11 @@ sudo systemctl status thingsboard
 sudo journalctl -u thingsboard -f
 ```
 
+
+
 ## 卸载 ThingsBoard
+
+
 
 如果需要卸载 ThingsBoard：
 
@@ -203,7 +229,11 @@ sudo rm -rf /var/lib/thingsboard
 sudo rm -rf /var/log/thingsboard
 ```
 
+
+
 ## 注意事项
+
+
 
 1. **防火墙设置**：如果需要从外部访问，需要开放 8080 端口：
 
@@ -224,6 +254,8 @@ sudo rm -rf /var/log/thingsboard
    ```
 
 4. **更新版本**：更新 ThingsBoard 时，先备份数据，然后下载新版本并重新安装。
+
+
 
 ## 故障排查
 
