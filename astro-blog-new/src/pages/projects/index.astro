@@ -4,13 +4,13 @@ import PageLayout from '@/layouts/CommonPage.astro'
 import ProjectSection from '@/components/projects/ProjectSection.astro'
 
 const headings = [
-  { depth: 2, slug: 'programs', text: 'Programs' },
-  { depth: 2, slug: 'learnings', text: 'Learnings' },
-  { depth: 2, slug: 'others', text: 'Others' }
+  { depth: 2, slug: 'programs', text: 'Programs / 程序' },
+  { depth: 2, slug: 'learnings', text: 'Learnings / 学习中' },
+  { depth: 2, slug: 'others', text: 'Others / 其他' }
 ]
 ---
 
-<PageLayout title='Projects' {headings} view>
+<PageLayout title='Projects / 项目' {headings} view>
   {/* About astro-pure */}
   <div class='not-prose flex justify-center'>
     <a
@@ -18,10 +18,10 @@ const headings = [
       class='flex items-center gap-x-3 rounded-full border bg-background px-4 py-2 text-sm shadow-sm transition-shadow hover:shadow-md'
     >
       <span class='size-2 rounded-full bg-green-400'></span>
-      <p class='font-medium text-muted-foreground'>About Kevin</p>
+      <p class='font-medium text-muted-foreground'>About Kevin / 关于我</p>
     </a>
   </div>
-  <p>Github Activities:</p>
+  <p>Github Activities / GitHub 活跃度:</p>
   <p>
     <img
       src='https://ghchart.rshah.org/659eb9/kevin12369'
@@ -32,13 +32,16 @@ const headings = [
   <p>
     If you think it would be useful or interesting to collaborate on a project, feel free to contact me.
   </p>
+  <p>
+    如果您认为在项目上合作会有用或有趣，请随时联系我。
+  </p>
 
-  <h2 id='programs'>Programs</h2>
+  <h2 id='programs'>Programs / 程序</h2>
   <ProjectSection
     projects={[
       {
         name: '🌐 kevin12369.github.io',
-        description: 'Personal blog and portfolio website built with Astro',
+        description: 'Personal blog and portfolio website built with Astro / 使用 Astro 构建的个人博客和作品集网站',
         links: [
           { type: 'github', href: 'https://github.com/kevin12369/kevin12369.github.io' },
           { type: 'site', href: 'https://kevin12369.github.io/' }
@@ -46,12 +49,12 @@ const headings = [
       }
     ]}
   />
-  <Collapse title='Some old projects'>
+  <Collapse title='Some old projects / 一些旧项目'>
     <ProjectSection
       projects={[
         {
           name: '📚 Learning Resources',
-          description: 'Collection of learning materials and notes',
+          description: 'Collection of learning materials and notes / 学习资料和笔记集合',
           links: [
             { type: 'github', href: 'https://github.com/kevin12369' }
           ]
@@ -60,34 +63,34 @@ const headings = [
     />
   </Collapse>
 
-  <h2 id='learnings'>Learnings</h2>
+  <h2 id='learnings'>Learnings / 学习中</h2>
   <ProjectSection
     class='my-2'
     projects={[
       {
         name: '🔨 Build Your Own X',
-        description: 'Master programming by recreating your favorite technologies from scratch',
+        description: 'Master programming by recreating your favorite technologies from scratch / 通过从零开始重新创建您喜爱的技术来掌握编程',
         links: [
           { type: 'github', href: 'https://github.com/codecrafters-io/build-your-own-x' }
         ]
       },
       {
         name: '📚 One-Person Businesses Methodology',
-        description: 'A comprehensive guide for building and scaling one-person businesses',
+        description: 'A comprehensive guide for building and scaling one-person businesses / 构建和扩展一人企业的综合指南',
         links: [
           { type: 'github', href: 'https://github.com/easychen/one-person-businesses-methodology-v2.0' }
         ]
       },
       {
         name: '📋 Spec Kit',
-        description: 'GitHub\'s open-source design system and component library',
+        description: 'GitHub\'s open-source design system and component library / GitHub 的开源设计系统和组件库',
         links: [
           { type: 'github', href: 'https://github.com/github/spec-kit' }
         ]
       },
       {
         name: '🎮 Open Source Games',
-        description: 'A curated list of open source games and game development resources',
+        description: 'A curated list of open source games and game development resources / 精选的开源游戏和游戏开发资源列表',
         links: [
           { type: 'github', href: 'https://github.com/bobeff/open-source-games' }
         ]
@@ -95,23 +98,29 @@ const headings = [
     ]}
   />
 
-  <h2 id='others'>Others</h2>
+  <h2 id='others'>Others / 其他</h2>
   <ProjectSection
     projects={[
       {
         name: '👤 Kevin',
-        description: 'Kevin\'s GitHub Profile',
+        description: 'Kevin\'s GitHub Profile / Kevin 的 GitHub 个人资料',
         links: [{ type: 'github', href: 'https://github.com/kevin12369' }]
       }
     ]}
   />
 
-  <h2 id='contact'>Contact</h2>
+  <h2 id='contact'>Contact / 联系我</h2>
   <p>
     Feel free to contact me for collaboration or just to say hi!
   </p>
   <p>
+    欢迎联系我进行合作，或者只是打个招呼！
+  </p>
+  <p>
     You can find me on GitHub: <a href='https://github.com/kevin12369' target='_blank'>@kevin12369</a>
+  </p>
+  <p>
+    你可以在 GitHub 上找到我：<a href='https://github.com/kevin12369' target='_blank'>@kevin12369</a>
   </p>
 </PageLayout>
 
