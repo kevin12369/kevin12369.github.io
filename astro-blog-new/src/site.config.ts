@@ -26,7 +26,7 @@ export const theme: ThemeUserConfig = {
   },
   /** Set a logo image to show in the homepage. */
   logo: {
-    src: '/logo.png',
+    src: '/src/assets/logo.png',
     alt: 'Kevin.AI Logo'
   },
 
