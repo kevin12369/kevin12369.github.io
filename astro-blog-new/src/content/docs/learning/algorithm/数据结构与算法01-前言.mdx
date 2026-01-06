@@ -2,11 +2,11 @@
 language: 'zh-CN'
 title: '数据结构与算法01-前言'
 description: '在AI时代，为什么我们还需要学习数据结构与算法？本文将深入探讨算法学习在AI时代的重要性和价值。'
-publishDate: '2024-01-01'
+publishDate: 2024-01-01
 tags: ['算法', '数据结构', '学习路径']
 ---
 
-import { Card, Collapse, Button, Icon } from 'astro-pure/user'
+import { Card, Collapse, Button, Icon, Label } from 'astro-pure/user'
 
 > 在AI时代，为什么我们还需要学习数据结构与算法？
 
@@ -27,6 +27,7 @@ import { Card, Collapse, Button, Icon } from 'astro-pure/user'
 
 #### 1. AI是助手，不是替代者
 
+<Card>
 **AI工具（如ChatGPT、Copilot）可以：**
 - 快速生成代码实现
 - 提供多种解题思路
@@ -37,6 +38,7 @@ import { Card, Collapse, Button, Icon } from 'astro-pure/user'
 - 选择合适的数据结构
 - 优化算法复杂度
 - 在面试中的实时思考
+</Card>
 
 #### 2. 2025年面试趋势
 
@@ -184,6 +186,7 @@ import { Card, Collapse, Button, Icon } from 'astro-pure/user'
 
 ### 1. 质量大于数量
 
+<Collapse title="误区 vs 真相">
 **误区**：刷完LeetCode 4000+道题就能通过面试
 
 **真相**：
@@ -195,6 +198,7 @@ import { Card, Collapse, Button, Icon } from 'astro-pure/user'
 - 每天刷2-3道高质量题目
 - 每道题都要100%通过
 - 多种解法对比分析
+</Collapse>
 
 ### 2. 系统化学习
 
@@ -248,8 +252,7 @@ import { Card, Collapse, Button, Icon } from 'astro-pure/user'
 
 ## 学习路径规划
 
-### 阶段一：基础理论（1-2周）
-
+<Collapse title="阶段一：基础理论（1-2周）">
 **学习内容**：
 - 算法基础理论
 - 复杂度分析
@@ -262,9 +265,9 @@ import { Card, Collapse, Button, Icon } from 'astro-pure/user'
 **实践**：
 - 完成LeetCode简单题10-20道
 - 理解每道题的时间复杂度
+</Collapse>
 
-### 阶段二：线性结构（2-3周）
-
+<Collapse title="阶段二：线性结构（2-3周）">
 **学习内容**：
 - 数组和字符串
 - 链表
@@ -279,9 +282,9 @@ import { Card, Collapse, Button, Icon } from 'astro-pure/user'
 **实践**：
 - 每个知识点刷10-15道题
 - 重点掌握双指针、快慢指针等技巧
+</Collapse>
 
-### 阶段三：非线性结构（3-4周）
-
+<Collapse title="阶段三：非线性结构（3-4周）">
 **学习内容**：
 - 二叉树
 - 二叉搜索树
@@ -298,9 +301,9 @@ import { Card, Collapse, Button, Icon } from 'astro-pure/user'
 **实践**：
 - 树是面试重点，重点突破
 - 掌握树的遍历、递归思想
+</Collapse>
 
-### 阶段四：核心算法（4-6周）
-
+<Collapse title="阶段四：核心算法（4-6周）">
 **学习内容**：
 - 排序算法
 - 查找算法
@@ -317,9 +320,9 @@ import { Card, Collapse, Button, Icon } from 'astro-pure/user'
 **实践**：
 - 掌握每种算法的核心思想
 - 能识别题目类型并选择合适算法
+</Collapse>
 
-### 阶段五：综合提升（持续）
-
+<Collapse title="阶段五：综合提升（持续）">
 **学习内容**：
 - 图论基础
 - 字符串算法
@@ -335,29 +338,31 @@ import { Card, Collapse, Button, Icon } from 'astro-pure/user'
 - 每天坚持刷题
 - 参加周赛和竞赛
 - 定期复习和总结
+</Collapse>
 
 ## 刷题策略
 
 ### 1. 题目选择
 
 **优先级排序**：
-1. **高频经典题**（必须掌握）
-   - LeetCode热题100道
-   - 剑指Offer
-   - 各大厂面试高频题
 
-2. **中等难度题**（重点突破）
-   - 面试主要考察范围
-   - 需要一定的思考能力
+<Label>1. 高频经典题（必须掌握）</Label>
+- LeetCode热题100道
+- 剑指Offer
+- 各大厂面试高频题
 
-3. **困难题**（量力而行）
-   - 时间充裕时挑战
-   - 不必强求
+<Label>2. 中等难度题（重点突破）</Label>
+- 面试主要考察范围
+- 需要一定的思考能力
+
+<Label>3. 困难题（量力而行）</Label>
+- 时间充裕时挑战
+- 不必强求
 
 **避免**：
-- 冷门题目
-- 过于偏题
-- 纯粹的数学题
+- ❌ 冷门题目
+- ❌ 过于偏题
+- ❌ 纯粹的数学题
 
 ### 2. 刷题方法
 
@@ -621,4 +626,7 @@ import { Card, Collapse, Button, Icon } from 'astro-pure/user'
 
 ---
 
-**下一步**：让我们从最基础的数组开始，深入理解数据结构与算法的奥秘。
+<Button href="/docs/learning/algorithm/数据结构与算法2-数组" title="下一篇：数组">
+  <Icon name="arrow-right" slot="before" />
+  数组：最基础的数据结构
+</Button>

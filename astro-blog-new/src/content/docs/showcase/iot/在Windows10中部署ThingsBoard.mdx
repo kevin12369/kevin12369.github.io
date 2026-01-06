@@ -2,15 +2,17 @@
 language: 'zh-CN'
 title: '在 Windows 10 中部署 ThingsBoard'
 description: '在开始部署之前，需要先准备好以下环境：'
-publishDate: '2025-12-26'
+publishDate: 2025-12-26
 tags: []
 ---
 
+import { Card, Label, Steps } from 'astro-pure/user'
 
 # 在 Windows 10 中部署 ThingsBoard
 
 ## 前置条件
 
+<Card>
 在开始部署之前，需要先准备好以下环境：
 
 - Windows 10 操作系统
@@ -18,6 +20,7 @@ tags: []
 - 至少 10GB 可用磁盘空间
 - Java 11 或更高版本
 - PostgreSQL 12 或更高版本
+</Card>
 
 ## 安装 Java
 
@@ -25,20 +28,25 @@ ThingsBoard 需要 Java 运行环境。
 
 ### 下载 Java
 
+<Card>
 访问 Oracle 官网或 OpenJDK 官网下载 Java 11 或更高版本。
 
 推荐使用 OpenJDK，下载地址：https://adoptium.net/
 
 选择 Windows x64 版本下载。
+</Card>
 
 ### 安装 Java
 
+<Steps>
 1. 双击下载的安装包
 2. 按照安装向导完成安装
 3. 记住安装路径（默认是 `C:\Program Files\Eclipse Adoptium\jdk-11.x.x.x-hotspot\`）
+</Steps>
 
 ### 配置环境变量
 
+<Steps>
 1. 右键点击"此电脑"，选择"属性"
 2. 点击"高级系统设置"
 3. 点击"环境变量"
@@ -48,6 +56,7 @@ ThingsBoard 需要 Java 运行环境。
 7. 在"系统变量"中找到 `Path`，点击"编辑"
 8. 添加新条目：`%JAVA_HOME%\bin`
 9. 点击"确定"保存
+</Steps>
 
 ### 验证 Java 安装
 
@@ -65,12 +74,15 @@ ThingsBoard 使用 PostgreSQL 作为数据库。
 
 ### 下载 PostgreSQL
 
+<Card>
 访问 PostgreSQL 官网：https://www.postgresql.org/download/windows/
 
 下载 Windows 版本的 PostgreSQL 安装程序。
+</Card>
 
 ### 安装 PostgreSQL
 
+<Steps>
 1. 双击下载的安装程序
 2. 选择安装路径（默认是 `C:\Program Files\PostgreSQL\13\`）
 3. 设置数据目录（默认是 `C:\Program Files\PostgreSQL\13\data`）
@@ -78,16 +90,19 @@ ThingsBoard 使用 PostgreSQL 作为数据库。
 5. 选择默认端口 5432
 6. 选择区域设置（选择 Chinese (Simplified), China）
 7. 按照向导完成安装
+</Steps>
 
 ### 创建 ThingsBoard 数据库
 
 安装完成后，打开 pgAdmin（PostgreSQL 的管理工具）：
 
+<Steps>
 1. 在浏览器中打开 pgAdmin（安装时会自动打开）
 2. 输入 postgres 用户密码登录
 3. 右键点击"Databases"，选择"Create" → "Database"
 4. 数据库名称输入：`thingsboard`
 5. 点击"Save"
+</Steps>
 
 或者使用命令行创建数据库：
 
@@ -102,6 +117,7 @@ GRANT ALL PRIVILEGES ON DATABASE thingsboard TO thingsboard;
 
 ## 下载 ThingsBoard
 
+<Card>
 从 ThingsBoard 官网下载最新版本：
 
 访问：https://github.com/thingsboard/thingsboard/releases
@@ -109,19 +125,22 @@ GRANT ALL PRIVILEGES ON DATABASE thingsboard TO thingsboard;
 下载 Windows 版本的安装包（thingsboard-windows-setup-3.6.4.exe）
 
 （注：版本号可能需要根据实际情况调整）
+</Card>
 
 ## 安装 ThingsBoard
 
+<Steps>
 1. 双击下载的安装程序
 2. 选择安装路径（默认是 `C:\Program Files (x86)\thingsboard`）
 3. 选择安装组件（默认全部安装）
 4. 按照向导完成安装
+</Steps>
 
 ## 配置 ThingsBoard
 
 ### 编辑配置文件
 
-打开 ThingsBoard 配置文件：
+<Label>打开 ThingsBoard 配置文件：</Label>
 
 ```
 C:\Program Files (x86)\thingsboard\conf\thingsboard.conf
@@ -172,9 +191,11 @@ ThingsBoard 安装时会自动注册为 Windows 服务。
 
 打开"服务"管理器：
 
+<Steps>
 1. 按 `Win + R`，输入 `services.msc`
 2. 找到 `thingsboard` 服务
 3. 右键点击，选择"启动"
+</Steps>
 
 或者使用命令行：
 
@@ -186,10 +207,12 @@ net start thingsboard
 
 在"服务"管理器中：
 
+<Steps>
 1. 右键点击 `thingsboard` 服务
 2. 选择"属性"
 3. 将"启动类型"设置为"自动"
 4. 点击"确定"
+</Steps>
 
 ### 手动启动
 
@@ -204,6 +227,7 @@ thingsboard.bat
 
 ## 访问 ThingsBoard
 
+<Card>
 打开浏览器，访问：
 
 ```
@@ -215,6 +239,7 @@ http://localhost:8080
 - 密码：`tenant`
 
 登录后，可以看到 ThingsBoard 的管理界面。
+</Card>
 
 ## 常用命令
 
@@ -235,7 +260,7 @@ thingsboard.bat
 
 ## 查看日志
 
-ThingsBoard 的日志文件位置：
+<Label>ThingsBoard 的日志文件位置：</Label>
 
 ```
 C:\Program Files (x86)\thingsboard\logs\thingsboard.log
@@ -254,9 +279,11 @@ type thingsboard.log
 
 如果需要卸载 ThingsBoard：
 
+<Steps>
 1. 打开"控制面板" → "程序和功能"
 2. 找到"ThingsBoard"
 3. 右键点击，选择"卸载"
+</Steps>
 
 或者使用命令行：
 
@@ -273,7 +300,8 @@ C:\Program Files (x86)\thingsboard
 
 ## 注意事项
 
-1. **防火墙设置**：如果需要从外部访问，需要开放 8080 端口：
+<Card>
+1. <Label>防火墙设置</Label>：如果需要从外部访问，需要开放 8080 端口：
 
    - 打开"Windows Defender 防火墙"
    - 点击"高级设置"
@@ -282,7 +310,7 @@ C:\Program Files (x86)\thingsboard
    - 选择"允许连接"
    - 按照向导完成
 
-2. **内存限制**：ThingsBoard 默认使用 1GB 内存，如果服务器内存不足，可以在配置文件中调整：
+2. <Label>内存限制</Label>：ThingsBoard 默认使用 1GB 内存，如果服务器内存不足，可以在配置文件中调整：
 
    ```properties
    JAVA_OPTS="-Xms1G -Xmx1G"
@@ -294,7 +322,7 @@ C:\Program Files (x86)\thingsboard
    JAVA_OPTS="-Xms2G -Xmx2G"
    ```
 
-3. **备份数据**：定期备份数据库：
+3. <Label>备份数据</Label>：定期备份数据库：
 
    使用 pgAdmin 备份，或者使用命令行：
 
@@ -302,12 +330,14 @@ C:\Program Files (x86)\thingsboard
    pg_dump -U postgres -d thingsboard > thingsboard_backup.sql
    ```
 
-4. **更新版本**：更新 ThingsBoard 时，先备份数据，然后下载新版本并重新安装。
+4. <Label>更新版本</Label>：更新 ThingsBoard 时，先备份数据，然后下载新版本并重新安装。
+</Card>
 
 ## 故障排查
 
 ### 服务无法启动
 
+<Card>
 1. 检查服务状态：
    ```cmd
    sc query thingsboard
@@ -319,20 +349,25 @@ C:\Program Files (x86)\thingsboard
    - PostgreSQL 未启动：检查 PostgreSQL 服务状态
    - 数据库连接失败：检查数据库配置是否正确
    - 端口被占用：检查 8080 端口是否被其他程序占用
+</Card>
 
 ### 无法访问 Web 界面
 
+<Card>
 - 检查防火墙设置
 - 确认服务是否正常运行
 - 尝试使用 `localhost` 或本机 IP 地址访问
 - 检查浏览器是否阻止了连接
+</Card>
 
 ### 数据库连接错误
 
+<Card>
 - 检查 PostgreSQL 服务状态
 - 确认数据库用户名和密码是否正确
 - 检查数据库是否已创建
 - 确认 PostgreSQL 服务正在监听 5432 端口
+</Card>
 
 ### 端口被占用
 

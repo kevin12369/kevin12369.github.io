@@ -43,7 +43,9 @@ const shares = {
   {/* title & link */}
   <div class='flex flex-col'>
     <div class='font-medium text-foreground'>{title}</div>
-    <div class='text-sm'>{Astro.url}</div>
+    <div class='text-sm text-muted-foreground max-w-full overflow-hidden text-ellipsis whitespace-nowrap' title={Astro.url}>
+      {Astro.url}
+    </div>
   </div>
 
   {/* common info */}
