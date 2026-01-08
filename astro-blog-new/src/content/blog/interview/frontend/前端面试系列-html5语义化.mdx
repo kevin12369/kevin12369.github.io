@@ -3,15 +3,20 @@ language: 'zh-CN'
 title: 'HTML 5 语义化（2025版）'
 description: 'IFE-NOTE：页面结构语义化 | 雨落 (rainylog.com)'
 publishDate: '2024-01-01'
-tags: []
+tags: ['HTML5', '语义化', '面试']
 ---
 
+import { Card, Label, Collapse } from 'astro-pure/user'
 
-# HTML 5 语义化（2025版）
+## 前言
 
-[IFE-NOTE：页面结构语义化 | 雨落 (rainylog.com)](https://rainylog.com/post/ife-note-1/)
+本文总结了HTML5语义化的核心知识,涵盖语义化的概念、重要性、常用标签、最佳实践等内容,帮助前端开发者掌握语义化编程技能。
 
 ## 什么是语义化？
+
+<Collapse title="参考链接">
+[IFE-NOTE：页面结构语义化 | 雨落 (rainylog.com)](https://rainylog.com/post/ife-note-1/)
+</Collapse>
 
 语义化是指使用恰当的HTML标签来描述内容的含义和结构，而不仅仅是外观。语义化的核心思想是：**用正确的标签做正确的事情**。
 
@@ -20,6 +25,8 @@ tags: []
 2. **代码语义化**：编写清晰、易于理解的代码结构
 
 ## 为什么需要语义化？
+
+<Label color="purple">高频考点</Label>
 
 1. **可访问性（Accessibility）**：
    - 屏幕阅读器能够更好地解析页面结构
@@ -44,6 +51,8 @@ tags: []
 ## HTML5语义化标签
 
 ### 页面结构标签
+
+<Label color="purple">高频考点</Label>
 
 #### `<header>`
 
@@ -188,6 +197,8 @@ tags: []
 ```
 
 ### 文本内容标签
+
+<Label color="purple">高频考点</Label>
 
 #### `<figure>` 和 `<figcaption>`
 
@@ -335,6 +346,8 @@ tags: []
 
 ## 语义化最佳实践
 
+<Label color="purple">高频考点</Label>
+
 ### 1. 正确使用标题层级
 
 ```html
@@ -440,6 +453,7 @@ tags: []
 
 ## 2025年新增语义化特性
 
+<Card>
 ### 1. 搜索元素 `<search>`
 
 ```html
@@ -484,6 +498,7 @@ tags: []
   <!-- 主要内容 -->
 </main>
 ```
+</Card>
 
 ## 语义化检查工具
 
@@ -504,6 +519,8 @@ tags: []
    - 包含可访问性检查
 
 ## 常见错误
+
+<Label color="purple">高频考点</Label>
 
 ### 1. 过度使用 `<div>`
 

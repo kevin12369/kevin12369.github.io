@@ -1,19 +1,28 @@
 ---
 language: 'zh-CN'
 title: '在 Ubuntu（Linux）中部署 ThingsBoard'
-description: '在开始部署之前，需要先准备好以下环境：'
-publishDate: 2025-12-26
-tags: []
+description: '详细介绍如何在 Ubuntu Linux 系统上部署 ThingsBoard 物联网平台，包括环境准备、Java 和 PostgreSQL 安装、ThingsBoard 配置及启动等完整步骤。'
+publishDate: '2025-12-26'
+updatedDate: '2025-12-26'
+tags:
+  - ThingsBoard
+  - IoT
+  - 物联网
+  - Ubuntu
+  - Linux部署
+draft: false
+comment: true
 ---
 
+import { Card, Label, Collapse, Aside } from 'astro-pure/user'
 
 # 在 Ubuntu（Linux）中部署 ThingsBoard
 
 ## 前置条件
 
-
-
 在开始部署之前，需要先准备好以下环境：
+
+<Label>系统要求</Label>
 
 - Ubuntu 20.04 或更高版本
 - 至少 2GB 内存（推荐 4GB 或更多）
@@ -21,11 +30,9 @@ tags: []
 - Java 11 或更高版本
 - PostgreSQL 12 或更高版本
 
-
-
 ## 安装 Java
 
-**步骤1：安装Java运行环境**
+<Label>步骤1：安装Java运行环境</Label>
 
 ThingsBoard 需要 Java 运行环境。先检查系统是否已安装 Java：
 
@@ -48,7 +55,7 @@ java -version
 
 ## 安装 PostgreSQL
 
-**步骤2：安装PostgreSQL数据库**
+<Label>步骤2：安装PostgreSQL数据库</Label>
 
 ThingsBoard 使用 PostgreSQL 作为数据库。安装 PostgreSQL：
 
@@ -80,7 +87,7 @@ GRANT ALL PRIVILEGES ON DATABASE thingsboard TO thingsboard;
 
 ## 下载 ThingsBoard
 
-**步骤3：下载ThingsBoard安装包**
+<Label>步骤3：下载ThingsBoard安装包</Label>
 
 从 ThingsBoard 官网下载最新版本：
 
@@ -88,11 +95,13 @@ GRANT ALL PRIVILEGES ON DATABASE thingsboard TO thingsboard;
 wget https://github.com/thingsboard/thingsboard/releases/download/v3.6.4/thingsboard-3.6.4.deb
 ```
 
-（注：版本号可能需要根据实际情况调整，访问 [ThingsBoard GitHub Releases](https://github.com/thingsboard/thingsboard/releases) 查看最新版本）
+<Aside>
+**注意**：版本号可能需要根据实际情况调整，访问 [ThingsBoard GitHub Releases](https://github.com/thingsboard/thingsboard/releases) 查看最新版本。
+</Aside>
 
 ## 安装 ThingsBoard
 
-**步骤4：安装ThingsBoard**
+<Label>步骤4：安装ThingsBoard</Label>
 
 使用 dpkg 安装下载的 deb 包：
 
@@ -108,7 +117,7 @@ sudo apt install -f
 
 ## 配置 ThingsBoard
 
-**步骤5：配置ThingsBoard数据库连接**
+<Label>步骤5：配置ThingsBoard数据库连接</Label>
 
 编辑 ThingsBoard 配置文件：
 
@@ -117,6 +126,8 @@ sudo nano /etc/thingsboard/thingsboard.conf
 ```
 
 找到数据库配置部分，修改为：
+
+<Card title="数据库配置">
 
 ```properties
 # database type
@@ -130,11 +141,13 @@ POSTGRES_USER=thingsboard
 POSTGRES_PASSWORD=thingsboard
 ```
 
+</Card>
+
 保存并退出（按 Ctrl+X，然后按 Y，再按 Enter）。
 
 ## 初始化数据库
 
-**步骤6：初始化数据库**
+<Label>步骤6：初始化数据库</Label>
 
 运行 ThingsBoard 安装脚本，初始化数据库：
 
@@ -154,7 +167,7 @@ sudo /usr/share/thingsboard/bin/install/install.sh
 
 ## 启动 ThingsBoard
 
-**步骤7：启动ThingsBoard服务**
+<Label>步骤7：启动ThingsBoard服务</Label>
 
 启动 ThingsBoard 服务：
 
@@ -178,7 +191,7 @@ sudo systemctl status thingsboard
 
 ## 访问 ThingsBoard
 
-**步骤8：访问ThingsBoard管理界面**
+<Label>步骤8：访问ThingsBoard管理界面</Label>
 
 打开浏览器，访问：
 
@@ -186,7 +199,8 @@ sudo systemctl status thingsboard
 http://localhost:8080
 ```
 
-默认登录信息：
+<Label>默认登录信息</Label>
+
 - 用户名：`tenant@thingsboard.org`
 - 密码：`tenant`
 
@@ -194,7 +208,7 @@ http://localhost:8080
 
 ## 常用命令
 
-
+<Card title="ThingsBoard 常用命令">
 
 ```bash
 # 启动服务
@@ -213,11 +227,9 @@ sudo systemctl status thingsboard
 sudo journalctl -u thingsboard -f
 ```
 
-
+</Card>
 
 ## 卸载 ThingsBoard
-
-
 
 如果需要卸载 ThingsBoard：
 
@@ -229,33 +241,37 @@ sudo rm -rf /var/lib/thingsboard
 sudo rm -rf /var/log/thingsboard
 ```
 
-
-
 ## 注意事项
 
+<Label>重要提示</Label>
 
+### 1. 防火墙设置
 
-1. **防火墙设置**：如果需要从外部访问，需要开放 8080 端口：
+如果需要从外部访问，需要开放 8080 端口：
 
-   ```bash
-   sudo ufw allow 8080/tcp
-   ```
+```bash
+sudo ufw allow 8080/tcp
+```
 
-2. **内存限制**：ThingsBoard 默认使用 1GB 内存，如果服务器内存不足，可以在配置文件中调整：
+### 2. 内存限制
 
-   ```properties
-   JAVA_OPTS="-Xms1G -Xmx1G"
-   ```
+ThingsBoard 默认使用 1GB 内存，如果服务器内存不足，可以在配置文件中调整：
 
-3. **备份数据**：定期备份数据库：
+```properties
+JAVA_OPTS="-Xms1G -Xmx1G"
+```
 
-   ```bash
-   sudo -u postgres pg_dump thingsboard > thingsboard_backup.sql
-   ```
+### 3. 备份数据
 
-4. **更新版本**：更新 ThingsBoard 时，先备份数据，然后下载新版本并重新安装。
+定期备份数据库：
 
+```bash
+sudo -u postgres pg_dump thingsboard > thingsboard_backup.sql
+```
 
+### 4. 更新版本
+
+更新 ThingsBoard 时，先备份数据，然后下载新版本并重新安装。
 
 ## 故障排查
 
@@ -289,3 +305,10 @@ sudo journalctl -u thingsboard -n 50
 在 Ubuntu 上部署 ThingsBoard 的步骤其实不复杂，主要就是安装依赖、配置数据库、安装 ThingsBoard 软件包，然后启动服务。按照上面的步骤一步步操作，应该能顺利完成部署。
 
 部署完成后，就可以开始使用 ThingsBoard 管理物联网设备、收集数据、创建仪表板了。
+
+---
+
+**参考资料：**
+- [ThingsBoard 官方文档](https://thingsboard.io/docs/)
+- [ThingsBoard GitHub](https://github.com/thingsboard/thingsboard)
+- [PostgreSQL 官方文档](https://www.postgresql.org/docs/)

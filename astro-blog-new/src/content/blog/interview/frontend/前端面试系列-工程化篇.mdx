@@ -3,19 +3,24 @@ language: 'zh-CN'
 title: '前端工程化总结（2025版）'
 description: '- **Vite 成为主流**：取代 Webpack 成为默认构建工具'
 publishDate: '2024-01-01'
-tags: []
+tags: ['前端工程化', '面试', '构建工具']
 ---
 
+import { Card, Label, Collapse } from 'astro-pure/user'
 
-# 前端工程化总结（2025版）
+## 前言
+
+本文总结了前端工程化的核心知识,涵盖模块化、构建工具、包管理、代码规范、CI/CD、测试、部署、微前端等内容,帮助前端开发者系统掌握工程化技能。
 
 ## 2025年前端工程化趋势
 
+<Card>
 - **Vite 成为主流**：取代 Webpack 成为默认构建工具
 - **Monorepo 普及**：pnpm workspace、Turborepo
 - **CI/CD 自动化**：GitHub Actions、GitLab CI
 - **微前端架构**：qiankun、Module Federation
 - **低代码平台**：提升开发效率
+</Card>
 
 ## 什么是前端工程化？
 
@@ -90,6 +95,8 @@ require(['module'], function(module) {
 
 ### 2. 模块化最佳实践
 
+<Label color="purple">高频考点</Label>
+
 - 优先使用 ES Modules
 - 使用绝对路径导入
 - 避免循环依赖
@@ -98,6 +105,8 @@ require(['module'], function(module) {
 ## 构建工具
 
 ### 3. Webpack
+
+<Label color="purple">高频考点</Label>
 
 **核心概念**：
 - **Entry**：入口
@@ -157,6 +166,8 @@ module.exports = {
 
 ### 4. Vite
 
+<Label color="purple">高频考点</Label>
+
 **优势**：
 - 极快的冷启动
 - 即时热更新（HMR）
@@ -203,6 +214,8 @@ export default defineConfig({
 
 ### 6. npm vs yarn vs pnpm
 
+<Label color="purple">高频考点</Label>
+
 **npm**：
 ```bash
 npm install
@@ -228,6 +241,8 @@ pnpm build
 - 支持 Monorepo
 
 ### 7. Monorepo
+
+<Label color="purple">高频考点</Label>
 
 **pnpm workspace**：
 ```json
@@ -266,6 +281,8 @@ packages:
 ## 代码规范
 
 ### 8. ESLint
+
+<Label color="purple">高频考点</Label>
 
 **配置示例**：
 ```javascript
@@ -364,6 +381,8 @@ npx husky add .husky/pre-commit "npx lint-staged"
 
 ### 12. GitHub Actions
 
+<Label color="purple">高频考点</Label>
+
 **配置示例**：
 ```yaml
 name: CI/CD
@@ -440,6 +459,8 @@ deploy:
 
 ### 14. 单元测试
 
+<Label color="purple">高频考点</Label>
+
 **Jest**：
 ```javascript
 // math.test.js
@@ -474,6 +495,8 @@ describe('Math', () => {
 ```
 
 ### 15. 端到端测试
+
+<Label color="purple">高频考点</Label>
 
 **Cypress**：
 ```javascript
@@ -573,6 +596,8 @@ volumes:
 
 ### 18. qiankun
 
+<Label color="purple">高频考点</Label>
+
 **主应用**：
 ```javascript
 // main.js
@@ -642,6 +667,8 @@ export async function unmount(props) {
 
 ### 19. Module Federation
 
+<Label color="purple">高频考点</Label>
+
 **配置示例**：
 ```javascript
 // webpack.config.js
@@ -667,6 +694,8 @@ module.exports = {
 ## 性能优化
 
 ### 20. 构建优化
+
+<Label color="purple">高频考点</Label>
 
 **代码分割**：
 ```javascript
@@ -713,6 +742,7 @@ module.exports = {
 
 ## 2025年新技术
 
+<Card>
 ### 21. Bun
 
 **特点**：
@@ -740,6 +770,16 @@ npx create-nx-workspace@latest my-workspace
 ### 23. Rspack
 
 **特点**：
+- Rust 编写
+- 兼容 Webpack API
+- 更快的构建速度
+</Card>
+
+## 最佳实践
+
+### 24. 工程化最佳实践
+
+<Label color="purple">高频考点</Label>
 - Rust 编写
 - 兼容 Webpack API
 - 更快的构建速度
@@ -799,6 +839,8 @@ chore: 构建/工具相关
 
 ### 25. 工程化清单
 
+<Label color="purple">高频考点</Label>
+
 **开发阶段**：
 - [ ] 使用 Vite 或 Webpack
 - [ ] 配置 TypeScript
@@ -822,6 +864,8 @@ chore: 构建/工具相关
 
 ### 26. 如何选择构建工具？
 
+<Label color="purple">高频考点</Label>
+
 **选择 Vite**：
 - 中小型项目
 - 快速原型开发
@@ -833,6 +877,8 @@ chore: 构建/工具相关
 - 需要丰富的插件生态
 
 ### 27. 如何优化构建速度？
+
+<Label color="purple">高频考点</Label>
 
 1. **使用缓存**：Webpack cache、Vite 预构建缓存
 2. **并行处理**：thread-loader、happypack

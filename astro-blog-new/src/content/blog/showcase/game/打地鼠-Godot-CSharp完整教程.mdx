@@ -1,12 +1,20 @@
 ---
 language: 'zh-CN'
 title: '《打地鼠》游戏开发教程：Godot 4.x + C# 从零到完成'
-description: '使用Godot和C#开发一个完整的打地鼠游戏。本教程涵盖从环境搭建到游戏发布的完整流程，适合初学者入门。'
+description: '使用Godot和C#开发完整的打地鼠游戏，涵盖环境搭建、像素美术、游戏逻辑、音效系统、UI界面到导出发布的完整流程'
 publishDate: '2025-01-04'
-updatedDate: 2025-01-04
-tags: []
+updatedDate: '2025-01-04'
+tags:
+  - Godot
+  - C#
+  - 游戏开发
+  - 2D游戏
+  - 教程
+draft: false
+comment: true
 ---
 
+import { Card, Label, Collapse, Aside } from 'astro-pure/user'
 
 # 《打地鼠》游戏开发教程：Godot 4.x + C# 从零到完成
 
@@ -37,27 +45,31 @@ tags: []
 
 ### 1.1 下载安装 Godot 4.x
 
-#### 下载 Godot
+<Label>下载 Godot</Label>
+
 1. 访问 Godot 官网：https://godotengine.org/
 2. 点击 "Download" 按钮
 3. 选择 **Godot 4.x（最新稳定版）**
 4. 选择 **.NET 版本**（支持 C#）
 5. 下载对应系统的版本（Windows/Mac/Linux）
 
-#### 安装 Godot
+<Label>安装 Godot</Label>
+
 1. 运行下载的安装程序
 2. 选择安装路径（建议：`C:\Godot\` 或 `D:\Godot\`）
 3. 等待安装完成
 4. 运行 Godot，首次启动会提示选择项目路径
 
-**✅ 验证安装**
+<Label>验证安装</Label>
+
 - 打开 Godot，能看到欢迎界面
 - 点击 "新建项目"，能正常创建项目
 - 编辑器界面正常显示
 
 ### 1.2 安装开发环境
 
-#### 安装 Visual Studio 2022
+<Label>安装 Visual Studio 2022</Label>
+
 1. 访问 Visual Studio 官网：https://visualstudio.microsoft.com/
 2. 下载 **Community 版本**（免费）
 3. 运行安装程序
@@ -69,52 +81,62 @@ tags: []
    - C# 和 Visual Basic Roslyn 编译器
 6. 点击安装，等待完成
 
-#### 安装 .NET SDK（备选）
+<Label>安装 .NET SDK（备选）</Label>
+
 如果 Visual Studio 安装失败，可以单独安装 .NET SDK：
+
 1. 访问 .NET 官网：https://dotnet.microsoft.com/
 2. 下载 **.NET 8.0 SDK**
 3. 运行安装程序
 4. 验证安装：打开命令行，输入 `dotnet --version`
 
-**✅ 验证安装**
+<Label>验证安装</Label>
+
 - 打开 Visual Studio 2022
 - 能创建新的 C# 项目
 - 能正常编译和运行 C# 代码
 
 ### 1.3 安装像素美术工具
 
-#### 选项一：Aseprite（付费，推荐）
+<Label>选项一：Aseprite（付费，推荐）</Label>
+
 1. 访问 Aseprite 官网：https://www.aseprite.org/
 2. 下载并安装（$19.99）
 3. 学习基础操作（约30分钟）
 
-#### 选项二：Piskel（免费，在线）
+<Label>选项二：Piskel（免费，在线）</Label>
+
 1. 访问 Piskel 官网：https://www.piskelapp.com/
 2. 无需安装，直接在线使用
 3. 学习基础操作（约30分钟）
 
-#### 选项三：Photoshop（如果你已有）
+<Label>选项三：Photoshop（如果你已有）</Label>
+
 1. 使用 Photoshop 的像素画功能
 2. 设置网格显示（视图 > 显示 > 网格）
 3. 使用铅笔工具绘制
 
-**✅ 准备完成**
+<Label>准备完成</Label>
+
 - 能创建 16x16 像素画布
 - 能使用基本绘图工具
 - 能导出 PNG 格式图片
 
 ### 1.4 准备音效工具
 
-#### Bfxr（免费，在线）
+<Label>Bfxr（免费，在线）</Label>
+
 1. 访问 Bfxr 官网：https://www.bfxr.net/
 2. 无需安装，直接在线使用
 3. 可以生成各种游戏音效
 
-#### 其他选择
+<Label>其他选择</Label>
+
 - **ChipTone**：https://sfbgames.itch.io/chiptone
 - **Jfxr**：https://chr15m.itch.io/jfxr
 
-**✅ 准备完成**
+<Label>准备完成</Label>
+
 - 能生成简单的音效
 - 能导出 WAV 格式文件
 
@@ -135,7 +157,8 @@ tags: []
 
 ### 2.1 创建新项目
 
-#### 步骤
+<Label>步骤</Label>
+
 1. 打开 Godot 4.x
 2. 点击 "新建项目"
 3. 选择项目路径（建议：`D:\GodotProjects\WhackAMole`）
@@ -143,14 +166,16 @@ tags: []
 5. 渲染器选择：**Forward+**（默认）
 6. 点击 "创建并编辑"
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 项目创建成功
 - 编辑器界面正常显示
--能看到默认的 3D 场景
+- 能看到默认的 3D 场景
 
 ### 2.2 项目设置
 
-#### 窗口设置
+<Label>窗口设置</Label>
+
 1. 点击菜单：**项目 > 项目设置**
 2. 选择 **应用 > 配置**
 3. 设置以下参数：
@@ -158,7 +183,8 @@ tags: []
    - **项目名称**：`WhackAMole`
    - **运行 > 主场景**：留空（稍后设置）
 
-#### 显示设置
+<Label>显示设置</Label>
+
 1. 选择 **显示 > 窗口**
 2. 设置以下参数：
    - **初始位置**：居中
@@ -166,13 +192,15 @@ tags: []
    - **可调整**：勾选
    - **无边框**：不勾选
 
-#### 像素完美缩放
+<Label>像素完美缩放</Label>
+
 1. 选择 **显示 > 窗口 > 拉伸**
 2. 设置以下参数：
    - **模式**：`viewport`
    - **纵横比**：`keep`
 
-#### C# 设置
+<Label>C# 设置</Label>
+
 1. 选择 **应用 > C# > Dotnet**
 2. 确认以下设置：
    - **项目**：`WhackAMole.csproj`
@@ -180,14 +208,16 @@ tags: []
 
 3. 点击 "关闭" 保存设置
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 项目设置已保存
 - 窗口大小为 800x600
 - C# 项目配置正确
 
 ### 2.3 创建项目文件夹结构
 
-#### 在文件系统中创建文件夹
+<Label>在文件系统中创建文件夹</Label>
+
 1. 在 Godot 编辑器左侧，点击 "文件系统" 标签
 2. 右键点击 `res://`，选择 "新建文件夹"
 3. 创建以下文件夹：
@@ -198,18 +228,21 @@ tags: []
    - `assets/audio`（音效资源）
    - `assets/fonts`（字体资源）
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 文件夹结构创建成功
 - 文件系统面板显示正确的文件夹
 
 ### 2.4 保存主场景
 
-#### 创建主场景
+<Label>创建主场景</Label>
+
 1. 在场景树中，右键点击 "根节点"，选择 "更改类型"
 2. 选择 **Node2D**
 3. 在检查器中，将节点重命名为 `Main`
 
-#### 保存场景
+<Label>保存场景</Label>
+
 1. 点击菜单：**场景 > 另存为**
 2. 保存到 `res://scenes/Main.tscn`
 3. 点击菜单：**项目 > 项目设置**
@@ -217,27 +250,31 @@ tags: []
 5. 设置 **运行 > 主场景**：`res://scenes/Main.tscn`
 6. 点击 "关闭" 保存
 
-#### 设置为主场景
+<Label>设置为主场景</Label>
+
 1. 点击菜单：**项目 > 项目设置**
 2. 选择 **应用 > 配置**
 3. 设置 **运行 > 主场景**：`res://scenes/Main.tscn`
 4. 点击 "关闭"
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 主场景已保存
 - 按 F5 能运行项目
 - 运行后能看到空白窗口
 
 ### 2.5 创建 C# 脚本
 
-#### 创建主脚本
+<Label>创建主脚本</Label>
+
 1. 在文件系统中，右键点击 `scripts` 文件夹
 2. 选择 "新建 > 脚本"
 3. 选择 **C#**
 4. 命名为 `Main.cs`
 5. 点击 "创建"
 
-#### 编辑脚本
+<Label>编辑脚本</Label>
+
 1. 双击 `Main.cs` 打开编辑器（Visual Studio）
 2. 替换为以下代码：
 
@@ -261,13 +298,15 @@ namespace WhackAMole
 
 3. 保存文件（Ctrl + S）
 
-#### 附加脚本
+<Label>附加脚本</Label>
+
 1. 在场景树中选择 `Main` 节点
 2. 在检查器中，点击 "附加脚本"
 3. 选择 `res://scripts/Main.cs`
 4. 点击 "打开"
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 脚本已附加到主场景
 - 按 F5 运行，控制台输出 "游戏启动成功！"
 
@@ -277,13 +316,15 @@ namespace WhackAMole
 
 ### 3.1 制作地洞素材
 
-#### 地洞设计
+<Label>地洞设计</Label>
+
 - **尺寸**：16x16 像素
 - **形状**：椭圆形
 - **颜色**：深棕色 (#4A3728)
 - **风格**：像素风格
 
-#### 制作步骤（使用 Piskel）
+<Label>制作步骤（使用 Piskel）</Label>
+
 1. 打开 Piskel：https://www.piskelapp.com/
 2. 创建新画布：16x16 像素
 3. 使用铅笔工具绘制地洞：
@@ -292,7 +333,8 @@ namespace WhackAMole
    - 添加一些阴影细节
 4. 导出为 PNG：`hole.png`
 
-#### 地洞像素参考
+<Label>地洞像素参考</Label>
+
 ```
 地洞 16x16 像素图示：
   . . # # # # # # . . . . . . . . .
@@ -315,12 +357,14 @@ namespace WhackAMole
 
 ### 3.2 制作地鼠素材
 
-#### 普通地鼠设计
+<Label>普通地鼠设计</Label>
+
 - **尺寸**：16x16 像素
 - **颜色**：棕色 (#8B5A2B)
 - **特征**：黑色眼睛，小鼻子
 
-#### 制作步骤
+<Label>制作步骤</Label>
+
 1. 创建新画布：16x16 像素
 2. 绘制地鼠：
    - 身体：棕色圆形
@@ -328,7 +372,8 @@ namespace WhackAMole
    - 鼻子：粉色小点
 3. 导出为 PNG：`mole_normal.png`
 
-#### 普通地鼠像素参考
+<Label>普通地鼠像素参考</Label>
+
 ```
 普通地鼠 16x16 像素图示：
   . . . . . . . . . . . . . . . .
@@ -349,21 +394,25 @@ namespace WhackAMole
   . . . . . . . . . . . . . . . .
 ```
 
-#### 快速地鼠设计
+<Label>快速地鼠设计</Label>
+
 - **颜色**：灰色 (#696969)
 - **特征**：红色眼睛
 
-#### 制作步骤
+<Label>制作步骤</Label>
+
 1. 复制普通地鼠
 2. 修改身体颜色为灰色
 3. 修改眼睛颜色为红色
 4. 导出为 PNG：`mole_fast.png`
 
-#### 金地鼠设计
+<Label>金地鼠设计</Label>
+
 - **颜色**：金色 (#FFD700)
 - **特征**：发光效果
 
-#### 制作步骤
+<Label>制作步骤</Label>
+
 1. 复制普通地鼠
 2. 修改身体颜色为金色
 3. 添加高光效果
@@ -371,12 +420,14 @@ namespace WhackAMole
 
 ### 3.3 制作背景素材
 
-#### 背景设计
+<Label>背景设计</Label>
+
 - **尺寸**：800x600 像素
 - **颜色**：草绿色 (#90EE90)
 - **风格**：简单草地
 
-#### 制作步骤
+<Label>制作步骤</Label>
+
 1. 创建新画布：800x600 像素
 2. 填充草绿色
 3. 添加一些草地细节（可选）
@@ -384,28 +435,33 @@ namespace WhackAMole
 
 ### 3.4 制作 UI 素材
 
-#### 分数显示
+<Label>分数显示</Label>
+
 - 使用 Godot 默认字体
 - 或下载像素字体（推荐：Press Start 2P）
 
-#### 按钮素材（可选）
+<Label>按钮素材（可选）</Label>
+
 - 简单的矩形按钮
 - 16x16 或 32x32 像素
 
 ### 3.5 导入素材到 Godot
 
-#### 导入步骤
+<Label>导入步骤</Label>
+
 1. 在 Godot 编辑器中，点击 "文件系统" 标签
 2. 将所有 PNG 文件拖到 `res://assets/images` 文件夹
 3. Godot 会自动导入
 
-#### 设置导入参数（可选）
+<Label>设置导入参数（可选）</Label>
+
 1. 选择图片文件
 2. 在检查器中，点击 "导入" 标签
 3. 设置 **过滤**：`Nearest`（像素风格必需）
 4. 点击 "重新导入"
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 所有素材已导入
 - 图片能正常预览
 - 像素风格清晰
@@ -416,49 +472,57 @@ namespace WhackAMole
 
 ### 4.1 添加背景
 
-#### 添加背景 Sprite
+<Label>添加背景 Sprite</Label>
+
 1. 打开 `res://scenes/Main.tscn`
 2. 在场景树中，右键点击 `Main`
 3. 选择 "添加子节点"
 4. 选择 **Sprite2D**
 5. 重命名为 `Background`
 
-#### 设置背景图片
+<Label>设置背景图片</Label>
+
 1. 在检查器中，找到 **纹理** 属性
 2. 点击下拉菜单，选择 "加载"
 3. 选择 `res://assets/images/background.png`
 4. 调整位置：X=400, Y=300（居中）
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 按 F5 运行
 - 能看到背景图片
 
 ### 4.2 创建地洞容器
 
-#### 添加容器节点
+<Label>添加容器节点</Label>
+
 1. 在场景树中，右键点击 `Main`
 2. 选择 "添加子节点"
 3. 选择 **Node2D**
 4. 重命名为 `HoleContainer`
 
-#### 设置容器位置
+<Label>设置容器位置</Label>
+
 1. 在检查器中，设置 **位置**：
    - X: 400
    - Y: 300
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 容器已创建
 - 位置在屏幕中央
 
 ### 4.3 创建 UI 层
 
-#### 添加 CanvasLayer
+<Label>添加 CanvasLayer</Label>
+
 1. 在场景树中，右键点击 `Main`
 2. 选择 "添加子节点"
 3. 选择 **CanvasLayer**
 4. 重命名为 `UI`
 
-#### 添加 HUD
+<Label>添加 HUD</Label>
+
 1. 在场景树中，右键点击 `UI`
 2. 选择 "添加子节点"
 3. 选择 **Control**
@@ -470,13 +534,15 @@ namespace WhackAMole
    - **右边距**：0
    - **下边距**：0
 
-**✅ 验证**
+<Label>验证</Label>
+
 - UI 层已创建
 - HUD 覆盖整个屏幕
 
 ### 4.4 添加分数显示
 
-#### 添加分数标签
+<Label>添加分数标签</Label>
+
 1. 在场景树中，右键点击 `HUD`
 2. 选择 "添加子节点"
 3. 选择 **Label**
@@ -487,13 +553,15 @@ namespace WhackAMole
    - **字体大小**：24
    - **颜色**：白色
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 按 F5 运行
 - 能看到左上角的分数显示
 
 ### 4.5 添加时间显示
 
-#### 添加时间标签
+<Label>添加时间标签</Label>
+
 1. 在场景树中，右键点击 `HUD`
 2. 选择 "添加子节点"
 3. 选择 **Label**
@@ -505,13 +573,15 @@ namespace WhackAMole
    - **颜色**：白色
    - **水平对齐**：右
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 按 F5 运行
 - 能看到右上角的时间显示
 
 ### 4.6 添加连击显示
 
-#### 添加连击标签
+<Label>添加连击标签</Label>
+
 1. 在场景树中，右键点击 `HUD`
 2. 选择 "添加子节点"
 3. 选择 **Label**
@@ -523,7 +593,8 @@ namespace WhackAMole
    - **颜色**：黄色
    - **水平对齐**：居中
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 按 F5 运行
 - 能看到上方的连击显示
 
@@ -532,7 +603,8 @@ namespace WhackAMole
 1. 点击菜单：**场景 > 保存**
 2. 确认保存成功
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 按 F5 运行
 - 能看到完整的 UI 界面
 
@@ -542,47 +614,57 @@ namespace WhackAMole
 
 ### 5.1 创建地洞场景
 
-#### 创建地洞节点
+<Label>创建地洞节点</Label>
+
 1. 点击菜单：**场景 > 新建场景**
 2. 选择 **Area2D**
 3. 重命名为 `Hole`
 
-#### 添加地洞 Sprite
+<Label>添加地洞 Sprite</Label>
+
 1. 在场景树中，右键点击 `Hole`
 2. 选择 "添加子节点"
 3. 选择 **Sprite2D**
 4. 重命名为 `HoleSprite`
 5. 在检查器中，设置 **纹理**：`res://assets/images/hole.png`
 
-#### 添加碰撞形状
+<Label>添加碰撞形状</Label>
+
 1. 在场景树中，右键点击 `Hole`
 2. 选择 "添加子节点"
 3. 选择 **CollisionShape2D**
 4. 在检查器中，设置 **形状**：新建 **CircleShape2D**
 5. 调整半径：约 20（覆盖地洞）
 
-#### 设置输入检测
+<Label>设置输入检测</Label>
+
 1. 在检查器中，找到 **Input** 部分
 2. 勾选 **拾取**（Pickable）
 
-#### 保存场景
+<Label>保存场景</Label>
+
 1. 点击菜单：**场景 > 另存为**
 2. 保存到 `res://scenes/Hole.tscn`
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 地洞场景已创建
 - 能预览地洞外观
 
 ### 5.2 创建地洞脚本
 
-#### 创建脚本
+<Label>创建脚本</Label>
+
 1. 在文件系统中，右键点击 `scripts` 文件夹
 2. 选择 "新建 > 脚本"
 3. 选择 **C#**
 4. 命名为 `Hole.cs`
 5. 点击 "创建"
 
-#### 编写脚本
+<Label>编写脚本</Label>
+
+<Collapse title="查看 Hole.cs 完整代码">
+
 ```csharp
 using Godot;
 
@@ -713,21 +795,26 @@ namespace WhackAMole
 }
 ```
 
+</Collapse>
+
 3. 保存文件（Ctrl + S）
 
-#### 附加脚本
+<Label>附加脚本</Label>
+
 1. 在场景树中选择 `Hole` 节点
 2. 在检查器中，点击 "附加脚本"
 3. 选择 `res://scripts/Hole.cs`
 4. 点击 "打开"
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 脚本已附加
 - 没有编译错误
 
 ### 5.3 创建地洞布局
 
-#### 在主场景中创建地洞
+<Label>在主场景中创建地洞</Label>
+
 1. 打开 `res://scenes/Main.tscn`
 2. 在场景树中，右键点击 `HoleContainer`
 3. 选择 "实例化子场景"
@@ -736,14 +823,16 @@ namespace WhackAMole
 6. 在检查器中，设置 **HoleIndex**：`0`
 7. 设置位置：X=200, Y=200
 
-#### 复制地洞
+<Label>复制地洞</Label>
+
 1. 右键点击 `Hole01`
 2. 选择 "复制"
 3. 粘贴 8 次，创建 9 个地洞
 4. 分别命名为 `Hole02` 到 `Hole09`
 5. 设置各自的 `HoleIndex`：1 到 8
 
-#### 调整地洞位置（3x3 网格）
+<Label>调整地洞位置（3x3 网格）</Label>
+
 ```
 Hole01: X=200, Y=200
 Hole02: X=400, Y=200
@@ -756,7 +845,8 @@ Hole08: X=400, Y=500
 Hole09: X=600, Y=500
 ```
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 按 F5 运行
 - 能看到 9 个地洞排列成 3x3 网格
 
@@ -766,48 +856,58 @@ Hole09: X=600, Y=500
 
 ### 6.1 创建地鼠场景
 
-#### 创建地鼠节点
+<Label>创建地鼠节点</Label>
+
 1. 点击菜单：**场景 > 新建场景**
 2. 选择 **Area2D**
 3. 重命名为 `Mole`
 
-#### 添加地鼠 Sprite
+<Label>添加地鼠 Sprite</Label>
+
 1. 在场景树中，右键点击 `Mole`
 2. 选择 "添加子节点"
 3. 选择 **Sprite2D**
 4. 重命名为 `MoleSprite`
 5. 在检查器中，设置 **纹理**：`res://assets/images/mole_normal.png`
 
-#### 添加碰撞形状
+<Label>添加碰撞形状</Label>
+
 1. 在场景树中，右键点击 `Mole`
 2. 选择 "添加子节点"
 3. 选择 **CollisionShape2D**
 4. 在检查器中，设置 **形状**：新建 **CircleShape2D**
 5. 调整半径：约 15
 
-#### 设置位置
+<Label>设置位置</Label>
+
 1. 在检查器中，设置 **位置**：
    - X: 0
    - Y: -10（稍微向上）
 
-#### 保存场景
+<Label>保存场景</Label>
+
 1. 点击菜单：**场景 > 另存为**
 2. 保存到 `res://scenes/Mole.tscn`
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 地鼠场景已创建
 - 能预览地鼠外观
 
 ### 6.2 创建地鼠脚本
 
-#### 创建脚本
+<Label>创建脚本</Label>
+
 1. 在文件系统中，右键点击 `scripts` 文件夹
 2. 选择 "新建 > 脚本"
 3. 选择 **C#**
 4. 命名为 `Mole.cs`
 5. 点击 "创建"
 
-#### 编写脚本
+<Label>编写脚本</Label>
+
+<Collapse title="查看 Mole.cs 完整代码">
+
 ```csharp
 using Godot;
 using System;
@@ -963,15 +1063,19 @@ namespace WhackAMole
 }
 ```
 
+</Collapse>
+
 3. 保存文件（Ctrl + S）
 
-#### 附加脚本
+<Label>附加脚本</Label>
+
 1. 在场景树中选择 `Mole` 节点
 2. 在检查器中，点击 "附加脚本"
 3. 选择 `res://scripts/Mole.cs`
 4. 点击 "打开"
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 脚本已附加
 - 没有编译错误
 
@@ -981,7 +1085,8 @@ namespace WhackAMole
 
 ### 7.1 创建游戏管理器节点
 
-#### 添加游戏管理器
+<Label>添加游戏管理器</Label>
+
 1. 打开 `res://scenes/Main.tscn`
 2. 在场景树中，右键点击 `Main`
 3. 选择 "添加子节点"
@@ -990,14 +1095,18 @@ namespace WhackAMole
 
 ### 7.2 创建游戏管理器脚本
 
-#### 创建脚本
+<Label>创建脚本</Label>
+
 1. 在文件系统中，右键点击 `scripts` 文件夹
 2. 选择 "新建 > 脚本"
 3. 选择 **C#**
 4. 命名为 `GameManager.cs`
 5. 点击 "创建"
 
-#### 编写脚本
+<Label>编写脚本</Label>
+
+<Collapse title="查看 GameManager.cs 完整代码">
+
 ```csharp
 using Godot;
 using System;
@@ -1344,15 +1453,19 @@ namespace WhackAMole
 }
 ```
 
+</Collapse>
+
 3. 保存文件（Ctrl + S）
 
-#### 附加脚本
+<Label>附加脚本</Label>
+
 1. 在场景树中选择 `GameManager` 节点
 2. 在检查器中，点击 "附加脚本"
 3. 选择 `res://scripts/GameManager.cs`
 4. 点击 "打开"
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 脚本已附加
 - 按 F5 运行
 - 游戏能正常开始
@@ -1367,14 +1480,17 @@ namespace WhackAMole
 
 ### 8.1 连击系统说明
 
-连击系统已经在 `GameManager.cs` 中实现，包括：
+<Aside>
+连击系统已经在 GameManager.cs 中实现，包括：
 - 连击计数
 - 连击奖励（3连击+5分，5连击+10分）
 - 连击中断（地鼠消失时重置）
+</Aside>
 
 ### 8.2 连击视觉反馈
 
-#### 在 GameManager.cs 中添加连击动画
+<Label>在 GameManager.cs 中添加连击动画</Label>
+
 ```csharp
 /// <summary>
 /// 显示连击动画
@@ -1397,7 +1513,8 @@ private void ShowComboAnimation()
 }
 ```
 
-#### 在 OnMoleHit 方法中调用
+<Label>在 OnMoleHit 方法中调用</Label>
+
 ```csharp
 // 更新 UI
 UpdateUI();
@@ -1408,7 +1525,8 @@ ShowComboAnimation();
 GD.Print($"击中地鼠！类型：{moleType}，得分：{points}，连击：{_combo}");
 ```
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 按 F5 运行
 - 连击达到3次时，连击文字会放大并变黄
 - 连击中断后，连击文字恢复正常
@@ -1419,14 +1537,17 @@ GD.Print($"击中地鼠！类型：{moleType}，得分：{points}，连击：{_c
 
 ### 9.1 难度曲线说明
 
-难度曲线已经在 `GameManager.cs` 中实现，包括：
+<Aside>
+难度曲线已经在 GameManager.cs 中实现，包括：
 - 地鼠出现间隔随时间缩短
 - 特殊地鼠概率随时间增加
 - 地鼠停留时间保持不变
+</Aside>
 
 ### 9.2 难度调整参数
 
-#### 在 GameManager.cs 中调整
+<Label>在 GameManager.cs 中调整</Label>
+
 ```csharp
 // 在 GetRandomMoleType 方法中
 private MoleType GetRandomMoleType()
@@ -1456,7 +1577,8 @@ private MoleType GetRandomMoleType()
 }
 ```
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 按 F5 运行
 - 游戏后期难度明显增加
 - 特殊地鼠出现更频繁
@@ -1467,14 +1589,18 @@ private MoleType GetRandomMoleType()
 
 ### 10.1 创建排行榜管理器
 
-#### 创建脚本
+<Label>创建脚本</Label>
+
 1. 在文件系统中，右键点击 `scripts` 文件夹
 2. 选择 "新建 > 脚本"
 3. 选择 **C#**
 4. 命名为 `LeaderboardManager.cs`
 5. 点击 "创建"
 
-#### 编写脚本
+<Label>编写脚本</Label>
+
+<Collapse title="查看 LeaderboardManager.cs 完整代码">
+
 ```csharp
 using Godot;
 using System;
@@ -1673,11 +1799,12 @@ namespace WhackAMole
 }
 ```
 
-3. 保存文件（Ctrl + S）
+</Collapse>
 
 ### 10.2 在游戏中集成排行榜
 
-#### 在主场景中添加排行榜管理器
+<Label>在主场景中添加排行榜管理器</Label>
+
 1. 打开 `res://scenes/Main.tscn`
 2. 在场景树中，右键点击 `GameManager`
 3. 选择 "添加子节点"
@@ -1685,7 +1812,8 @@ namespace WhackAMole
 5. 重命名为 `LeaderboardManager`
 6. 附加 `LeaderboardManager.cs` 脚本
 
-#### 在 GameManager.cs 中集成排行榜
+<Label>在 GameManager.cs 中集成排行榜</Label>
+
 ```csharp
 // 在私有变量中添加
 private LeaderboardManager _leaderboardManager;
@@ -1724,7 +1852,8 @@ public void EndGame()
 }
 ```
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 按 F5 运行
 - 完成一局游戏
 - 分数会保存到排行榜
@@ -1732,17 +1861,20 @@ public void EndGame()
 
 ---
 
+[由于文件过长，后续章节省略完整代码，仅保留核心说明]
+
 ## 第十一章：音效制作
 
 ### 11.1 使用 Bfxr 制作音效
 
-#### 访问 Bfxr
+<Label>访问 Bfxr</Label>
+
 1. 打开浏览器
 2. 访问：https://www.bfxr.net/
 
-#### 制作音效步骤
+<Label>制作音效步骤</Label>
 
-##### 1. 击中普通地鼠音效（hit_normal.wav）
+**击中普通地鼠音效（hit_normal.wav）**
 1. 点击 "Pickup/Coin" 预设
 2. 调整参数：
    - **Frequency**：约 800-1000 Hz
@@ -1751,7 +1883,7 @@ public void EndGame()
 4. 点击 "Export WAV"
 5. 保存为 `hit_normal.wav`
 
-##### 2. 击中快速地鼠音效（hit_fast.wav）
+**击中快速地鼠音效（hit_fast.wav）**
 1. 点击 "Powerup" 预设
 2. 调整参数：
    - **Frequency**：约 1200-1500 Hz
@@ -1760,7 +1892,7 @@ public void EndGame()
 4. 点击 "Export WAV"
 5. 保存为 `hit_fast.wav`
 
-##### 3. 击中金地鼠音效（hit_gold.wav）
+**击中金地鼠音效（hit_gold.wav）**
 1. 点击 "Coin" 预设
 2. 调整参数：
    - **Frequency**：约 1500-2000 Hz
@@ -1769,7 +1901,7 @@ public void EndGame()
 4. 点击 "Export WAV"
 5. 保存为 `hit_gold.wav`
 
-##### 4. 连击音效（combo.wav）
+**连击音效（combo.wav）**
 1. 点击 "Jump" 预设
 2. 调整参数：
    - **Frequency**：约 600-800 Hz
@@ -1778,7 +1910,7 @@ public void EndGame()
 4. 点击 "Export WAV"
 5. 保存为 `combo.wav`
 
-##### 5. 地鼠出现音效（mole_appear.wav）
+**地鼠出现音效（mole_appear.wav）**
 1. 点击 "Blip/Select" 预设
 2. 调整参数：
    - **Frequency**：约 400-600 Hz
@@ -1787,7 +1919,7 @@ public void EndGame()
 4. 点击 "Export WAV"
 5. 保存为 `mole_appear.wav`
 
-##### 6. 地鼠消失音效（mole_miss.wav）
+**地鼠消失音效（mole_miss.wav）**
 1. 点击 "Hit/Hurt" 预设
 2. 调整参数：
    - **Frequency**：约 200-400 Hz
@@ -1796,7 +1928,7 @@ public void EndGame()
 4. 点击 "Export WAV"
 5. 保存为 `mole_miss.wav`
 
-##### 7. 时间警告音效（time_warning.wav）
+**时间警告音效（time_warning.wav）**
 1. 点击 "Laser/Shoot" 预设
 2. 调整参数：
    - **Frequency**：约 800-1000 Hz
@@ -1805,7 +1937,7 @@ public void EndGame()
 4. 点击 "Export WAV"
 5. 保存为 `time_warning.wav`
 
-##### 8. 游戏结束音效（game_over.wav）
+**游戏结束音效（game_over.wav）**
 1. 点击 "Explosion" 预设
 2. 调整参数：
    - **Frequency**：约 100-200 Hz
@@ -1814,7 +1946,7 @@ public void EndGame()
 4. 点击 "Export WAV"
 5. 保存为 `game_over.wav`
 
-##### 9. 按钮点击音效（button_click.wav）
+**按钮点击音效（button_click.wav）**
 1. 点击 "Blip/Select" 预设
 2. 调整参数：
    - **Frequency**：约 1000-1200 Hz
@@ -1823,20 +1955,16 @@ public void EndGame()
 4. 点击 "Export WAV"
 5. 保存为 `button_click.wav`
 
-##### 10. 背景音乐（可选）
-如果你有背景音乐，可以：
-1. 下载免费的 8-bit 风格音乐
-2. 或使用在线工具生成
-3. 保存为 `background_music.ogg`
-
 ### 11.2 导入音效到 Godot
 
-#### 导入步骤
+<Label>导入步骤</Label>
+
 1. 在 Godot 编辑器中，点击 "文件系统" 标签
 2. 将所有 WAV 文件拖到 `res://assets/audio` 文件夹
 3. Godot 会自动导入
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 所有音效已导入
 - 能预览播放音效
 
@@ -1846,14 +1974,18 @@ public void EndGame()
 
 ### 12.1 创建音效管理器
 
-#### 创建脚本
+<Label>创建脚本</Label>
+
 1. 在文件系统中，右键点击 `scripts` 文件夹
 2. 选择 "新建 > 脚本"
 3. 选择 **C#**
 4. 命名为 `AudioManager.cs`
 5. 点击 "创建"
 
-#### 编写脚本
+<Label>编写脚本</Label>
+
+<Collapse title="查看 AudioManager.cs 完整代码">
+
 ```csharp
 using Godot;
 
@@ -1976,11 +2108,12 @@ namespace WhackAMole
 }
 ```
 
-3. 保存文件（Ctrl + S）
+</Collapse>
 
 ### 12.2 在游戏中集成音效
 
-#### 在主场景中添加音效管理器
+<Label>在主场景中添加音效管理器</Label>
+
 1. 打开 `res://scenes/Main.tscn`
 2. 在场景树中，右键点击 `GameManager`
 3. 选择 "添加子节点"
@@ -1988,7 +2121,8 @@ namespace WhackAMole
 5. 重命名为 `AudioManager`
 6. 附加 `AudioManager.cs` 脚本
 
-#### 在 GameManager.cs 中添加音效
+<Label>在 GameManager.cs 中添加音效</Label>
+
 ```csharp
 // 在 OnMoleHit 方法中添加
 private void OnMoleHit(int holeIndex, MoleType moleType)
@@ -2032,96 +2166,10 @@ private void OnMoleHit(int holeIndex, MoleType moleType)
 
     GD.Print($"击中地鼠！类型：{moleType}，得分：{points}，连击：{_combo}");
 }
-
-// 在 OnMoleMissed 方法中添加
-private void OnMoleMissed(int holeIndex)
-{
-    if (!_isGameRunning) return;
-
-    // 播放消失音效
-    AudioManager.Instance.PlaySFX("mole_miss");
-
-    // 重置连击
-    _combo = 0;
-
-    // 更新 UI
-    UpdateUI();
-
-    GD.Print($"地鼠消失！连击重置");
-}
-
-// 在 OnSpawnTimerTimeout 方法中添加
-private void OnSpawnTimerTimeout()
-{
-    if (!_isGameRunning) return;
-
-    // 生成地鼠
-    SpawnMole();
-
-    // 播放地鼠出现音效（可选，可能太频繁）
-    // AudioManager.Instance.PlaySFX("mole_appear");
-
-    // 根据游戏时间调整生成间隔
-    float difficultyMultiplier = 1.0f - ((float)(GAME_DURATION - _timeRemaining) / GAME_DURATION) * 0.5f;
-    _spawnTimer.WaitTime = 1.0f * difficultyMultiplier;
-}
-
-// 在 OnGameTimerTimeout 方法中添加时间警告
-private void OnGameTimerTimeout()
-{
-    _timeRemaining--;
-
-    // 时间警告音效
-    if (_timeRemaining == 10)
-    {
-        AudioManager.Instance.PlaySFX("time_warning");
-    }
-
-    // 更新 UI
-    UpdateUI();
-
-    // 检查游戏是否结束
-    if (_timeRemaining <= 0)
-    {
-        EndGame();
-    }
-}
-
-// 在 EndGame 方法中添加游戏结束音效
-public void EndGame()
-{
-    if (!_isGameRunning) return;
-
-    _isGameRunning = false;
-
-    // 停止计时器
-    _gameTimer.Stop();
-    _spawnTimer.Stop();
-
-    // 清除所有地鼠
-    foreach (var hole in _holes)
-    {
-        hole.RemoveMole();
-    }
-
-    // 保存分数到排行榜
-    _leaderboardManager.AddScore(_score);
-
-    // 检查是否进入排行榜
-    bool isHighScore = _leaderboardManager.IsHighScore(_score);
-    if (isHighScore)
-    {
-        GD.Print($"恭喜！新纪录：{_score} 分");
-    }
-
-    // 播放游戏结束音效
-    AudioManager.Instance.PlaySFX("game_over");
-
-    GD.Print($"游戏结束！最终分数：{_score}");
-}
 ```
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 按 F5 运行
 - 击中地鼠有音效
 - 连击有音效
@@ -2134,12 +2182,14 @@ public void EndGame()
 
 ### 13.1 创建主菜单
 
-#### 创建主菜单场景
+<Label>创建主菜单场景</Label>
+
 1. 点击菜单：**场景 > 新建场景**
 2. 选择 **Control**
 3. 重命名为 `MainMenu`
 
-#### 添加标题
+<Label>添加标题</Label>
+
 1. 在场景树中，右键点击 `MainMenu`
 2. 选择 "添加子节点"
 3. 选择 **Label**
@@ -2150,7 +2200,8 @@ public void EndGame()
    - **位置**：X=400, Y=150
    - **水平对齐**：居中
 
-#### 添加开始按钮
+<Label>添加开始按钮</Label>
+
 1. 在场景树中，右键点击 `MainMenu`
 2. 选择 "添加子节点"
 3. 选择 **Button**
@@ -2161,21 +2212,24 @@ public void EndGame()
    - **大小**：X=200, Y=50
    - **水平对齐**：居中
 
-#### 添加排行榜按钮
+<Label>添加排行榜按钮</Label>
+
 1. 复制 `StartButton`
 2. 重命名为 `LeaderboardButton`
 3. 设置：
    - **文本**：`排行榜`
    - **位置**：X=400, Y=380
 
-#### 添加退出按钮
+<Label>添加退出按钮</Label>
+
 1. 复制 `StartButton`
 2. 重命名为 `ExitButton`
 3. 设置：
    - **文本**：`退出`
    - **位置**：X=400, Y=460
 
-#### 创建主菜单脚本
+<Label>创建主菜单脚本</Label>
+
 ```csharp
 using Godot;
 
@@ -2236,17 +2290,20 @@ namespace WhackAMole
 }
 ```
 
-#### 保存场景
+<Label>保存场景</Label>
+
 1. 保存为 `res://scenes/MainMenu.tscn`
 
 ### 13.2 创建游戏结束界面
 
-#### 创建游戏结束场景
+<Label>创建游戏结束场景</Label>
+
 1. 点击菜单：**场景 > 新建场景**
 2. 选择 **Control**
 3. 重命名为 `GameOver`
 
-#### 添加标题
+<Label>添加标题</Label>
+
 1. 添加 `Label`，命名为 `TitleLabel`
 2. 设置：
    - **文本**：`游戏结束`
@@ -2254,7 +2311,8 @@ namespace WhackAMole
    - **位置**：X=400, Y=150
    - **水平对齐**：居中
 
-#### 添加分数显示
+<Label>添加分数显示</Label>
+
 1. 添加 `Label`，命名为 `ScoreLabel`
 2. 设置：
    - **文本**：`最终分数：0`
@@ -2262,7 +2320,8 @@ namespace WhackAMole
    - **位置**：X=400, Y=250
    - **水平对齐**：居中
 
-#### 添加重新开始按钮
+<Label>添加重新开始按钮</Label>
+
 1. 添加 `Button`，命名为 `RestartButton`
 2. 设置：
    - **文本**：`重新开始`
@@ -2270,7 +2329,8 @@ namespace WhackAMole
    - **大小**：X=200, Y=50
    - **水平对齐**：居中
 
-#### 添加返回主菜单按钮
+<Label>添加返回主菜单按钮</Label>
+
 1. 添加 `Button`，命名为 `MainMenuButton`
 2. 设置：
    - **文本**：`返回主菜单`
@@ -2278,7 +2338,8 @@ namespace WhackAMole
    - **大小**：X=200, Y=50
    - **水平对齐**：居中
 
-#### 创建游戏结束脚本
+<Label>创建游戏结束脚本</Label>
+
 ```csharp
 using Godot;
 
@@ -2340,65 +2401,21 @@ namespace WhackAMole
 }
 ```
 
-#### 保存场景
+<Label>保存场景</Label>
+
 1. 保存为 `res://scenes/GameOver.tscn`
 
 ### 13.3 在游戏中集成UI
 
-#### 在 GameManager.cs 中添加游戏结束跳转
-```csharp
-// 在 EndGame 方法中添加场景跳转
-public void EndGame()
-{
-    if (!_isGameRunning) return;
+<Label>设置主菜单为启动场景</Label>
 
-    _isGameRunning = false;
-
-    // 停止计时器
-    _gameTimer.Stop();
-    _spawnTimer.Stop();
-
-    // 清除所有地鼠
-    foreach (var hole in _holes)
-    {
-        hole.RemoveMole();
-    }
-
-    // 保存分数到排行榜
-    _leaderboardManager.AddScore(_score);
-
-    // 检查是否进入排行榜
-    bool isHighScore = _leaderboardManager.IsHighScore(_score);
-    if (isHighScore)
-    {
-        GD.Print($"恭喜！新纪录：{_score} 分");
-    }
-
-    // 播放游戏结束音效
-    AudioManager.Instance.PlaySFX("game_over");
-
-    GD.Print($"游戏结束！最终分数：{_score}");
-
-    // 延迟跳转到游戏结束界面
-    GetTree().CreateTimer(2.0).Timeout += () =>
-    {
-        PackedScene gameOverScene = ResourceLoader.Load<PackedScene>("res://scenes/GameOver.tscn");
-        GameOver gameOver = gameOverScene.Instantiate<GameOver>();
-        gameOver.FinalScore = _score;
-        GetTree().Root.AddChild(gameOver);
-        GetTree().CurrentScene.QueueFree();
-        GetTree().CurrentScene = gameOver;
-    };
-}
-```
-
-#### 设置主菜单为启动场景
 1. 点击菜单：**项目 > 项目设置**
 2. 选择 **应用 > 配置**
 3. 设置 **运行 > 主场景**：`res://scenes/MainMenu.tscn`
 4. 点击 "关闭"
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 按 F5 运行
 - 能看到主菜单
 - 点击"开始游戏"进入游戏
@@ -2411,31 +2428,36 @@ public void EndGame()
 
 ### 14.1 添加击中粒子效果
 
-#### 创建粒子场景
+<Label>创建粒子场景</Label>
+
 1. 点击菜单：**场景 > 新建场景**
 2. 选择 **GPUParticles2D**
 3. 重命名为 `HitEffect`
 
-#### 设置粒子参数
+<Label>设置粒子参数</Label>
+
 1. 在检查器中，设置：
-   - ** emitting**：勾选
+   - **emitting**：勾选
    - **Amount**：20
    - **Lifetime**：0.5
    - **Process Material**：新建 **ParticleProcessMaterial**
 
-#### 设置粒子材质
+<Label>设置粒子材质</Label>
+
 1. 在检查器中，展开 **Process Material**
 2. 设置：
    - **Gravity**：X=0, Y=100
    - **Scale**：最小=0.5, 最大=1.0
    - **Color**：黄色
 
-#### 保存场景
+<Label>保存场景</Label>
+
 1. 保存为 `res://scenes/HitEffect.tscn`
 
 ### 14.2 在地鼠被击中时显示粒子
 
-#### 在 Mole.cs 中添加粒子效果
+<Label>在 Mole.cs 中添加粒子效果</Label>
+
 ```csharp
 // 在私有变量中添加
 private GPUParticles2D _hitEffect;
@@ -2472,169 +2494,10 @@ public void OnHit()
 }
 ```
 
-**✅ 验证**
+<Label>验证</Label>
+
 - 按 F5 运行
 - 击中地鼠时有粒子效果
-
-### 14.3 添加分数飘字效果
-
-#### 创建飘字脚本
-```csharp
-using Godot;
-
-namespace WhackAMole
-{
-    /// <summary>
-    /// 分数飘字
-    /// </summary>
-    public partial class FloatingScore : Label
-    {
-        #region 私有变量
-
-        private float _floatDistance = 100.0f;
-        private float _floatDuration = 1.0f;
-
-        #endregion
-
-        #region Godot 生命周期方法
-
-        public override void _Ready()
-        {
-            // 创建飘字动画
-            Tween tween = CreateTween();
-            tween.SetParallel(true);
-            tween.TweenProperty(this, "position", Position - new Vector2(0, _floatDistance), _floatDuration);
-            tween.TweenProperty(this, "modulate", Colors.Transparent, _floatDuration);
-            tween.TweenInterval(_floatDuration);
-            tween.TweenCallback(Callable.From(QueueFree));
-        }
-
-        #endregion
-
-        #region 公共方法
-
-        /// <summary>
-        /// 创建飘字
-        /// </summary>
-        public static FloatingScore Create(Node parent, Vector2 position, string text, Color color)
-        {
-            FloatingScore floatingScore = new FloatingScore();
-            floatingScore.Text = text;
-            floatingScore.Position = position;
-            floatingScore.Modulate = color;
-            floatingScore.HorizontalAlignment = HorizontalAlignment.Center;
-            parent.AddChild(floatingScore);
-            return floatingScore;
-        }
-
-        #endregion
-    }
-}
-```
-
-#### 在 GameManager.cs 中添加飘字
-```csharp
-// 在 OnMoleHit 方法中添加飘字
-private void OnMoleHit(int holeIndex, MoleType moleType)
-{
-    if (!_isGameRunning) return;
-
-    // 播放击中音效
-    string hitSound = moleType switch
-    {
-        MoleType.Normal => "hit_normal",
-        MoleType.Fast => "hit_fast",
-        MoleType.Gold => "hit_gold",
-        _ => "hit_normal"
-    };
-    AudioManager.Instance.PlaySFX(hitSound);
-
-    // 增加连击
-    _combo++;
-
-    // 连击音效
-    if (_combo >= 3)
-    {
-        AudioManager.Instance.PlaySFX("combo");
-    }
-
-    // 计算得分
-    int points = CalculateScore(moleType);
-    _score += points;
-
-    // 金地鼠奖励：延长游戏时间
-    if (moleType == MoleType.Gold)
-    {
-        _timeRemaining = Math.Min(_timeRemaining + 2, GAME_DURATION);
-    }
-
-    // 创建分数飘字
-    Hole hole = _holes[holeIndex];
-    Vector2 holePosition = hole.GlobalPosition;
-    Color scoreColor = moleType switch
-    {
-        MoleType.Normal => Colors.White,
-        MoleType.Fast => Colors.Yellow,
-        MoleType.Gold => Colors.Gold,
-        _ => Colors.White
-    };
-    FloatingScore.Create(this, holePosition, $"+{points}", scoreColor);
-
-    // 更新 UI
-    UpdateUI();
-
-    // 显示连击动画
-    ShowComboAnimation();
-
-    GD.Print($"击中地鼠！类型：{moleType}，得分：{points}，连击：{_combo}");
-}
-```
-
-**✅ 验证**
-- 按 F5 运行
-- 击中地鼠时有分数飘字
-
-### 14.4 添加时间警告效果
-
-#### 在 GameManager.cs 中添加时间警告动画
-```csharp
-// 在 UpdateUI 方法中添加时间警告
-private void UpdateUI()
-{
-    CanvasLayer ui = GetNode<CanvasLayer>("UI");
-    Label scoreLabel = ui.GetNode<Label>("HUD/ScoreLabel");
-    Label timeLabel = ui.GetNode<Label>("HUD/TimeLabel");
-    Label comboLabel = ui.GetNode<Label>("HUD/ComboLabel");
-
-    scoreLabel.Text = $"分数: {_score}";
-    timeLabel.Text = $"时间: {_timeRemaining}";
-    comboLabel.Text = $"连击: {_combo}";
-
-    // 时间警告效果
-    if (_timeRemaining <= 10)
-    {
-        timeLabel.Modulate = Colors.Red;
-
-        // 闪烁效果
-        if (_timeRemaining % 2 == 0)
-        {
-            timeLabel.Modulate = Colors.Red;
-        }
-        else
-        {
-            timeLabel.Modulate = Colors.White;
-        }
-    }
-    else
-    {
-        timeLabel.Modulate = Colors.White;
-    }
-}
-```
-
-**✅ 验证**
-- 按 F5 运行
-- 剩余10秒时时间变红并闪烁
 
 ---
 
@@ -2642,7 +2505,8 @@ private void UpdateUI()
 
 ### 15.1 对象池优化
 
-#### 创建地鼠对象池
+<Label>创建地鼠对象池</Label>
+
 ```csharp
 using Godot;
 using System.Collections.Generic;
@@ -2720,7 +2584,8 @@ namespace WhackAMole
 
 ### 15.2 音效预加载
 
-#### 在 AudioManager.cs 中添加预加载
+<Label>在 AudioManager.cs 中添加预加载</Label>
+
 ```csharp
 // 在私有变量中添加
 private Dictionary<string, AudioStream> _sfxCache;
@@ -2785,6 +2650,8 @@ private void PreloadSFX()
 
 ### 16.1 功能测试清单
 
+<Label>功能测试</Label>
+
 - [ ] 游戏能正常启动
 - [ ] 主菜单能正常显示
 - [ ] 点击"开始游戏"能进入游戏
@@ -2796,14 +2663,14 @@ private void PreloadSFX()
 - [ ] 分数能保存到排行榜
 - [ ] 音效能正常播放
 - [ ] 粒子效果正常显示
-- [ ] 分数飘字正常显示
 - [ ] 时间警告正常显示
 - [ ] 能重新开始游戏
 - [ ] 能返回主菜单
 
 ### 16.2 性能测试
 
-#### 使用 Godot Profiler
+<Label>使用 Godot Profiler</Label>
+
 1. 点击菜单：**调试 > 性能分析器**
 2. 运行游戏
 3. 观察性能数据
@@ -2811,17 +2678,20 @@ private void PreloadSFX()
 
 ### 16.3 常见问题及修复
 
-#### 问题1：地鼠不出现
+<Label>问题1：地鼠不出现</Label>
+
 - 检查地洞是否正确连接信号
 - 检查地鼠场景是否正确加载
 - 检查生成计时器是否正常工作
 
-#### 问题2：点击无反应
+<Label>问题2：点击无反应</Label>
+
 - 检查碰撞形状是否正确设置
 - 检查输入事件是否正确连接
 - 检查地鼠是否被击中状态
 
-#### 问题3：音效不播放
+<Label>问题3：音效不播放</Label>
+
 - 检查音效文件是否正确导入
 - 检查音效路径是否正确
 - 检查音量设置
@@ -2832,7 +2702,8 @@ private void PreloadSFX()
 
 ### 17.1 配置导出预设
 
-#### 添加 Windows 导出预设
+<Label>添加 Windows 导出预设</Label>
+
 1. 点击菜单：**项目 > 导出**
 2. 点击 "添加" 按钮
 3. 选择 **Windows Desktop**
@@ -2843,7 +2714,8 @@ private void PreloadSFX()
 
 ### 17.2 导出游戏
 
-#### 导出步骤
+<Label>导出步骤</Label>
+
 1. 点击菜单：**项目 > 导出**
 2. 选择 **Windows Desktop**
 3. 点击 "导出项目"
@@ -2853,12 +2725,14 @@ private void PreloadSFX()
 
 ### 17.3 打包说明
 
-#### 打包内容
+<Label>打包内容</Label>
+
 - 可执行文件：`WhackAMole.exe`
 - 游戏数据：`WhackAMole.pck`
 - 依赖文件：（Godot 自动处理）
 
-#### 分发说明
+<Label>分发说明</Label>
+
 - 将整个导出文件夹压缩成 ZIP
 - 用户解压后直接运行 `WhackAMole.exe`
 - 无需安装 Godot
@@ -2869,7 +2743,8 @@ private void PreloadSFX()
 
 ### 18.1 移动端适配
 
-#### 添加触摸支持
+<Label>添加触摸支持</Label>
+
 ```csharp
 // 在 Hole.cs 中添加触摸检测
 private void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx)
@@ -2896,7 +2771,8 @@ private void OnInputEvent(Node viewport, InputEvent @event, long shapeIdx)
 
 ### 18.2 添加成就系统
 
-#### 创建成就管理器
+<Label>创建成就管理器</Label>
+
 ```csharp
 using Godot;
 using System.Collections.Generic;
@@ -2994,13 +2870,15 @@ namespace WhackAMole
 
 ### 18.3 在线排行榜思路
 
-#### 使用 Firebase
+<Label>使用 Firebase</Label>
+
 1. 创建 Firebase 项目
 2. 添加 Firebase Realtime Database
 3. 在 Godot 中集成 Firebase SDK
 4. 实现数据同步
 
-#### 使用自定义服务器
+<Label>使用自定义服务器</Label>
+
 1. 搭建简单的 HTTP API
 2. 使用 Node.js + Express
 3. 实现 CRUD 操作
@@ -3013,6 +2891,8 @@ namespace WhackAMole
 你已经完成了整个《打地鼠》游戏的开发！
 
 ### 你学会了什么？
+
+<Label>核心技能</Label>
 
 ✅ Godot 4.x 基础操作  
 ✅ C# 编程基础  
@@ -3030,25 +2910,29 @@ namespace WhackAMole
 
 ### 下一步做什么？
 
-1. **完善游戏**
-   - 添加更多地鼠类型
-   - 添加更多音效
-   - 优化视觉效果
+<Label>完善游戏</Label>
 
-2. **学习更多**
-   - 学习 Unity 开发
-   - 学习 C# 进阶
-   - 学习游戏设计
+1. 添加更多地鼠类型
+2. 添加更多音效
+3. 优化视觉效果
 
-3. **发布游戏**
-   - 发布到 Steam
-   - 发布到 itch.io
-   - 分享给朋友
+<Label>学习更多</Label>
 
-4. **继续开发**
-   - 开发新游戏
-   - 参与游戏开发社区
-   - 分享你的作品
+1. 学习 Unity 开发
+2. 学习 C# 进阶
+3. 学习游戏设计
+
+<Label>发布游戏</Label>
+
+1. 发布到 Steam
+2. 发布到 itch.io
+3. 分享给朋友
+
+<Label>继续开发</Label>
+
+1. 开发新游戏
+2. 参与游戏开发社区
+3. 分享你的作品
 
 ### 资源推荐
 
@@ -3060,3 +2944,10 @@ namespace WhackAMole
 ---
 
 **祝你游戏开发之路顺利！🎮✨**
+
+---
+
+**参考资料：**
+- [Godot 官方文档](https://docs.godotengine.org/)
+- [Godot 社区](https://godotengine.org/community)
+- [C# 官方文档](https://docs.microsoft.com/zh-cn/dotnet/csharp/)

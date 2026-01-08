@@ -3,11 +3,14 @@ language: 'zh-CN'
 title: 'HTML&CSS 常见面试题总结（2025版）'
 description: '参考自掘金《2023 前端面试系列--HTML & CSS 篇》'
 publishDate: '2024-01-01'
-tags: []
+tags: ['HTML', 'CSS', '面试']
 ---
 
+import { Card, Label, Collapse } from 'astro-pure/user'
 
-# HTML&CSS 常见面试题总结（2025版）
+## 前言
+
+本文总结了HTML&CSS相关的常见面试题，涵盖2025年最新的技术趋势和高频考点，帮助前端开发者系统复习基础知识。
 
 [参考自掘金《2023 前端面试系列--HTML & CSS 篇》](https://juejin.cn/post/7175048315111735352)
 [参考自掘金《做了一份前端面试复习计划，保熟～》](https://juejin.cn/post/7061588533214969892)
@@ -16,15 +19,24 @@ tags: []
 
 ## 2025年HTML&CSS面试趋势
 
+<Card>
 - **性能优化成为重点**：从简单的CSS选择器优化到渲染性能分析
 - **响应式设计深入**：不再局限于媒体查询，还包括容器查询、视口单位等
 - **现代CSS特性**：Grid、Flexbox、CSS变量、CSS Houdini等新特性应用
 - **可访问性（a11y）**：ARIA标签、语义化、键盘导航等
 - **CSS工程化**：CSS Modules、Tailwind CSS、CSS-in-JS等方案对比
+</Card>
 
 ## HTML
 
 ### 语义化标签
+
+<Collapse title="参考链接">
+[参考自掘金《2023 前端面试系列--HTML & CSS 篇》](https://juejin.cn/post/7175048315111735352)
+[参考自掘金《做了一份前端面试复习计划，保熟～》](https://juejin.cn/post/7061588533214969892)
+[参考自掘金《连八股文都不懂还指望在前端混下去么》](https://juejin.cn/post/7016593221815910408)
+[参考自 CSDN《[前端基础] HTML5 篇》](https://blog.csdn.net/by6671715/article/details/127599870)
+</Collapse>
 
 1. **什么是语义化？**
    - 语义化指对文本内容的结构化（内容语义化），选择合乎语义的标签（代码语义化）。
@@ -48,6 +60,7 @@ tags: []
    - 提升团队协作效率，降低沟通成本
 
 4. **2025年面试高频题：**
+   <Label color="purple">高频考点</Label>
    - 如何选择合适的语义化标签？
    - 语义化对SEO的具体影响是什么？
    - 如何在项目中推广语义化？
@@ -74,6 +87,7 @@ tags: []
    - 适用于：需要依赖 DOM 的脚本，或者有依赖关系的脚本
 
 4. **2025年新增考点：**
+   <Label>新增考点</Label>
    - `type="module"`：ES6 模块脚本，默认具有 defer 行为
    - `integrity`：SRI（子资源完整性）校验，防止 CDN 被篡改
    - `crossorigin`：跨域资源共享配置
@@ -179,6 +193,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置存储�
 
 ### 对浏览器内核的理解？
 
+<Card>
 主要分为两个部分：**渲染引擎**和 **JS 引擎**
 
 1. **渲染引擎**：
@@ -200,9 +215,11 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置存储�
      - Chakra（IE、Edge）
 
 3. **2025年高频考点：**
+   <Label color="purple">高频考点</Label>
    - 渲染流程：解析 HTML → 构建 DOM 树 → 构建 CSSOM → 合成渲染树 → 布局 → 绘制 → 合成
    - 重排（Reflow）和重绘（Repaint）的区别和优化
    - 浏览器的渲染进程和线程模型
+</Card>
 
 ## CSS
 
@@ -228,6 +245,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置存储�
    - 防止元素被浮动元素覆盖
 
 4. **2025年高频考点：**
+   <Label color="purple">高频考点</Label>
    - BFC 的实现原理
    - BFC 与 IFC（行内格式化上下文）的区别
    - 实际项目中的 BFC 应用案例
@@ -257,6 +275,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置存储�
    ```
 
 4. **2025年高频考点：**
+   <Label color="purple">高频考点</Label>
    - 两种盒模型的区别和应用场景
    - 为什么推荐使用 `border-box`？
 
@@ -279,6 +298,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置存储�
    - 通配符选择器：0
 
 3. **2025年高频考点：**
+   <Label color="purple">高频考点</Label>
    - 如何计算复杂选择器的优先级？
    - `:is()`、`:not()` 等伪类对优先级的影响
    - CSS 变量的优先级
@@ -334,6 +354,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置存储�
    - `align-self`：单独对齐
 
 3. **2025年高频考点：**
+   <Label color="purple">高频考点</Label>
    - Flexbox 的常见布局实现（水平垂直居中、圣杯布局、等高布局）
    - `flex: 1` 的具体含义
    - Flexbox 与 Grid 的选择
@@ -360,6 +381,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置存储�
    - `align-self`：单独垂直对齐
 
 3. **2025年高频考点：**
+   <Label color="purple">高频考点</Label>
    - Grid 的常见布局实现
    - Grid 与 Flexbox 的区别和选择
    - Grid 的 fr 单位和 auto-fill/auto-fit
@@ -386,6 +408,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置存储�
    - 动态修改：通过 JS 修改
 
 3. **2025年高频考点：**
+   <Label color="purple">高频考点</Label>
    - CSS 变量的应用场景（主题切换、响应式设计）
    - CSS 变量的性能
    - CSS 变量与预处理器变量的区别
@@ -406,6 +429,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置存储�
    - `%`：相对于父元素
 
 3. **2025年新增考点：**
+   <Card>
    - **容器查询（Container Queries）**：
      ```css
      @container (min-width: 300px) {
@@ -417,6 +441,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置存储�
    - **视口单位增强**：
      - `svh`、`lvh`、`dvh`：处理移动端地址栏问题
    - **CSS Houdini**：自定义 CSS 特性
+   </Card>
 
 ### 常见布局问题
 
@@ -498,11 +523,14 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置存储�
    - 使用 `will-change` 提示浏览器优化
 
 3. **2025年高频考点：**
+   <Label color="purple">高频考点</Label>
    - CSS 加载优化（`<style>`、`<link>`、`preload`、`prefetch`）
    - CSS-in-JS 的性能问题
    - Tailwind CSS 的性能优化
 
 ## 2025年高频面试题
+
+<Card>
 
 1. **如何实现一个自适应的正方形？**
    ```css
@@ -574,8 +602,12 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置存储�
      100% { background-position: -200% 0; }
    }
    ```
+</Card>
 
-## 参考链接
+---
 
-[连八股文都不懂还指望在前端混下去么](https://juejin.cn/post/7016593221815910408)
-[做了一份前端面试复习计划，保熟~](https://juejin.cn/post/7061588533214969892)
+**参考链接：**
+- [连八股文都不懂还指望在前端混下去么](https://juejin.cn/post/7016593221815910408)
+- [做了一份前端面试复习计划，保熟~](https://juejin.cn/post/7061588533214969892)
+- [2023 前端面试系列--HTML & CSS 篇](https://juejin.cn/post/7175048315111735352)
+- [前端基础 HTML5 篇](https://blog.csdn.net/by6671715/article/details/127599870)

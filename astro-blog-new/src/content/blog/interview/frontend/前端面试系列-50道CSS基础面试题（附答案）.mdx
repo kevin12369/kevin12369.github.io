@@ -3,23 +3,32 @@ language: 'zh-CN'
 title: '50道CSS基础面试题（2025版）'
 description: '50道CSS基础面试题（附答案） - 个人文章 - SegmentFault 思否'
 publishDate: '2024-01-01'
-tags: []
+tags: ['CSS', '面试', '前端']
 ---
 
+import { Card, Label, Collapse } from 'astro-pure/user'
 
-# 50道CSS基础面试题（2025版）
+## 前言
+
+本文总结了50道CSS基础面试题,涵盖盒子模型、选择器、布局、CSS3新特性、响应式设计、CSS变量、动画等核心知识点,帮助前端开发者系统复习CSS基础知识。
 
 [50道CSS基础面试题（附答案） - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000013325778)
 
 ## 2025年CSS面试趋势
 
+<Card>
 - **现代布局深入**：Flexbox、Grid、容器查询的深入应用
 - **CSS工程化**：CSS Modules、Tailwind CSS、CSS-in-JS
 - **性能优化**：渲染性能、CSS加载优化
 - **可访问性**：ARIA、语义化、键盘导航
 - **CSS Houdini**：自定义CSS特性
+</Card>
 
 ## 基础概念
+
+<Collapse title="参考链接">
+[50道CSS基础面试题（附答案） - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000013325778)
+</Collapse>
 
 ### 1. 介绍一下标准的CSS的盒子模型？与低版本IE的盒子模型有什么不同的？
 
@@ -179,6 +188,8 @@ div {
 
 ### 9. 请解释一下CSS3的flexbox（弹性盒布局模型），以及适用场景？
 
+<Label color="purple">高频考点</Label>
+
 **Flexbox** 是一种一维布局模型，用于在容器中对齐和分布空间。
 
 **容器属性**：
@@ -204,6 +215,8 @@ div {
 - 卡片列表
 
 ### 10. CSS Grid是什么？如何使用？
+
+<Label color="purple">高频考点</Label>
 
 **Grid** 是一种二维布局模型，可以同时处理行和列。
 
@@ -383,6 +396,8 @@ body {
 
 ### 18. 什么是BFC？如何触发BFC？
 
+<Label color="purple">高频考点</Label>
+
 **BFC（Block Formatting Context）** 是 Web 页面中一个独立的渲染区域，区域内部的元素的渲染不会影响外界。
 
 **触发BFC的方式**：
@@ -400,6 +415,8 @@ body {
 - 防止元素被浮动元素覆盖
 
 ### 19. 如何清除浮动？
+
+<Label color="purple">高频考点</Label>
 
 ```css
 /* 方案1：使用clear */
@@ -434,6 +451,8 @@ body {
 
 ### 20. 什么是响应式设计？
 
+<Label color="purple">高频考点</Label>
+
 响应式设计是一种网页设计方法，使网页能够根据不同的设备屏幕尺寸自动调整布局和显示效果。
 
 **核心技术**：
@@ -443,6 +462,8 @@ body {
 - 弹性图片（`max-width: 100%`）
 
 ### 21. rem、em、px、vw、vh的区别？
+
+<Label color="purple">高频考点</Label>
 
 - `px`：绝对单位，像素
 - `em`：相对于父元素的字体大小
@@ -474,6 +495,8 @@ body {
 ## CSS变量
 
 ### 23. 什么是CSS变量？如何使用？
+
+<Label color="purple">高频考点</Label>
 
 **CSS变量（自定义属性）**是一种在CSS中定义可重用值的方式。
 
@@ -540,6 +563,8 @@ body {
 
 ### 25. 如何优化CSS动画性能？
 
+<Label color="purple">高频考点</Label>
+
 - 使用 `transform` 和 `opacity` 实现动画（触发GPU加速）
 - 避免使用 `left`、`top`、`width`、`height` 等属性
 - 使用 `will-change` 提示浏览器优化
@@ -556,6 +581,8 @@ body {
 ## CSS工程化
 
 ### 26. 什么是CSS Modules？
+
+<Label color="purple">高频考点</Label>
 
 **CSS Modules** 是一种CSS模块化方案，通过构建工具将CSS类名转换为唯一的标识符，避免样式冲突。
 
@@ -615,6 +642,8 @@ const Button = styled.button`
 
 ### 29. 如何优化CSS性能？
 
+<Label color="purple">高频考点</Label>
+
 1. **减少选择器嵌套层级**
 2. **避免使用通配符选择器**
 3. **避免使用 `@import`**
@@ -625,6 +654,8 @@ const Button = styled.button`
 8. **避免强制同步布局**
 
 ### 30. 什么是关键CSS？
+
+<Label color="purple">高频考点</Label>
 
 **关键CSS**是首屏渲染所需的CSS，可以内联到HTML中，加快首屏渲染速度。
 
@@ -640,6 +671,8 @@ const Button = styled.button`
 ## 可访问性
 
 ### 31. 如何提高CSS的可访问性？
+
+<Label color="purple">高频考点</Label>
 
 - 使用语义化标签
 - 提供足够的颜色对比度
@@ -1034,6 +1067,7 @@ const Button = styled.button`
 
 ## 2025年高频考点
 
+<Card>
 1. **容器查询（Container Queries）**
 2. **CSS Houdini**
 3. **CSS Nesting（嵌套）**
@@ -1042,6 +1076,7 @@ const Button = styled.button`
 6. **CSS Masonry（瀑布流）**
 7. **CSS Anchor Positioning**
 8. **CSS View Transitions API**
+</Card>
 
 ## 参考链接
 

@@ -3,9 +3,10 @@ language: 'zh-CN'
 title: 'Llama 3：Meta开源大模型的进化之路'
 description: '从Llama 1到Llama 3，Meta如何重塑开源AI的格局？本文分析Llama 3的技术突破和开源AI的发展趋势。'
 publishDate: '2025-12-26'
-tags: []
+tags: ['Llama', 'Meta', '开源大模型', 'AI', 'LLM']
 ---
 
+import { Card, Label, Collapse, Aside } from 'astro-pure/user'
 
 # Llama 3：Meta开源大模型的进化之路
 
@@ -21,7 +22,7 @@ tags: []
 
 2023年2月，Meta发布了Llama 1，这标志着开源大模型时代的正式开启。尽管Meta最初选择以研究许可的方式有限发布，但模型很快泄露到公众领域，引发了全球开发者的热情。
 
-**关键特点：**
+**关键特点**：
 - 参数规模：70亿、130亿、330亿、650亿
 - 训练数据：1.4万亿token
 - 架构创新：RMSNorm预归一化、SwiGLU激活函数、旋转嵌入
@@ -30,7 +31,7 @@ tags: []
 
 2023年7月，Meta推出Llama 2，在对话场景和安全性方面实现了重大突破。
 
-**核心改进：**
+**核心改进**：
 - 引入RLHF（人类反馈强化学习）
 - 新增对话微调版本（Llama 2-Chat）
 - 上下文长度扩展至4096 token
@@ -40,7 +41,9 @@ tags: []
 
 2024年4月，Llama 3正式发布，标志着Meta开源大模型进入全新阶段。
 
-**突破性升级：**
+<Label>突破性升级</Label>
+
+**突破性升级**：
 - 参数规模：80亿、700亿（后续扩展至405B）
 - 训练数据：15万亿token，是Llama 2的7倍
 - 上下文长度：8000 token（405B版本支持128K）
@@ -67,7 +70,7 @@ class GroupedQueryAttention:
         return self.attention(query, key, value)
 ```
 
-**优势：**
+**优势**：
 - 减少显存占用约40%
 - 提升推理速度
 - 保持模型性能
@@ -76,7 +79,7 @@ class GroupedQueryAttention:
 
 Llama 3的405B版本采用了MoE架构，总参数405B，但每次推理仅激活126B参数。
 
-**工作原理：**
+**工作原理**：
 - 模型包含多个专家网络
 - 路由器动态选择最相关的专家
 - 大幅降低计算成本
@@ -213,9 +216,9 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 ```
 
-**量化选项：**
-- 8-bit量化：显存减少50%，性能损失<2%
-- 4-bit量化：显存减少75%，性能损失<5%
+**量化选项**：
+- 8-bit量化：显存减少50%，性能损失&lt;2%
+- 4-bit量化：显存减少75%，性能损失&lt;5%
 
 ### 推理优化
 
@@ -279,12 +282,12 @@ model = get_peft_model(model, lora_config)
 
 ### 挑战与机遇
 
-**挑战：**
+**挑战**：
 - 算力成本持续上升
 - 数据质量要求提高
 - 安全性保障
 
-**机遇：**
+**机遇**：
 - 开源生态持续壮大
 - 企业级应用需求增长
 - 边缘计算场景拓展
@@ -297,7 +300,7 @@ Llama 3代表了开源大模型的最高水准，它不仅在性能上逼近甚�
 
 ---
 
-**参考资料：**
+**参考资料**：
 - [Meta AI官方博客](https://ai.meta.com/blog/meta-llama-3/)
 - [Llama 3技术报告](https://arxiv.org/abs/2407.21783)
 - [Hugging Face模型库](https://huggingface.co/meta-llama)

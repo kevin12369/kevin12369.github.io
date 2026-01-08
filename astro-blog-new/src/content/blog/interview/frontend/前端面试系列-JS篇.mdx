@@ -3,24 +3,33 @@ language: 'zh-CN'
 title: 'JavaScript 常见面试题总结（2025版）'
 description: '参考自掘金《2023 前端面试系列-- JS 篇》'
 publishDate: '2024-01-01'
-tags: []
+tags: ['JavaScript', '面试', 'ES6']
 ---
 
+import { Card, Label, Collapse } from 'astro-pure/user'
 
-# JavaScript 常见面试题总结（2025版）
+## 前言
+
+本文总结了JavaScript相关的常见面试题,涵盖2025年最新的技术趋势和高频考点,帮助前端开发者系统复习JavaScript基础知识。
 
 [参考自掘金《2023 前端面试系列-- JS 篇》](https://juejin.cn/post/7176644710847479869)
 
 ## 2025年JavaScript面试趋势
 
+<Card>
 - **ES6+ 新特性深入**：不再局限于基本语法，而是深入理解原理和应用场景
 - **异步编程进阶**：Promise、async/await、Event Loop 的深入理解
 - **函数式编程**：高阶函数、纯函数、不可变性、函数组合
 - **模块化**：ES Modules、CommonJS、AMD 的对比和应用
 - **性能优化**：内存管理、垃圾回收、V8 引擎原理
 - **TypeScript 融合**：类型系统在 JavaScript 中的应用
+</Card>
 
 ## 数据类型
+
+<Collapse title="参考链接">
+[参考自掘金《2023 前端面试系列-- JS 篇》](https://juejin.cn/post/7176644710847479869)
+</Collapse>
 
 ### JS 的数据类型有哪些？
 
@@ -135,6 +144,7 @@ tags: []
    ```
 
 5. **2025年新增考点**：
+   <Label>新增考点</Label>
    - `Object.prototype.toString` 的原理
    - 如何实现一个通用的类型判断函数？
 
@@ -158,6 +168,7 @@ tags: []
   - 不发生类型转换
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - 为什么推荐使用 `===`？
 - `Object.is()` 和 `===` 的区别（处理 `NaN` 和 `+0/-0`）
 
@@ -195,6 +206,7 @@ tags: []
 
 ### JS 的预解析？
 
+<Card>
 JS 代码的执行是由浏览器中的 JS 解析器来执行的，JS 解析器执行 JS 代码时，分为两个过程：**预解析过程**和**代码执行过程**。
 
 预解析分为**变量预解析（变量提升）**和**函数预解析（函数提升）**。
@@ -214,11 +226,14 @@ JS 代码的执行是由浏览器中的 JS 解析器来执行的，JS 解析器�
 - 但是会被同名变量赋值后覆盖
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - `let` 和 `const` 是否存在变量提升？（存在，但有暂时性死区 TDZ）
 - 理解"暂时性死区"（Temporal Dead Zone）
+</Card>
 
 ### 闭包？
 
+<Card>
 **定义**：
 - 在 JavaScript 中，每当创建一个函数，闭包就会在函数创建的同时被创建出来
 - 可以在一个内层函数中访问到其外层函数的作用域
@@ -245,9 +260,11 @@ JS 代码的执行是由浏览器中的 JS 解析器来执行的，JS 解析器�
 - 事件委托
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - 闭包的内存泄漏问题及解决方案
 - 如何避免闭包导致的内存泄漏？
 - 闭包在 React Hooks 中的应用
+</Card>
 
 推荐阅读：[我从来不理解 JavaScript 闭包，直到有人这样向我解释它](https://juejin.cn/post/6844903858636849159)
 
@@ -269,6 +286,7 @@ JS 代码的执行是由浏览器中的 JS 解析器来执行的，JS 解析器�
 - 这样就形成了**原型链**
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - 原型链的终点是什么？（`null`）
 - 如何判断一个属性是对象自身的还是原型上的？（`hasOwnProperty`）
 - 如何实现继承？（原型链继承、构造函数继承、组合继承、寄生组合继承）
@@ -306,6 +324,7 @@ JS 代码的执行是由浏览器中的 JS 解析器来执行的，JS 解析器�
      - 可以显式地指定调用函数的 `this` 指向
 
 3. **2025年高频考点**：
+   <Label color="purple">高频考点</Label>
    - 箭头函数的 `this` 特性
    - 如何改变 `this` 的指向？
    - React 事件处理中的 `this` 绑定问题
@@ -419,6 +438,7 @@ JS 代码的执行是由浏览器中的 JS 解析器来执行的，JS 解析器�
    - 对箭头函数使用 `bind` 方法时，只会返回一个预设参数的新函数，并不会改变这个新函数的 `this` 指向
 
 3. **2025年高频考点**：
+   <Label color="purple">高频考点</Label>
    - 箭头函数的适用场景
    - 箭头函数的局限性
    - 箭头函数与普通函数的区别
@@ -489,6 +509,7 @@ function deepClone(obj = {}, map = new Map()) {
 ```
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - 如何实现一个完美的深拷贝？（考虑循环引用、特殊对象、函数等）
 - `JSON.parse(JSON.stringify())` 的局限性
 - 结构化克隆（Structured Clone）API
@@ -530,6 +551,7 @@ function deepClone(obj = {}, map = new Map()) {
    - **解决办法**：清除不必要的 `console`
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - V8 引擎的垃圾回收机制（分代回收、标记清除、标记整理）
 - 如何检测内存泄漏？（Chrome DevTools）
 - WeakMap 和 WeakSet 的应用场景
@@ -595,6 +617,7 @@ function throttled(fn, wait) {
 ```
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - 防抖和节流的区别
 - 如何实现一个立即执行的防抖？
 - 如何实现一个立即执行的节流？
@@ -603,6 +626,7 @@ function throttled(fn, wait) {
 
 ### EventLoop 事件循环？
 
+<Card>
 JS 是单线程运行的，当遇到一个异步事件后并不会一直等待其返回结果，而是会将这个事件挂起，继续执行执行栈中的其他任务。
 
 当一个异步事件返回结果后，JS 会将这个事件加入与当前执行栈不同的另一个队列——**事件队列（Task Queue）**。
@@ -642,9 +666,11 @@ JS 是单线程运行的，当遇到一个异步事件后并不会一直等待�
 - 同一次事件循环中，微任务永远在宏任务之前执行
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - Event Loop 的执行顺序
 - 微任务和宏任务的区别
 - Node.js 和浏览器环境下的 Event Loop 区别
+</Card>
 
 推荐阅读：
 - [详解 JavaScript 中的 Event Loop（事件循环）机制](https://zhuanlan.zhihu.com/p/33058983)
@@ -670,6 +696,7 @@ JS 是单线程运行的，当遇到一个异步事件后并不会一直等待�
 - 这个回调函数属于微任务，会在本轮事件循环的末尾执行
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - Promise 的状态机
 - Promise 的链式调用
 - Promise.all、Promise.race、Promise.allSettled、Promise.any 的区别
@@ -749,6 +776,7 @@ JS 是单线程运行的，当遇到一个异步事件后并不会一直等待�
     - 异步函数
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - ES6+ 新特性的应用场景
 - `let` 和 `const` 的区别
 - 模块化的实现原理
@@ -773,11 +801,20 @@ JS 是单线程运行的，当遇到一个异步事件后并不会一直等待�
 - `some`、`every`：判断
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - 函数式编程的优势
 - 如何实现一个柯里化函数？
 - 函数组合的应用
 
-## 参考链接
+---
 
-[连八股文都不懂还指望在前端混下去么](https://juejin.cn/post/7016593221815910408)
-[做了一份前端面试复习计划，保熟~](https://juejin.cn/post/7061588533214969892)
+**参考链接：**
+- [连八股文都不懂还指望在前端混下去么](https://juejin.cn/post/7016593221815910408)
+- [做了一份前端面试复习计划，保熟~](https://juejin.cn/post/7061588533214969892)
+- [2023 前端面试系列-- JS 篇](https://juejin.cn/post/7176644710847479869)
+- [JavaScript 深入之词法作用域和动态作用域](https://github.com/mqyqingfeng/Blog/issues/3)
+- [轻松理解 JS 原型和原型链](https://juejin.cn/post/6844903989088092174)
+- [详解 JavaScript 中的 Event Loop（事件循环）机制](https://zhuanlan.zhihu.com/p/33058983)
+- [微任务、宏任务与 Event-Loop](https://juejin.cn/post/6844903657264136200)
+- [Promise 对象](https://es6.ruanyifeng.com/#docs/promise)
+- [Promise 不会？看这里！！！史上最通俗易懂的 Promise！！！](https://juejin.cn/post/6844903607968481287)

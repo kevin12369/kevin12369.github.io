@@ -3,16 +3,20 @@ language: 'zh-CN'
 title: 'Vue 常见面试题总结（2025版）'
 description: '参考自掘金《2023 前端面试系列-- Vue 篇》'
 publishDate: '2024-01-01'
-tags: []
+tags: ['Vue', '面试', '前端']
 ---
 
+import { Card, Label, Collapse } from 'astro-pure/user'
 
-# Vue 常见面试题总结（2025版）
+## 前言
+
+本文总结了Vue相关的常见面试题,涵盖Vue 2和Vue 3的核心概念、生命周期、响应式原理、组件通信等内容,帮助前端开发者系统复习Vue框架知识。
 
 [参考自掘金《2023 前端面试系列-- Vue 篇》](https://juejin.cn/post/7191325434486161467)
 
 ## 2025年Vue面试趋势
 
+<Card>
 - **Vue 3 成为主流**：Vue 2 已停止支持，Vue 3 成为默认选择
 - **Composition API 深入**：不再局限于基本使用，而是深入理解原理和最佳实践
 - **响应式原理升级**：从 Vue 2 的 Object.defineProperty 到 Vue 3 的 Proxy
@@ -20,8 +24,13 @@ tags: []
 - **TypeScript 集成**：Vue 3 + TypeScript 成为标准配置
 - **Pinia 取代 Vuex**：状态管理的新选择
 - **Nuxt 3**：服务端渲染框架的升级
+</Card>
 
 ## MVVM 模型
+
+<Collapse title="参考链接">
+[参考自掘金《2023 前端面试系列-- Vue 篇》](https://juejin.cn/post/7191325434486161467)
+</Collapse>
 
 ### 什么是 MVVM 模型？
 
@@ -40,6 +49,7 @@ tags: []
 
 ### Vue 的生命周期
 
+<Card>
 Vue 的生命周期可以分为 8 个阶段：`创建前后`、`挂载前后`、`更新前后`、`销毁前后`，以及一些特殊场景的生命周期。
 
 Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
@@ -78,9 +88,11 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
   父 beforeDestroy → 子 beforeDestroy → 子 destroyed → 父 destroyed
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - Vue 3 中 `setup` 执行时机
 - 如何在 `setup` 中访问生命周期钩子？
 - `onBeforeMount` 和 `onMounted` 的区别
+</Card>
 
 ## Vue.$nextTick
 
@@ -102,6 +114,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
 2. 在 `created` 生命周期中进行 DOM 操作
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - `nextTick` 的实现原理
 - Vue 2 和 Vue 3 中 `nextTick` 的区别
 - 微任务和宏任务的选择
@@ -122,6 +135,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
   - 这使得以后数据发生变化时会执行对应的更新函数
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - Vue 3 的挂载流程
 - `createApp` 和 `mount` 的作用
 
@@ -142,6 +156,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
 3. **Generate（生成）**：将 AST 生成 render 函数
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - 编译器的作用
 - AST 的结构
 - 编译时优化和运行时优化的区别
@@ -150,6 +165,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
 
 ### Vue 的响应式原理
 
+<Card>
 #### Vue 2
 
 - `Vue 2` 中的数据响应式会根据数据类型做不同的处理
@@ -173,9 +189,11 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
 - 也不需要维护特别多的依赖关系，性能取得很大进步
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - Vue 2 和 Vue 3 响应式原理的区别
 - Proxy 相比 Object.defineProperty 的优势
 - 如何实现一个简单的响应式系统？
+</Card>
 
 ## 虚拟 DOM
 
@@ -211,6 +229,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
   - 换句话说，如果判断 `children` 是字符串的话，就表示一定是文本节点，且这个节点没有子元素
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - 虚拟 DOM 的优势
 - 虚拟 DOM 和真实 DOM 的区别
 - Vue 3 的虚拟 DOM 优化
@@ -245,6 +264,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
 - **Patch Flags**：标记节点变化类型，减少不必要的比较
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - diff 算法的核心思想
 - Vue 2 和 Vue 3 diff 算法的区别
 - key 的作用和原理
@@ -258,6 +278,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
 - 因此如果不设置 key，他的值就是 undefined，则可能永远认为这是两个相同的节点，只能去做更新操作，将会造成大量的 DOM 进行更新操作
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - 为什么不建议使用 index 作为 key？
 - key 的最佳实践
 
@@ -270,6 +291,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
 - 而采用函数的形式，在 `initData` 时会将其作为工厂函数，都会返回全新的 `data` 对象
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - 组件复用时 data 的影响
 - 如何实现组件间的数据共享？
 
@@ -299,6 +321,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
    - `defineProps`、`defineEmits`：组合式 API 中的 props 和 emit
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - 不同通信方式的适用场景
 - `provide` / `inject` 的使用注意事项
 
@@ -353,6 +376,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
   - 适用于：观测某个值的变化去完成一段复杂的业务逻辑
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - computed 的缓存机制
 - watch 的 deep 和 immediate 选项
 
@@ -376,6 +400,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
      - 解决方案：可以将 v-if 移动至容器元素上或者在外面包一层 `template` 即可
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - Vue 2 和 Vue 3 中优先级的区别
 - 如何正确使用 v-if 和 v-for
 
@@ -390,6 +415,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
 - 可通过 `this.$set(数组或者对象，数组下标或者对象的属性名，更新后的值)` 解决
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - Vue 3 中是否需要使用 `set`？
 - Vue 3 如何动态添加响应式属性？
 
@@ -420,6 +446,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
   - 再次进入组件时：`activated → beforeUpdate → updated → deactivated`
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - keep-alive 的实现原理
 - 如何清除 keep-alive 的缓存？
 
@@ -439,6 +466,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
   - `mixin` 和组件出现对多的关系，使项目复杂度变高
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - mixin 的应用场景
 - Composition API 如何替代 mixin？
 
@@ -476,6 +504,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
        3. `v-slot:插槽名="接收的变量名"`：`<template v-slot="接收的变量名">`
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - Vue 3 中插槽的变化
 - 作用域插槽的应用场景
 
@@ -515,6 +544,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
        - 系统修饰键（ctrl、alt、meta、shift...）
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - Vue 3 中移除了哪些修饰符？
 - 如何自定义修饰符？
 
@@ -557,6 +587,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
      - 首次渲染速度相对较慢
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - SPA 的性能优化
 - SPA 的 SEO 解决方案
 
@@ -583,6 +614,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
    - 事件回调函数中会做响应变量的更新操作
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - v-model 的实现原理
 - 如何在自定义组件中使用 v-model？
 
@@ -609,6 +641,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
    - 而对于 Vue 来说，禁止这样的改动虽然可能，但是有很大的性能损耗，比较得不偿失
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - 单向数据流的优势
 - 如何实现子组件向父组件通信？
 
@@ -639,6 +672,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
    - `useRoute`、`useRouter`：组合式 API 中的路由钩子
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - hash 模式和 history 模式的区别
 - 如何解决 history 模式刷新 404 的问题？
 
@@ -719,6 +753,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
    ```
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - Vuex 和 Pinia 的区别
 - 如何选择状态管理方案？
 
@@ -732,6 +767,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
 - 不需要你手动存取 storage，而是直接将状态保存至 cookie 或者 localStorage 中
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - Pinia 的持久化方案
 - 如何实现部分状态的持久化？
 
@@ -754,6 +790,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
   - 服务器会有更大的负载需求
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - SSR 的适用场景
 - Nuxt 3 的使用
 
@@ -795,6 +832,7 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
     - **Vapor 模式**：更快的渲染性能（实验性）
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - Vue 3 的编译优化
 - 如何分析 Vue 应用的性能瓶颈？
 
@@ -834,10 +872,16 @@ Vue 3 中还新增了 3 个用于调试和服务端渲染的场景。
    - `<Fragment>`
 
 **2025年高频考点**：
+<Label color="purple">高频考点</Label>
 - Composition API 的优势
 - 如何从 Vue 2 迁移到 Vue 3？
 
-## 参考链接
+---
 
-[连八股文都不懂还指望在前端混下去么](https://juejin.cn/post/7016593221815910408)
-[做了一份前端面试复习计划，保熟~](https://juejin.cn/post/7061588533214969892)
+**参考链接：**
+- [连八股文都不懂还指望在前端混下去么](https://juejin.cn/post/7016593221815910408)
+- [做了一份前端面试复习计划，保熟~](https://juejin.cn/post/7061588533214969892)
+- [2023 前端面试系列-- Vue 篇](https://juejin.cn/post/7191325434486161467)
+- [组合式 API：生命周期钩子--官方文档](https://cn.vuejs.org/api/composition-api-lifecycle.html)
+- [选项式 API：生命周期选项--官方文档](https://cn.vuejs.org/api/options-lifecycle.html)
+- [Vue 2 set 方法 API](https://v2.cn.vuejs.org/v2/api/#Vue-set)

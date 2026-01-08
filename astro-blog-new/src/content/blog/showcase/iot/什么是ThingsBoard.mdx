@@ -1,25 +1,36 @@
 ---
 language: 'zh-CN'
 title: '什么是 ThingsBoard'
-description: '- ThingsBoard 是一个开源物联网平台，可实现物联网项目的快速开发、管理和扩展。'
-publishDate: 2024-01-01
-tags: []
+description: 'ThingsBoard 是一个开源物联网平台，可实现物联网项目的快速开发、管理和扩展。本文详细介绍 ThingsBoard 的特点、架构和设计原则。'
+publishDate: '2024-01-01'
+updatedDate: '2025-12-26'
+tags:
+  - ThingsBoard
+  - IoT
+  - 物联网
+  - 开源平台
+  - 架构设计
+draft: false
+comment: true
 ---
 
+import { Card, Label, Collapse, Aside } from 'astro-pure/user'
 
 # 什么是 ThingsBoard
 
 ## ThingsBoard 是什么？
 
+ThingsBoard 是一个开源物联网平台，可实现物联网项目的快速开发、管理和扩展。目标是提供成熟的 IoT 云或本地解决方案以此做为您的 IoT 应用程序服务端基础架构。
 
-- ThingsBoard 是一个开源物联网平台，可实现物联网项目的快速开发、管理和扩展。
-- 目标是提供成熟的 IoT 云或本地解决方案以此做为您的 IoT 应用程序服务端基础架构。
-
+<Aside>
+**优势**：作为开源平台，ThingsBoard 提供了灵活的部署选项，既可以作为云服务使用，也可以在本地私有化部署，满足不同场景的需求。
+</Aside>
 
 ## 特点
 
-
 ThingsBoard 可用于：
+
+<Card title="ThingsBoard 核心功能">
 
 **设备管理**
 设备管理，资产和客户并定义他们之间的关系。
@@ -45,11 +56,15 @@ ThingsBoard 可用于：
 **数据发布**
 发布设备数据至第三方系统。
 
+</Card>
 
 ## 架构
 
 ![ThingsBoard的架构](/thingsboard-架构图.png 'ThingsBoard的架构')
 
+<Label>架构分层</Label>
+
+ThingsBoard 采用模块化架构，主要由以下几个核心组件组成：
 
 ### ThingsBoard 传输
 
@@ -61,7 +76,9 @@ MQTT 传输还提供网关 API 供代表多个已连接设备和/或传感器的
 
 传输从设备接收到消息后，它将被解析并推送到持久的消息队列。
 
-仅在消息队列确认了相应消息后才将消息传递给设备。
+<Aside>
+**重要**：仅在消息队列确认了相应消息后才将消息传递给设备，确保消息的可靠传输。
+</Aside>
 
 ### ThingsBoard 核心
 
@@ -71,11 +88,13 @@ ThingsBoard Core 负责处理 REST API 调用和 WebSocket 订阅。
 
 ThingsBoard 核心在幕后使用 Actor 来实现主要实体（租户和设备）的 actor。
 
+<Label>集群支持</Label>
+
 平台节点可以加入群集其中每个节点负责传入消息的某些分区。
 
 ### ThingsBoard 规则引擎
 
-ThingsBoard 规则引擎是系统的心脏负责处理传入的 消息。
+ThingsBoard 规则引擎是系统的心脏负责处理传入的消息。
 
 规则引擎在幕后使用 Actor 来实现主要实体的 actor：规则链和规则节点。
 
@@ -83,13 +102,14 @@ ThingsBoard 规则引擎是系统的心脏负责处理传入的 消息。
 
 规则引擎从队列中订阅传入的数据并且仅在处理完消息后才对其进行确认。
 
-有多种策略可用于控制顺序或消息处理以及消息确认的标准。 请参阅 提交策略 处理 处理策略。
+<Label>运行模式</Label>
 
-ThingsBoard 规则引擎可能以两种模式运行：共享和隔离
+有多种策略可用于控制顺序或消息处理以及消息确认的标准。请参阅提交策略处理处理策略。
 
-在共享模式下规则引擎处理多个租户的消息。
+ThingsBoard 规则引擎可能以两种模式运行：
 
-在隔离模式下规则引擎处理特定租户的消息。
+- **共享模式**：规则引擎处理多个租户的消息
+- **隔离模式**：规则引擎处理特定租户的消息
 
 ### ThingsBoard Web UI
 
@@ -99,9 +119,13 @@ ThingsBoard 提供了一个使用 Express.js 框架编写的轻量级组件，�
 
 静态 Web UI 包含应用程序捆绑包加载后该应用程序将开始使用 ThingsBoard 核心提供的 REST API 和 WebSockets API。
 
-
 ## 设计原则
 
+<Label>核心设计理念</Label>
+
+ThingsBoard 的设计遵循以下核心原则：
+
+<Card title="ThingsBoard 设计原则">
 
 **高扩展**
 使用领先开源技术构建的可水平扩展平台。
@@ -117,3 +141,16 @@ ThingsBoard 提供了一个使用 Express.js 框架编写的轻量级组件，�
 
 **持久化**
 数据永久保存
+
+</Card>
+
+## 总结
+
+ThingsBoard 作为一个成熟的开源物联网平台，通过其模块化的架构设计和丰富的功能特性，为物联网项目提供了完整的解决方案。无论是小型项目还是大规模部署，ThingsBoard 都能够提供稳定、高效、灵活的服务支持。
+
+---
+
+**参考资料：**
+- [ThingsBoard 官方文档](https://thingsboard.io/docs/)
+- [ThingsBoard GitHub](https://github.com/thingsboard/thingsboard)
+- [ThingsBoard 架构文档](https://thingsboard.io/docs/reference/architecture/)
