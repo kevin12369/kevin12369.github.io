@@ -3,14 +3,15 @@ language: 'zh-CN'
 title: 'Agents vs Skills - 技术范式之争（四）'
 description: '2025年10月，Anthropic发布了Claude Skills，提出了一个全新的AI能力扩展范式。与此同时，开源社区也在探索类似的方向，如Deep Agents CLI。'
 publishDate: '2026-01-03'
-updatedDate: '2026-01-05 23:27:21'
+updatedDate: '2026-01-05'
 tags:
- - AI Agent
- - Claude Skills
- - 技术范式
- - AI框架
+  - AI Agent
+  - Claude Skills
+  - 技术范式
+  - AI框架
 ---
 
+import { Card, Label } from 'astro-pure/user'
 
 # Agents vs Skills - 技术范式之争
 
@@ -22,7 +23,7 @@ tags:
 
 本文将深入分析两种范式的对比、技术原理、实际应用，以及如何选择适合的方案。
 
-### 研究基础
+<Label>研究基础</Label>
 
 本文的分析基于以下权威来源：
 
@@ -81,7 +82,7 @@ AI Agent
 ```
 AI Agent
   ↓
-技能元数据（始终加载，<100 tokens）
+技能元数据（始终加载，小于100 tokens）
   ↓
 技能匹配
   ↓
@@ -140,7 +141,7 @@ Claude Skills是扩展Claude功能的模块化能力。每个Skill包含元数�
 
 **三层加载机制：**
 
-**第一层：元数据（始终加载，<100 tokens）**
+**第一层：元数据（始终加载，小于100 tokens）**
 ```yaml
 ---
 name: pdf-processing
@@ -195,14 +196,15 @@ Claude理解意图
 - Token消耗：10,000 tokens/请求
 
 **Claude Skills方式（渐进加载）：**
-- 所有Skills的元数据：<1,000 tokens
+- 所有Skills的元数据：小于1,000 tokens
 - 相关Skills的指令：约500 tokens
 - 相关Skills的资源：约2,000 tokens
-- Token消耗：<3,500 tokens/请求
+- Token消耗：小于3,500 tokens/请求
 
-**效率提升：**
+<Card title="效率提升">
 - 节省Token：约65%
 - 对于复杂任务，可节省高达95%
+</Card>
 
 ### 2.4 核心优势
 
@@ -484,7 +486,9 @@ Skills：
 | 维护成本 | 高 | 低 |
 | 开发时间 | 2周 | 3天 |
 
-**结论：** 对于这个明确的任务，Skills范式更合适。
+<Label>结论</Label>
+
+对于这个明确的任务，Skills范式更合适。
 
 ### 5.2 案例2：智能客服系统
 
@@ -526,7 +530,9 @@ Skills：
 | 维护成本 | 高 | 低 |
 | 开发时间 | 3周 | 2周 |
 
-**结论：** 对于这个需要灵活性和适应性的任务，Agent范式更合适。
+<Label>结论</Label>
+
+对于这个需要灵活性和适应性的任务，Agent范式更合适。
 
 ### 5.3 案例3：代码生成与审查系统
 
@@ -566,7 +572,9 @@ Skills：
 | 准确率 | 70% | 95% | 92% |
 | 维护成本 | 高 | 低 | 中 |
 
-**结论：** 对于这个复杂的任务，混合模式最佳。
+<Label>结论</Label>
+
+对于这个复杂的任务，混合模式最佳。
 
 ## 第六部分：最佳实践
 
