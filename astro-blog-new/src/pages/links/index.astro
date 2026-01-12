@@ -1,6 +1,4 @@
 ---
-import links from 'public/links.json'
-
 import { Collapse, Timeline } from 'astro-pure/user'
 import config from 'virtual:config'
 import PageLayout from '@/layouts/CommonPage.astro'
@@ -12,23 +10,42 @@ const headings = [
   { depth: 2, slug: 'apply-links', text: '申请友链' }
 ]
 
-const { friends } = links
 const linksConf = config.integ.links
 const linkEditPage = 'https://github.com/cworld1/astro-theme-pure/blob/main/public/links.json'
+
+const links = {
+  friends: [
+    {
+      id_name: "common-links",
+      desc: "常用友链",
+      link_list: []
+    },
+    {
+      id_name: "inactive-links",
+      desc: "失效或违规的友链",
+      link_list: []
+    },
+    {
+      id_name: "special-links",
+      desc: "特殊链接",
+      link_list: []
+    }
+  ]
+}
 ---
 
 <PageLayout title='友链' {headings} comment>
   <p>友情链接，随机排序。</p>
   <h2 id='common-links'>常用友链</h2>
-  <FriendList list={friends[0]} />
+  <FriendList list={links.friends[0]} />
   <Collapse title='失效友链'>
-    <FriendList list={friends[1]} />
+    <FriendList list={links.friends[1]} />
   </Collapse>
   <Collapse title='友链历史'>
     <Timeline events={linksConf.logbook} />
   </Collapse>
   <h2 id='special-links'>特殊链接</h2>
-  <FriendList list={friends[2]} />
+  <FriendList list={links.friends[2]} />
 
   <h2 id='apply-links'>申请友链</h2>
   <p>本站信息（点击复制）：</p>

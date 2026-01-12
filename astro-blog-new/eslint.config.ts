@@ -2,7 +2,6 @@
 
 import eslintPluginAstro from 'eslint-plugin-astro'
 
-// @ts-expect-error
 export default [
   ...eslintPluginAstro.configs.recommended,
   // Ignore files
