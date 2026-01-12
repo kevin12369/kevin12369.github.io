@@ -1,8 +1,9 @@
 // @ts-check
 
 import eslintPluginAstro from 'eslint-plugin-astro'
+import type { FlatCompatConfig } from 'eslint-define-config'
 
-export default [
+const config: FlatCompatConfig = [
   ...eslintPluginAstro.configs.recommended,
   // Ignore files
   {
@@ -13,3 +14,5 @@ export default [
     }
   }
 ]
+
+export default config
