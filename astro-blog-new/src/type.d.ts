@@ -5,12 +5,20 @@ declare module 'virtual:config' {
 
 declare module 'public/links.json' {
   const links: {
-    friends: Array<Array<{
-      name: string
-      url: string
-      avatar?: string
-      description?: string
-    }>>
+    friends: Array<{
+      id_name: string
+      desc: string
+      link_list: Array<{
+        avatar: string
+        avatar_cache?: {
+          hash: string
+          path: string
+        }
+        name: string
+        intro: string
+        link: string
+      }>
+    }>
   }
   export default links
 }
